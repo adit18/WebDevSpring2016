@@ -19,6 +19,7 @@
 }
 
 .disabled { pointer-events: none; }
+
 .custom-subhead {
     padding-left:3em;
 }
@@ -26,3 +27,11 @@
     padding-top: 10px;
 }
 
+.table-form {
+    padding-bottom: 0px;
+}
+
+.glyphicon-size {
+    font-size: 2em;
+    padding-left: 10px;
+}

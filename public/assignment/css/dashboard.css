@@ -11,16 +11,7 @@ body {
 /*
  * Global add-ons
  */
-#mainhead {
-    padding-left:20px;
-}
 
-#non-hyper {
-    padding-left:20px;
-}
-.custom-subhead {
-    padding-left:3em;
-}
 .sub-header {
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;

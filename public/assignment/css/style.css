@@ -1,0 +1,28 @@
+/*
+ * Base structure
+ */
+
+
+/*
+ * Global add-ons
+ */
+#mainhead {
+    padding-left:20px;
+}
+
+#non-hyper {
+    color: #fff;
+    background-color: #428bca;
+    padding-right: 20px;
+    padding-left: 20px;
+
+}
+
+.disabled { pointer-events: none; }
+.custom-subhead {
+    padding-left:3em;
+}
+.custom-formlabel {
+    padding-top: 10px;
+}
+

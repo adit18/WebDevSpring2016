@@ -28,10 +28,19 @@
 }
 
 .table-form {
-    padding-bottom: 0px;
+    //margin-right: 0px;
+    margin-bottom: 0px;
 }
 
 .glyphicon-size {
     font-size: 2em;
     padding-left: 10px;
+    padding-right: 10px;
+}
+
+.data-font-size {
+    font-size: 1.2em;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+//padding-left: 10px;
 }

@@ -49,8 +49,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- <li><a href="#" class="disabled">Register</a></li>
                 <li><a href="#">Login</a></li> -->
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/assignment/profile.html">Username</a></li>
+                <li><a href="/assignment/login.html">Logout</a></li>
             </ul>
             <!--
             <form class="navbar-form navbar-right">
@@ -65,10 +65,10 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Admin</a></li>
-                <li class="active"><a href="#">Forms</a></li>
+                <li><a href="/assignment/home.html">Home<span class="sr-only">(current)</span></a></li>
+                <li><a href="/assignment/profile.html">Profile</a></li>
+                <li><a href="/assignment/admin.html">Admin</a></li>
+                <li class="active"><a href="#" class="disabled">Forms</a></li>
             </ul>
         </div>
 
@@ -79,43 +79,140 @@
                 <li role="presentation"><a href="/assignment/forms.html">Forms</a></li>
                 <li role="presentation" class="active"><a href="#" class="disabled">Fields</a></li>
             </ul>
-            <table class="table table-bordered table-50">
-                <thead>
-                <tr>
-                    <th><p class="data-font-size"> Form Name </p></th>
-                    <th><p class="data-font-size"> Action</p></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <div class="form-group row table-form">
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="inputdefault" placeholder="Name">
-                            </div>
+            <form>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label for="firstname" class="form-control-label custom-formlabel">First Name:</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label for="lastname" class="form-control-label custom-formlabel">Last Name:</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label for="dob" class="form-control-label custom-formlabel">Date Of Birth:</label>
+                        <input type="date" class="form-control" id="dob" placeholder="Select Date">
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label for="gender" class="form-control-label custom-formlabel">Gender:</label>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Male
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Female</a></li>
+                            </ul>
                         </div>
-                    </td>
-                    <td class="glyph-td"><span class="glyphicon glyphicon-ok glyphicon-size"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size"></span></td>
-                </tr>
-                <tr>
-                    <td><p class="data-font-size"> Registration Form </p></td>
-                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size"></span>
-                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label class="form-control-label custom-formlabel">Roles:</label>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="option" checked>
+                                Admin
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Student
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="option" checked>
+                                User
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label class="form-control-label custom-formlabel">License Agreement:</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
+                        <label class="form-control-label custom-formlabel">Add New Field</label>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Single Line Text
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Checkbox</a></li>
+                                <li><a href="#">Radio Button</a></li>
+                                <li><a href="#">Dropdown</a></li>
 
-                </tr>
-                <tr>
-                    <td><p class="data-font-size"> Contact List </p></td>
-                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size"></span>
-                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
-                </tr>
-                <tr>
-                    <td><p class="data-font-size"> To Do List </p></td>
-                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size"></span>
-                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
-                </tr>
-                </tbody>
-            </table>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
+                        <span></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </form>
 
         </div>
     </div>

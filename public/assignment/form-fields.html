@@ -67,21 +67,22 @@
             <ul class="nav nav-sidebar">
                 <li><a href="#">Home <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Profile</a></li>
-                <li class="active"><a href="#">Admin</a></li>
-                <li><a href="#">Forms</a></li>
+                <li><a href="#">Admin</a></li>
+                <li class="active"><a href="#">Forms</a></li>
             </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-            <h1 class="page-header">Admin</h1>
-            <h2>Users</h2>
-            <table class="table table-bordered table-80">
+            <h1 class="page-header">Forms</h1>
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="/assignment/forms.html">Forms</a></li>
+                <li role="presentation" class="active"><a href="#" class="disabled">Fields</a></li>
+            </ul>
+            <table class="table table-bordered table-50">
                 <thead>
                 <tr>
-                    <th><p class="data-font-size"> Username </p></th>
-                    <th><p class="data-font-size"> Password</p></th>
-                    <th><p class="data-font-size"> Role</p></th>
+                    <th><p class="data-font-size"> Form Name </p></th>
                     <th><p class="data-font-size"> Action</p></th>
                 </tr>
                 </thead>
@@ -89,49 +90,29 @@
                 <tr>
                     <td>
                         <div class="form-group row table-form">
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputdefault" placeholder="Username">
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group row table-form">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="inputdefault" placeholder="Password">
+                                <input type="text" class="form-control" id="inputdefault" placeholder="Name">
                             </div>
                         </div>
                     </td>
-                    <td>
-                        <div class="form-group row table-form">
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="inputdefault" placeholder="Role1,Role2">
-                            </div>
-                        </div>
-                    </td>
-                    <td><span class="glyphicon glyphicon-ok glyphicon-size"></span>
+                    <td class="glyph-td"><span class="glyphicon glyphicon-ok glyphicon-size"></span>
                         <span class="glyphicon glyphicon-plus glyphicon-size"></span></td>
                 </tr>
                 <tr>
-                    <td><p class="data-font-size"> John </p></td>
-                    <td></td>
-                    <td><div class="table-form" id="inputdefault"><p class="data-font-size">student</p></div></td>
-                    <td><span class="glyphicon glyphicon-remove glyphicon-size"></span>
-                    <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
+                    <td><p class="data-font-size"> Registration Form </p></td>
+                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
 
                 </tr>
                 <tr>
-                    <td><p class="data-font-size"> Bob </p></td>
-                    <td></td>
-                    <td><p class="data-font-size"> faculty | admin </p></td>
-                    <td><span class="glyphicon glyphicon-remove glyphicon-size"></span>
-                    <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
+                    <td><p class="data-font-size"> Contact List </p></td>
+                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
                 </tr>
                 <tr>
-                    <td><p class="data-font-size"> July</p></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="glyphicon glyphicon-remove glyphicon-size"></span>
-                    <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
+                    <td><p class="data-font-size"> To Do List </p></td>
+                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-pencil glyphicon-size"></span></td>
                 </tr>
                 </tbody>
             </table>

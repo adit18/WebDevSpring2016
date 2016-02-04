@@ -33,14 +33,32 @@
 }
 
 .glyphicon-size {
-    font-size: 2em;
+    font-size: 1.5em;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .data-font-size {
     font-size: 1.2em;
-    margin-bottom: 0px;
+    margin-bottom:0px;
     padding-bottom: 0px;
 //padding-left: 10px;
+}
+
+.table-80{
+    width:80%;
+}
+
+.table-50{
+    width:50%;
+}
+
+.table>tr>td{
+    padding:5px;
+    padding-left:15px;
+    vertical-align: middle;
+}
+
+.glyph-td{
+    width: 120px;
 }

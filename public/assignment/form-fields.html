@@ -74,7 +74,7 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-            <h1 class="page-header">Forms</h1>
+            <h1 class="page-header">Forms : Registration Form</h1>
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="/assignment/forms.html">Forms</a></li>
                 <li role="presentation" class="active"><a href="#" class="disabled">Fields</a></li>
@@ -207,10 +207,66 @@
                     </div>
                     <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
                         <span></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size" data-toggle="modal" data-target="#myModal"></span>
+
                         <span></span>
                         <span></span>
                     </div>
+
+                    <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <span class="glyphicon glyphicon-remove glyphicon-size-small col-sm-2" data-dismiss="modal"></span>
+                                        <h4 class="modal-title">Field Properties</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group row">
+                                                <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Label:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="inputdefault" placeholder="Label">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Placeholder:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="inputdefault" placeholder="Placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Tooltip:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="inputdefault" placeholder="Tooltip">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                            <label class="col-sm-2 form-control-label custom-formlabel">Type</label>
+                                            <div class="dropdown col-sm-6">
+                                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    Options
+                                                    <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#">Option 1</a></li>
+                                                    <li><a href="#">Option 2</a></li>
+                                                    <li><a href="#">Option 3</a></li>
+
+                                                </ul>
+                                            </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">OK</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                 </div>
             </form>
 

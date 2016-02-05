@@ -86,3 +86,15 @@ hr{
     background-color:#333;
     margin: 15px;
 }
+
+.glyphicon-colorgreen{
+    color:#009900;
+}
+
+.glyphicon-colorred{
+    color:#ff0000;
+}
+
+.glyphicon-colorbro{
+    color:#993300;
+}

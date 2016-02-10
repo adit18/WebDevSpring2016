@@ -10,6 +10,10 @@
     padding-left:20px;
 }
 
+#mainhead2 {
+    padding-left:30px;
+}
+
 #non-hyper {
     color: #fff;
     background-color: #428bca;
@@ -23,6 +27,11 @@
 .custom-subhead {
     padding-left:3em;
 }
+
+.custom-subhead2 {
+    padding-left:4em;
+}
+
 .custom-formlabel {
     padding-top: 10px;
 }

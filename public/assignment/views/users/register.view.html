@@ -1,36 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Form Maker</title>
-
-    <!-- Bootstrap core CSS "../../dist/css/bootstrap.min.css"-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
-
-    <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
 
 <body>
 
@@ -47,8 +17,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <!-- <li><a href="#" class="disabled">Register</a></li>
-                <li><a href="#">Login</a></li> -->
+                <li><a href="/assignment/register.html" class="disabled">Register</a></li>
+                <li><a href="/assignment/login.html">Login</a></li>
                 <li><a href="/assignment/profile.html">Username</a></li>
                 <li><a href="/assignment/login.html">Logout</a></li>
             </ul>
@@ -63,18 +33,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="/assignment/home.html">Home <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/assignment/profile.html" class="disabled">Profile</a></li>
-                <li><a href="/assignment/admin.html">Admin</a></li>
-                <li><a href="/assignment/forms.html">Forms</a></li>
-            </ul>
-        </div>
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-            <h1 class="page-header">Profile</h1>
+            <h1 class="page-header">Register</h1>
 
             <form role="form">
                 <div class="form-group row">
@@ -90,15 +51,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">First Name:</label>
+                    <label for="inputPassword3" class="col-sm-2 form-control-label custom-formlabel">Verify Password:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputdefault" placeholder="First Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Last Name:</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputdefault" placeholder="Last Name">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -108,8 +63,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-offset-4 col-sm-10">
-                        <button type="submit" class="btn btn-secondary">Update</button>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-secondary">Register</button>
                     </div>
                 </div>
             </form>

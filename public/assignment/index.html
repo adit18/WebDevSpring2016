@@ -16,14 +16,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/config.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
@@ -35,13 +37,15 @@
     <![endif]-->
 </head>
 
+
 <body ng-controller="MainController">
+
+<div ng-include src="'views/header/header.view.html'"></div>
+<div ng-include src="'views/sidebar/sidebar.view.html'"></div>
+
 
 <div ng-view>
 </div>
-
-<ng-include src="header/header.view.html"></ng-include>
-<ng-include src="sidebar/sidebar.view.html"></ng-include>
 
 <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
     <!--<div class="container-fluid">-->
@@ -57,13 +61,13 @@
     <!--</div>-->
 <!--</nav>-->
 
-<h1 id="mainhead">Assignment</h1>
-<h2 class="custom-subhead"> <a href="/assignment/home.html">Home</a> </h2>
-<h2 class="custom-subhead"> <a href="/assignment/register.html">Register</a> </h2>
-<h2 class="custom-subhead"> <a href="/assignment/login.html">Login</a> </h2>
-<h2 class="custom-subhead"> <a href="/assignment/profile.html">Profile</a> </h2>
-<h2 class="custom-subhead"> <a href="/assignment/admin.view.html">Admin</a> </h2>
-<h2 class="custom-subhead"> <a href="/assignment/forms.html">Forms</a> </h2>
-<h2 class="custom-subhead"> <a href="/assignment/form-fields.html">Form Fields</a> </h2>
+<!--<h1 id="mainhead">Assignment</h1>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/home.html">Home</a> </h2>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/register.html">Register</a> </h2>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/login.html">Login</a> </h2>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/profile.html">Profile</a> </h2>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/admin.view.html">Admin</a> </h2>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/forms.html">Forms</a> </h2>-->
+<!--<h2 class="custom-subhead"> <a href="/assignment/form-fields.html">Form Fields</a> </h2>-->
 </body>
 </html>

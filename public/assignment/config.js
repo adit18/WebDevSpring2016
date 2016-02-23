@@ -30,5 +30,15 @@
                         templateUrl: "views/admin/admin.view.html",
                         //controller: "courseOverview.controller"
                     })
+                .when("/forms",
+                    {
+                        templateUrl: "views/forms/forms.view.html",
+                        //controller: "courseOverview.controller"
+                    })
+                .when("/fields",
+                    {
+                        templateUrl: "views/forms/fields.view.html",
+                        //controller: "courseOverview.controller"
+                    })
         });
 })();

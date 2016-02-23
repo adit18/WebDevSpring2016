@@ -16,7 +16,7 @@
 
 #non-hyper {
     color: #fff;
-    background-color: #428bca;
+    background-color: #b4d455;
     padding-right: 20px;
     padding-left: 20px;
 
@@ -29,7 +29,8 @@
 }
 
 .custom-subhead2 {
-    padding-left:4em;
+    padding-left:2em;
+
 }
 
 .custom-formlabel {
@@ -106,4 +107,21 @@ hr{
 
 .glyphicon-colorbro{
     color:#993300;
+}
+
+.text-style{
+    color:#b4d455;
+    color:#4FF08A;
+    color:#43C6DB;
+    color: chartreuse;
+    color: indigo;
+    color: aquamarine;
+    padding: 10px;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+    /*text-shadow: 1px 1px 2px black;*/
+}
+
+.jumbotron{
+    background-color: turquoise;
 }

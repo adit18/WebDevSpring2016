@@ -45,10 +45,44 @@
             callback();
         }
 
-        function findAllUsers()
+        function findAllUsers(callback)
         {
-            return users;
+            callback(users);
         }
 
+        function createUser(user, callback)
+        {
+            user._id = (new Date).getTime();
+            users.push(user);
+            callback(user);
+        }
+
+        function deleteUserById(userId, callback)
+        {
+            var i;
+            for(i = 0; i < users.length; i++){
+                if(users[i].username == userId) {
+                    var index = users.indexOf(userId);
+                    if(index != -1){
+                        users.splice(index,1);
+                    }
+                }
+            }
+            callback(users);
+        }
+
+        function updateUser(userId, user, callback)
+        {
+            var i;
+            for(i = 0; i < users.length; i++){
+                if(users[i].username == userId) {
+                    var index = users.indexOf(userId);
+                    if(index != -1){
+                        users.splice(index,1,user);
+                    }
+                }
+            }
+            callback(user);
+        }
     }
 })();

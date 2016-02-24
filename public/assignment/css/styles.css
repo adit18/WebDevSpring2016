@@ -116,6 +116,9 @@ hr{
     color: chartreuse;
     color: indigo;
     color: aquamarine;
+    color: #87cefa;
+    color: turquoise;
+    color: #092E20;
     padding: 10px;
     border: solid 1px #dcdcdc;
     transition: box-shadow 0.3s, border 0.3s;
@@ -123,5 +126,5 @@ hr{
 }
 
 .jumbotron{
-    background-color: turquoise;
+    background-color: aquamarine;
 }

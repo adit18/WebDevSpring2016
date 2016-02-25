@@ -4,7 +4,7 @@
         .module("FormBuilderApp")
         .factory("UserService", userService);
 
-    function userService()
+    function userService($rootScope)
     {
         var users = [];
         users = [
@@ -25,24 +25,26 @@
             findAllUsers : findAllUsers,
             createUser : createUser,
             deleteUserById : deleteUserById,
-            updateUser : updateUser
+            updateUser : updateUser,
+            setCurrentUser : setCurrentUser,
+            getCurrentUser : getCurrentUser
         };
 
         return service;
 
         function findUserByCredentials(username, password, callback)
         {
-            var i;
-            for(i = 0; i < users.length; i++){
-                if(users[i].username == username) {
-                    if (users[i].password == password) {
-                        callback(username);
+            for(var u in users){
+                if(users[u].username == username) {
+                    if (users[u].password == password) {
+                        callback(users[u]);
+                        return;
                     }
                     else
-                        callback();
+                        callback(null);
                 }
             }
-            callback();
+            callback(null);
         }
 
         function findAllUsers(callback)
@@ -59,8 +61,7 @@
 
         function deleteUserById(userId, callback)
         {
-            var i;
-            for(i = 0; i < users.length; i++){
+            for(var i in users){
                 if(users[i].username == userId) {
                     var index = users.indexOf(userId);
                     if(index != -1){
@@ -73,8 +74,7 @@
 
         function updateUser(userId, user, callback)
         {
-            var i;
-            for(i = 0; i < users.length; i++){
+            for(var i in users){
                 if(users[i].username == userId) {
                     var index = users.indexOf(userId);
                     if(index != -1){
@@ -82,7 +82,15 @@
                     }
                 }
             }
-            callback(user);
+            callback(users[i]);
+        }
+
+        function setCurrentUser (user) {
+            $rootScope.currentUser = user;
+        }
+
+        function getCurrentUser () {
+            return $rootScope.currentUser;
         }
     }
 })();

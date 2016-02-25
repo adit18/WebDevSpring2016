@@ -10,9 +10,10 @@
 
         //event handler delarations
         function register(user){
-            //console.log(user.username);
+            //console.log($scope.user.username);
             UserService.createUser(user,function(retUser){
-                $rootScope.user = retUser;
+                $rootScope.currentUser = retUser;
+                UserService.setCurrentUser(retUser);
             });
             $location.url('/profile');
             //$window.location.href("#/profile");

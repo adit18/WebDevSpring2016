@@ -5,12 +5,7 @@
 
     function ProfileController($scope,$rootScope,$location,UserService){
 
-        var userLoc = {};
-        userLoc = $rootScope.user;
-        $scope.user = {};
-        $scope.user.username = $rootScope.user.username;
-        $scope.user.password = $rootScope.user.password;
-        $scope.user.email = $rootScope.user.email;
+        $scope.currentUser = UserService.getCurrentUser();
 
 
         //event handlers declarations
@@ -19,7 +14,7 @@
         //event handler delarations
         function update(user){
             console.log("Sending "+user.username);
-            var user_id = $rootScope.user._id;
+            var user_id = $rootScope.currentUser._id;
             UserService.updateUser(user_id,user,function(user){
                 console.log("Updated "+user.username);
             });

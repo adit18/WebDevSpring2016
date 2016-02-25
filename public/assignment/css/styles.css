@@ -128,3 +128,8 @@ hr{
 .jumbotron{
     background-color: aquamarine;
 }
+
+.navbar-header > .nav-brand > a{
+    color: #428bca;
+    background-color: #4FF08A;
+}

@@ -13,7 +13,7 @@
                 .when("/register",
                     {
                         templateUrl: "views/users/register.view.html",
-                        //controller: "courseOverview.controller"
+                        controller: "RegisterController"
                     })
                 .when("/login",
                     {
@@ -23,7 +23,7 @@
                 .when("/profile",
                     {
                         templateUrl: "views/users/profile.view.html",
-                        //controller: "courseOverview.controller"
+                        controller: "ProfileController"
                     })
                 .when("/admin",
                     {
@@ -40,5 +40,8 @@
                         templateUrl: "views/forms/fields.view.html",
                         //controller: "courseOverview.controller"
                     })
+                .otherwise({
+                    redirectTo: "/"
+                })
         });
 })();

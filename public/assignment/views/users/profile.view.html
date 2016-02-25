@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<body>-->
 
 <div class="container-fluid">
     <div class="row">
@@ -13,36 +13,36 @@
                 <div class="form-group row">
                     <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Username:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputdefault" placeholder="Username">
+                        <input type="text" ng-model="user.username" class="form-control" id="inputdefault" placeholder="Username">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 form-control-label custom-formlabel">Password:</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">First Name:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputdefault" placeholder="First Name">
+                        <input type="text" ng-model="user.firstName" class="form-control" id="inputdefault" placeholder="First Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Last Name:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="inputdefault" placeholder="Last Name">
+                        <input type="text" ng-model="user.lastName" class="form-control" id="inputdefault" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 form-control-label custom-formlabel">Email:</label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <input type="email" ng-model="user.email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-offset-4 col-sm-10">
-                        <button type="submit" class="btn btn-secondary">Update</button>
+                        <button type="submit" ng-click="update(user)" class="btn btn-secondary">Update</button>
                     </div>
                 </div>
             </form>
@@ -54,12 +54,12 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <!-- <script src="../../assets/js/vendor/holder.min.js"></script>-->
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->

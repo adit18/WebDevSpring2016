@@ -62,11 +62,12 @@
         function deleteUserById(userId, callback)
         {
             for(var i in users){
-                if(users[i].username == userId) {
-                    var index = users.indexOf(userId);
-                    if(index != -1){
-                        users.splice(index,1);
-                    }
+                if(users[i]._id == userId) {
+                    users.splice(i,1);
+                    //var index = users.indexOf(userId);
+                    //if(index != -1){
+                    //    users.splice(index,1);
+                    //}
                 }
             }
             callback(users);
@@ -75,11 +76,12 @@
         function updateUser(userId, user, callback)
         {
             for(var i in users){
-                if(users[i].username == userId) {
-                    var index = users.indexOf(userId);
-                    if(index != -1){
-                        users.splice(index,1,user);
-                    }
+                if(users[i]._id == userId) {
+                    users.splice(index,1,user);
+                    //var index = users.indexOf(userId);
+                    //if(index != -1){
+                    //    users.splice(index,1,user);
+                    //}
                 }
             }
             callback(users[i]);

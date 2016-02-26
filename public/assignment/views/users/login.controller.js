@@ -13,11 +13,6 @@
             //console.log(user.username);
             UserService.findUserByCredentials(user.username, user.password, function(retUser){
                 if(retUser!=null){
-                    //console.log(retUser);
-                    //if(typeof retUser === "undefined"){
-                    //    console.log("UNDEF found")
-                    //}
-                    //$rootScope.currentUser = retUser;
                     UserService.setCurrentUser(retUser);
                     $('#pro').html($rootScope.currentUser.username);
                     $location.url('/profile');
@@ -30,9 +25,17 @@
                 }
 
             });
-
-            //$window.location.href("#/profile");
-            //$location.url("#/profile");
         }
     }
 })();
+
+
+
+//console.log(retUser);
+//if(typeof retUser === "undefined"){
+//    console.log("UNDEF found")
+//}
+//$rootScope.currentUser = retUser;
+
+//$window.location.href("#/profile");
+//$location.url("#/profile");

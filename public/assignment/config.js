@@ -33,7 +33,7 @@
                 .when("/forms",
                     {
                         templateUrl: "views/forms/forms.view.html",
-                        //controller: "courseOverview.controller"
+                        controller: "FormController"
                     })
                 .when("/fields",
                     {

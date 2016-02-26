@@ -24,29 +24,32 @@
                     <td>
                         <div class="form-group row table-form">
                             <div class="col-sm-12">
-                                <input type="text" ng-model="form.title" class="form-control" id="inputdefault" placeholder="Name">
+                                <input type="text" ng-model="form.title" class="form-control" name="inputdefault" placeholder="Name">
                             </div>
                         </div>
                     </td>
                     <td class="glyph-td"><span class="glyphicon glyphicon-ok glyphicon-size glyphicon-colorgreen"
-                                               ng-click="updateForm()"></span></td>
-                    <td class="glyph-td"> <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"
-                                                ng-click="addForm()"></span></td>
+                                               ng-click="updateForm()"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"
+                                                ng-click="addForm()"></span>
+                    </td>
                 </tr>
-                <tr>
-                    <td><p class="data-font-size"> Registration Form </p></td>
-                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"
-                              ></span></td>
+                <!--<tr>-->
+                    <!--<td><p class="data-font-size"> Registration Form </p></td>-->
+                    <!--<td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>-->
+                        <!--<span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"-->
+                              <!--&gt;</span></td>-->
 
-                </tr>
+                <!--</tr>-->
                 <tr ng-repeat="form in forms">
                     <!--<td> {{movie}}</td>-->
-                    <td> {{form.name}}</td>
-                    <td class="glyph-td"><span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"
-                                               ng-click="deleteForm($index)"></span></td>
-                    <td class="glyph-td"> <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"
-                                                ng-click="selectForm($index)"></span></td>
+                    <td> {{form.title}}</td>
+                    <td class="glyph-td">
+                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"
+                                               ng-click="deleteForm($index)"></span>
+                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"
+                                                ng-click="selectForm($index)"></span>
+                    </td>
                 </tr>
                 </tbody>
             </table>

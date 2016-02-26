@@ -17,7 +17,9 @@
             createFormForUser : createFormForUser,
             findAllFormsForUser : findAllFormsForUser,
             deleteFormById : deleteFormById,
-            updateFormById : updateFormById
+            updateFormById : updateFormById,
+            setCurrentForm : setCurrentForm,
+            getCurrentForm : getCurrentForm
         };
 
         return service;
@@ -38,7 +40,7 @@
                     userForms.push(forms[i]);
                 }
             }
-            callback(forms);
+            callback(userForms);
         }
 
         function deleteFormById(formId, callback)
@@ -46,6 +48,7 @@
             for(var i in forms){
                 if(forms[i]._id == formId) {
                     forms.splice(i,1);
+                    break;
                 }
             }
             callback(forms);
@@ -56,9 +59,18 @@
             for(var i in forms){
                 if(forms[i]._id == formId) {
                     forms.splice(i,1,form);
+                    break;
                 }
             }
             callback(forms[i]);
+        }
+
+        function setCurrentForm (form) {
+            $rootScope.currentForm = form;
+        }
+
+        function getCurrentForm () {
+            return $rootScope.currentForm;
         }
     }
 })();

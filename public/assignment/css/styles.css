@@ -134,3 +134,11 @@ hr{
     color: #428bca;
     background-color: #4FF08A;
 }
+
+.glyph-button
+{
+    -webkit-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+}

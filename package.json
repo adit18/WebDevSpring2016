@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "express": "^3.21.2",
-    "yelp": "^1.0.1"
+    "node-yelp": "0.0.3"
   },
   "devDependencies": {},
   "bundleDependencies": [],

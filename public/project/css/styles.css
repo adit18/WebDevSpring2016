@@ -127,7 +127,8 @@ hr{
 
 .jumbotron{
     background-color: #cacaca;
-
+    /*added for proj*/
+    position: absolute;
 }
 
 .navbar-header > .nav-brand > a{
@@ -155,4 +156,9 @@ hr{
 
 .top51 {
     top:51px;
+}
+
+.pos-rel {
+    position: absolute;
+    top: 102px;
 }

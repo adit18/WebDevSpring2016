@@ -3,10 +3,16 @@
         .module("FoodQuotientApp")
         .controller("RegisterController",RegisterController);
 
-    function RegisterController($scope,$rootScope,$location,UserService){
+    function RegisterController($rootScope,$location,UserService){
+        var vm = this;
 
         //event handlers declarations
-        $scope.register = register;
+        vm.register = register;
+
+        function init() {
+            vm.$location = $location;
+        }
+        init();
 
         //event handler delarations
         function register(user){
@@ -14,6 +20,7 @@
             UserService.createUser(user,function(retUser){
                 $rootScope.currentUser = retUser;
                 UserService.setCurrentUser(retUser);
+                $('#pro').html($rootScope.currentUser.username);
             });
             $location.url('/profile');
             //$window.location.href("#/profile");

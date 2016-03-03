@@ -3,10 +3,16 @@
         .module("FoodQuotientApp")
         .controller("LoginController",LoginController);
 
-    function LoginController($scope,$rootScope,$location,UserService){
+    function LoginController($rootScope,$location,UserService){
+        var vm = this;
 
         //event handlers declarations
-        $scope.login = login;
+        vm.login = login;
+
+        function init() {
+            vm.$location = $location;
+        }
+        init();
 
         //event handler delarations
         function login(user){

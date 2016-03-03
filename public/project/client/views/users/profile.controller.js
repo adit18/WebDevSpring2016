@@ -3,13 +3,18 @@
         .module("FoodQuotientApp")
         .controller("ProfileController",ProfileController);
 
-    function ProfileController($scope,$rootScope,$location,UserService){
-
-        $scope.currentUser = UserService.getCurrentUser();
-
+    function ProfileController($rootScope,$location,UserService){
+        var vm = this;
 
         //event handlers declarations
-        $scope.update = update;
+        vm.update = update;
+
+        function init() {
+            vm.$location = $location;
+        }
+        init();
+
+        vm.currentUser = UserService.getCurrentUser();
 
         //event handler delarations
         function update(user){

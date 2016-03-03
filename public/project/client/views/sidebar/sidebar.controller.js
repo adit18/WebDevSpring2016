@@ -3,7 +3,11 @@
         .module("FoodQuotientApp")
         .controller("SidebarController",SidebarController);
 
-    function SidebarController($scope,$location){
-        $scope.$location = $location;
+    function SidebarController($location){
+        var vm = this;
+        function init() {
+            vm.$location = $location;
+        }
+        init();
     }
 })();

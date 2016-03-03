@@ -28,7 +28,8 @@
                 .when("/search/:searchTerm",
                     {
                         templateUrl: "views/search/search.view.html",
-                        controller: "SearchController"
+                        controller: "SearchController",
+                        controllerAs: "model"
                     })
                 //.when("/admin",
                 //    {

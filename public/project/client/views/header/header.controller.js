@@ -3,12 +3,17 @@
         .module("FoodQuotientApp")
         .controller("HeaderController",HeaderController);
 
-    function HeaderController($scope,$location,UserService) {
-        $scope.$location = $location;
+    function HeaderController($location,UserService) {
+        var vm = this;
 
         //event handlers declarations
-        $scope.logout = logout;
-        $scope.searchRedirect = searchRedirect;
+        vm.logout = logout;
+        vm.searchRedirect = searchRedirect;
+
+        function init() {
+            vm.$location = $location;
+        }
+        init();
 
         function logout() {
             UserService.setCurrentUser(null);
@@ -16,8 +21,8 @@
         }
 
         function searchRedirect() {
-            if($scope.searchTxt){
-                var searcholdTerm = $scope.searchTxt;
+            if(vm.searchTxt){
+                var searcholdTerm = vm.searchTxt;
                 searchTerm = searcholdTerm.replace(/ /g, "+");
                 console.log("SearchText: "+ searchTerm);
                 $location.url("/search/"+searchTerm);

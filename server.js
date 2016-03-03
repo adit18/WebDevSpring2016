@@ -32,30 +32,25 @@ app.get('/searchapi', function (req, res) {
     console.log("The received URL: " + fullUrl);
 
     term = req.query.term;
-    //location = req.query.location; //Boston
-    ll = req.query.ll;
+    location = 'Boston,MA'; //req.query.location; //Boston
+    //ll = req.query.ll;
 
-    console.log("Term/ll: "+ term +"/"+ ll);
+    console.log("Term/loc: "+ term +"/"+ location);
     client.search({
         terms: term,
-        ll: ll
+        location: location,
+        //ll: ll,
+        //sort: '2',
+        category_filter: 'food'
+
     }).then(function (data) {
         console.log("Yelp Working: ")
         //console.log(data);
         res.json(data);
-        //var businesses = data.businesses;
-        //var location = data.region;
 
-        // ...
     }).catch(function (err) {
         console.log("Yelp Error!");
         res.json(err);
-
-        //if (err.type === yelp.errorTypes.areaTooLarge) {
-        //    // ..
-        //} else if (err.type === yelp.errorTypes.unavailableForLocation) {
-        //    // ..
-        //}
     });
 });
 

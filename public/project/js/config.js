@@ -25,6 +25,11 @@
                         templateUrl: "views/users/profile.view.html",
                         controller: "ProfileController"
                     })
+                .when("/search/:searchTerm",
+                    {
+                        templateUrl: "views/search/search.view.html",
+                        controller: "SearchController"
+                    })
                 //.when("/admin",
                 //    {
                 //        templateUrl: "views/admin/admin.view.html",

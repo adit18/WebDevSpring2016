@@ -1,36 +1,38 @@
+<div class="container">
 <h2>Search</h2>
 
-<input ng-model="searchValue"
+<input ng-model="searchValue" class="form-control"
        placeholder="Cheese Burger"/>
 
 <button ng-click="searchFood()"
-        class="btn btn-primary">
+        class="btn btn-primary btn-block">
     Search
 </button>
 
-<!--<div ng-if="model.data">-->
-    <!--<h3>Search Results</h3>-->
-    <!--<table class="table table-striped">-->
-        <!--<thead>-->
-        <!--<tr>-->
-            <!--<th>Poster</th>-->
-            <!--<th>Title</th>-->
-            <!--<th>IMDB</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr ng-repeat="movie in model.data.Search">-->
-            <!--<td>-->
-                <!--<img ng-src="{{movie.Poster}}"-->
-                     <!--height="100px"/>-->
-            <!--</td>-->
-            <!--<td>-->
+<div ng-if="data">
+    <h3>Search Results</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Poster</th>
+            <th>Title</th>
+            <th>YelpID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="business in data.businesses">
+            <td>
+                <img ng-src="{{business.image_url}}"
+                     height="100px"/>
+            </td>
+            <td>
                 <!--<a href="#/details/{{movie.imdbID}}">-->
-                    <!--{{movie.Title}}-->
-                <!--</a>-->
-            <!--</td>-->
-            <!--<td>{{movie.imdbID}}</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-    <!--</table>-->
-<!--</div>-->
+                    {{business.name}}
+                </a>
+            </td>
+            <td>{{business.id}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>

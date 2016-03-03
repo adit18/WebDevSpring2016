@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
 
     <title>FoodQuotient</title>
 
@@ -46,10 +46,9 @@
 
 
 <body ng-controller="MainController">
-<!--<div class="container">-->
     <div ng-include="'views/header/header.view.html'"></div>
-    <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+    <div ng-hide="$location.url().indexOf('search') >= 0"
+         ng-include="'views/sidebar/sidebar.view.html'"></div>
     <div ng-view></div>
-<!--</div>-->
 </body>
 </html>

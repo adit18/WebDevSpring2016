@@ -32,12 +32,13 @@ app.get('/searchapi', function (req, res) {
     console.log("The received URL: " + fullUrl);
 
     term = req.query.term;
-    location = req.query.location;
+    //location = req.query.location; //Boston
+    ll = req.query.ll;
 
-    console.log("Term/Location: "+ term +"/"+ location);
+    console.log("Term/ll: "+ term +"/"+ ll);
     client.search({
         terms: term,
-        location: location
+        ll: ll
     }).then(function (data) {
         console.log("Yelp Working: ")
         //console.log(data);

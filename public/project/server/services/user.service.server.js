@@ -1,4 +1,4 @@
-module.exports = function(app, userModel) {
+module.exports = function(app, userModel, foodModel) {
     app.post("/service/user/login", login);
     app.get("/service/user/loggedin", loggedin);
     app.post("/service/user/logout", logout);
@@ -10,9 +10,9 @@ module.exports = function(app, userModel) {
     function profile(req, res) {
         var userId = req.params.userId;
         var user = userModel.findUserById(userId);
-        //var movieImdbIDs = user.likes;
-        //var movies = movieModel.findMoviesByImdbIDs(movieImdbIDs);
-        //user.likesMovies = movies;
+        //var yelpIDs = user.likes;
+        //var places = foodModel.findPlacesByYelpIDs(yelpIDs);
+        //user.likesMovies = places;
         res.json(user);
     }
 
@@ -26,7 +26,7 @@ module.exports = function(app, userModel) {
     function deleteProfile(req, res) {
         var userId = req.params.userId;
         var del_username = userModel.deleteUserById(userId);
-        //var movieImdbIDs = user.likes;
+        //var yelpIDs = user.likes;
         //var movies = movieModel.findMoviesByImdbIDs(movieImdbIDs);
         //user.likesMovies = movies;
         res.send(del_username);
@@ -43,7 +43,7 @@ module.exports = function(app, userModel) {
         var credentials = req.body;
         var user = userModel.findUserByCredentials(credentials);
         if(user){
-            console.log("User "+user.username+"logged in");
+            console.log("User "+user.username+" logged in");
         }
         req.session.currentUser = user;
         res.json(user);

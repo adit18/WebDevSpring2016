@@ -4,20 +4,28 @@
 <h2>{{model.data.name}}</h2>
 
 <img ng-src="{{model.data.image_url}}" height="200px"/>
-    <img ng-src="{{model.data.rating_img_url_large}}" height="50px"/> <h2> {{model.data.review_count}} reviews </h2>
-<br/>
+    <h2>Rating</h2>
+    <img ng-src="{{model.data.rating_img_url_large}}" height="50px"/>
+    <h2> {{model.data.review_count}} reviews </h2>
+
+    <br/>
 <br/>
 
-<!--<button class="btn btn-primary"-->
-        <!--ng-click="model.favorite(model.data)">-->
-    <!--<span class="glyphicon glyphicon-star-empty"></span>-->
-<!--</button>-->
+<button class="btn btn-primary"
+        ng-click="model.favorite(model.data)">
+    <span class="glyphicon glyphicon-star-empty"></span>
+</button>
 
-<h3>Top Review</h3>
-<h3><p class="padding-custom">
+<h3>Top Review:</h3>
+<h4><p>
     {{model.data.snippet_text}}
-</p></h3>
+</p></h4>
+
 <!--model.data['reviews'][0].excerpt-->
+    <h4>Phone: </h4>
+    <h4><p>
+        {{model.data.phone}}
+    </p></h4>
 <h3>Address</h3>
 <ul>
     <li ng-repeat="line in model.data.location.display_address">
@@ -25,15 +33,17 @@
     </li>
 </ul>
 
+
+
+{{model.userLikes}}
+
+<div ng-if="model.place.userLikes">
+    <h4>Other Users that Like This Place</h4>
+    <ul>
+        <li ng-repeat="user in model.place.userLikes">
+            {{user.username}}
+        </li>
+    </ul>
 </div>
 
-<!--{{model.userLikes}}-->
-
-<!--<div ng-if="model.movie.userLikes">-->
-    <!--<h4>Other Users that Like This Movie</h4>-->
-    <!--<ul>-->
-        <!--<li ng-repeat="user in model.movie.userLikes">-->
-            <!--{{user.username}}-->
-        <!--</li>-->
-    <!--</ul>-->
-<!--</div>-->
+</div>

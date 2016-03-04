@@ -27,8 +27,10 @@
                 })
                 .then(function(response){
                     if(response.data) {
+                        console.log("Response: "+response.data);
                         UserService.setCurrentUser(response.data);
-                        $('#pro').html(UserService.getCurrentUser().username);
+                        //console.log(UserService.getCurrentUser().username+" in login cntrl ");
+                        $('#pro').html(user.username);
                         $location.url("/profile");
                     }
                     else{

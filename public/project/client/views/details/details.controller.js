@@ -3,11 +3,11 @@
         .module("FoodQuotientApp")
         .controller("DetailsController", detailsController);
 
-    function detailsController($routeParams,$http,$rootScope) {
+    function detailsController($routeParams,$http,$rootScope,$location,FoodService) {
         var vm = this;
         var bizID = $routeParams.bizID;
         var currentUser = $rootScope.currentUser;
-        //vm.favorite = favorite;
+        vm.favorite = favorite;
 
         function init() {
             $http.get('/businessapi?biz=' + bizID) // + '&ll=' + coordsLoc)
@@ -18,13 +18,20 @@
                 }, function errorCallback(response) {
                     console.log("Node not working!")
                 });
+
+            FoodService
+                .findUserLikes (bizID)
+                .then(function(response){
+                     vm.place = response.data;
+
+                });
         }
         init();
 
-        function favorite(movie) {
+        function favorite(place) {
             if(currentUser) {
-                MovieService
-                    .userLikesMovie(currentUser._id, movie);
+                FoodService
+                    .userLikesFood(currentUser._id, place);
             } else {
                 $location.url("/login");
             }

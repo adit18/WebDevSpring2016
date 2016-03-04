@@ -1,8 +1,18 @@
-var express = require('express');
-var app = express();
+var express       = require('express');
+var app           = express();
+var bodyParser    = require('body-parser');
+var multer        = require('multer');
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
+var ipaddress     = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port          = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+app.use(session({ secret: "this is my secret" }));
+app.use(cookieParser())
 app.use(express.static(__dirname + '/public'));
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 //The Yelp API handling
 var yelp = require("node-yelp");
@@ -57,4 +67,7 @@ app.get('/searchapi', function (req, res) {
 app.get('/hello', function(req, res){
     res.send('hello world');
 });
+
+require("./public/project/server/app.js")(app);
+
 app.listen(port, ipaddress);

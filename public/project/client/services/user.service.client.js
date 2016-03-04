@@ -4,95 +4,53 @@
         .module("FoodQuotientApp")
         .factory("UserService", userService);
 
-    function userService($rootScope)
+    function userService($http, $rootScope)
     {
-        var users = [];
-        users = [
-            {	"_id":123, "firstName":"Alice",            "lastName":"Wonderland",
-                "username":"alice",  "password":"alice",   "roles": ["student"]		},
-            {	"_id":234, "firstName":"Bob",              "lastName":"Hope",
-                "username":"bob",    "password":"bob",     "roles": ["admin"]		},
-            {	"_id":345, "firstName":"Charlie",          "lastName":"Brown",
-                "username":"charlie","password":"charlie", "roles": ["faculty"]		},
-            {	"_id":456, "firstName":"Dan",              "lastName":"Craig",
-                "username":"dan",    "password":"dan",     "roles": ["faculty", "admin"]},
-            {	"_id":567, "firstName":"Edward",           "lastName":"Norton",
-                "username":"ed",     "password":"ed",      "roles": ["student"]		}
-        ];
-
         var service = {
-            findUserByCredentials : findUserByCredentials,
-            findAllUsers : findAllUsers,
-            createUser : createUser,
-            deleteUserById : deleteUserById,
-            updateUser : updateUser,
-            setCurrentUser : setCurrentUser,
-            getCurrentUser : getCurrentUser
+            login: login,
+            setCurrentUser: setCurrentUser,
+            getCurrentUser: getCurrentUser,
+            register: register,
+            logout: logout,
+            getProfile: getProfile,
+            updateProfile: updateProfile,
+            deleteProfile: deleteProfile
         };
 
         return service;
 
-        function findUserByCredentials(username, password, callback)
-        {
-            for(var u in users){
-                if(users[u].username == username) {
-                    if (users[u].password == password) {
-                        callback(users[u]);
-                        return;
-                    }
-                    else
-                        callback(null);
-                }
-            }
-            callback(null);
+        function getProfile() {
+            //$rootScope.currentUser
+            return $http.get("/service/user/profile/"+$rootScope.currentUser._id);
         }
 
-        function findAllUsers(callback)
-        {
-            callback(users);
+        function updateProfile(user) {
+            user._id = $rootScope.currentUser._id;
+            return $http.post("/service/user/updateprofile", user);
         }
 
-        function createUser(user, callback)
-        {
-            user._id = (new Date).getTime();
-            users.push(user);
-            callback(user);
+        function deleteProfile() {
+            return $http.get("/service/user/deleteprofile/"+$rootScope.currentUser._id);
         }
 
-        function deleteUserById(userId, callback)
-        {
-            for(var i in users){
-                if(users[i]._id == userId) {
-                    users.splice(i,1);
-                    //var index = users.indexOf(userId);
-                    //if(index != -1){
-                    //    users.splice(index,1);
-                    //}
-                }
-            }
-            callback(users);
+        function register(user) {
+            return $http.post("/service/user/register", user);
         }
 
-        function updateUser(userId, user, callback)
-        {
-            for(var i in users){
-                if(users[i]._id == userId) {
-                    users.splice(index,1,user);
-                    //var index = users.indexOf(userId);
-                    //if(index != -1){
-                    //    users.splice(index,1,user);
-                    //}
-                }
-            }
-            callback(users[i]);
+        function logout() {
+            return $http.post("/service/user/logout");
         }
 
-        function setCurrentUser (user) {
+        function getCurrentUser() {
+            return $http.get("/service/user/loggedin");
+        }
+
+        function setCurrentUser(user) {
             $rootScope.currentUser = user;
         }
 
-        function getCurrentUser () {
-            return $rootScope.currentUser;
+        function login(credentials) {
+            return $http.post("/service/user/login", credentials);
         }
     }
 })();

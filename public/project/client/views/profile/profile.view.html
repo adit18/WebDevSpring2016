@@ -13,36 +13,39 @@
                 <div class="form-group row">
                     <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Username:</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="model.currentUser.username" class="form-control" id="inputdefault" placeholder="Username">
+                        <input type="text" ng-model="model.profile.username" class="form-control" id="inputdefault" placeholder="Username">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 form-control-label custom-formlabel">Password:</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="model.currentUser.password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input type="text" ng-model="model.profile.password" class="form-control" id="inputPassword3" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">First Name:</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="model.currentUser.firstName" class="form-control" id="inputdefault" placeholder="First Name">
+                        <input type="text" ng-model="model.profile.firstName" class="form-control" id="inputdefault" placeholder="First Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Last Name:</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="model.currentUser.lastName" class="form-control" id="inputdefault" placeholder="Last Name">
+                        <input type="text" ng-model="model.profile.lastName" class="form-control" id="inputdefault" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 form-control-label custom-formlabel">Email:</label>
                     <div class="col-sm-6">
-                        <input type="email" ng-model="model.currentUser.email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <input type="email" ng-model="model.profile.email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-offset-4 col-sm-10">
-                        <button type="submit" ng-click="model.update(model.currentUser)" class="btn btn-secondary">Update</button>
+                        <button type="submit" ng-click="model.update(model.profile)" class="btn btn-secondary">Update</button>
+                    </div>
+                    <div class="col-sm-offset-4 col-sm-10">
+                        <button type="submit" ng-click="model.deleteProfile()" class="btn btn-secondary">Delete Profile</button>
                     </div>
                 </div>
             </form>

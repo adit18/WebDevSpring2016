@@ -77,7 +77,7 @@
         {
             for(var i in users){
                 if(users[i]._id == userId) {
-                    users.splice(index,1,user);
+                    users.splice(i,1,user);
                     //var index = users.indexOf(userId);
                     //if(index != -1){
                     //    users.splice(index,1,user);

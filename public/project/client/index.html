@@ -23,9 +23,9 @@
     <script src="views/header/header.controller.js"></script>
     <script src="views/sidebar/sidebar.controller.js"></script>
     <script src="services/user.service.client.js"></script>
-    <script src="views/users/register.controller.js"></script>
-    <script src="views/users/profile.controller.js"></script>
-    <script src="views/users/login.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
     <script src="views/search/search.controller.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
@@ -44,11 +44,9 @@
     <![endif]-->
 </head>
 
-
 <body ng-controller="MainController">
-    <div ng-include="'views/header/header.view.html'"></div>
-    <div ng-hide="$location.url().indexOf('search') >= 0"
-         ng-include="'views/sidebar/sidebar.view.html'"></div>
-    <div ng-view></div>
+<div ng-include="'views/header/header.view.html'"></div>
+<div ng-hide="$location.url().indexOf('search') >= 0"
+     ng-include="'views/sidebar/sidebar.view.html'"></div>
+<div ng-view></div>
 </body>
-</html>

@@ -19,7 +19,7 @@
                     //console.log(vm.profile);
                 });
         }
-        init();
+        return init();
 
         //vm.currentUser = UserService.getCurrentUser();
 

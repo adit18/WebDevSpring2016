@@ -10,9 +10,9 @@ module.exports = function() {
     function findPlacesByYelpIDs (yelpIDs) {
         var foodPlaces = [];
         for (var id in yelpIDs) {
-            var place = findMovieByYelpID (yelpIDs[id]);
+            var place = findPlaceByYelpID (yelpIDs[id]);
             if (place) {
-                foodPlaces.push(place);
+               foodPlaces.push(place);
             }
         }
         return foodPlaces;

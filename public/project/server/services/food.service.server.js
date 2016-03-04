@@ -33,6 +33,12 @@ module.exports = function(app, foodModel, userModel) {
             user.likes = [];
         }
         user.likes.push(yelpID);
+
+        //if(!user.likesPlaces) {
+        //    user.likesPlaces = [];
+        //}
+        //user.likesPlaces.push(place);
+
         console.log(user);
         console.log(place);
         res.send(200);

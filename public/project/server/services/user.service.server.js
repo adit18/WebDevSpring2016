@@ -1,4 +1,4 @@
-module.exports = function(app, userModel, foodModel) {
+module.exports = function(app, foodModel, userModel) {
     app.post("/service/user/login", login);
     app.get("/service/user/loggedin", loggedin);
     app.post("/service/user/logout", logout);
@@ -10,9 +10,10 @@ module.exports = function(app, userModel, foodModel) {
     function profile(req, res) {
         var userId = req.params.userId;
         var user = userModel.findUserById(userId);
-        //var yelpIDs = user.likes;
-        //var places = foodModel.findPlacesByYelpIDs(yelpIDs);
-        //user.likesMovies = places;
+        var yelpIDs = user.likes;
+        var places = foodModel.findPlacesByYelpIDs(yelpIDs);
+        console.log("Updated likesPlaces: "+places);
+        user.likesPlaces = places;
         res.json(user);
     }
 

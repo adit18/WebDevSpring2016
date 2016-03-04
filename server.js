@@ -32,11 +32,6 @@ var client = yelp.createClient({
 
 app.get('/searchapi', function (req, res) {
     //Sample: http://localhost:3000/searchapi?term=cream+puffs&location=San+Francisco
-
-    var succObj = {status: "success", message: "Preference removed"};
-    var errObj = {status: "error", message: "Could not remove, user not found"};
-    var remErrObj = {status: "error", message: "Could not remove, other issue"};
-
     var subUrl = req.url; // here: /searchapi
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     console.log("The received URL: " + fullUrl);
@@ -53,6 +48,26 @@ app.get('/searchapi', function (req, res) {
         //sort: '2',
         category_filter: 'food'
 
+    }).then(function (data) {
+        console.log("Yelp Working: ")
+        //console.log(data);
+        res.json(data);
+
+    }).catch(function (err) {
+        console.log("Yelp Error!");
+        res.json(err);
+    });
+});
+
+app.get('/businessapi', function (req, res) {
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    console.log("The received URL: " + fullUrl);
+
+    businessID = req.query.biz;
+
+    console.log("Biz: "+ businessID);
+    client.business(businessID, {
+        cc: "US"
     }).then(function (data) {
         console.log("Yelp Working: ")
         //console.log(data);

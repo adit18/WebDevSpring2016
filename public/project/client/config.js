@@ -34,6 +34,12 @@
                         controller: "SearchController",
                         controllerAs: "model"
                     })
+                .when("/details/:bizID",
+                    {
+                        templateUrl: "views/details/details.view.html",
+                        controller: "DetailsController",
+                        controllerAs: "model"
+                    })
                 //.when("/admin",
                 //    {
                 //        templateUrl: "views/admin/admin.view.html",
@@ -43,11 +49,6 @@
                 //    {
                 //        templateUrl: "views/forms/forms.view.html",
                 //        controller: "FormController"
-                //    })
-                //.when("/fields",
-                //    {
-                //        templateUrl: "views/forms/fields.view.html",
-                //        //controller: "courseOverview.controller"
                 //    })
                 .otherwise({
                     redirectTo: "/"

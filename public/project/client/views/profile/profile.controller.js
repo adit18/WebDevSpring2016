@@ -3,7 +3,7 @@
         .module("FoodQuotientApp")
         .controller("ProfileController",ProfileController);
 
-    function ProfileController($location,UserService){
+    function ProfileController($location,UserService) {
         var vm = this;
 
         //event handlers declarations
@@ -41,6 +41,12 @@
                     console.log("Deleted User:"+response);
                     //console.log(vm.profile);
                 });
+            UserService
+                .logout()
+                .then(function() {
+                    UserService.setCurrentUser(null);
+                    $location.url("/");
+                })
         }
     }
 })();

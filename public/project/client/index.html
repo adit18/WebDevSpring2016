@@ -46,9 +46,10 @@
     <![endif]-->
 </head>
 
-<body ng-controller="MainController">
+<body ng-controller="MainController" style="background-color: #7de2de; background-image: url(images/hero_06_eeedc3.jpg)">
 <div ng-include="'views/header/header.view.html'"></div>
-<div ng-hide="$location.url().indexOf('search') >= 0 || $location.url().indexOf('details') >= 0"
+<div ng-hide="$location.url().indexOf('search') >= 0 || $location.url().indexOf('details') >=0"
      ng-include="'views/sidebar/sidebar.view.html'"></div>
 <div ng-view></div>
 </body>
+<!-- || $location.url().length <= 1" -->

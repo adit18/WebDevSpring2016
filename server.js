@@ -15,7 +15,8 @@ app.use(session({ secret: "this is my secret",resave: true,
 app.use(cookieParser())
 app.use(express.static(__dirname + '/public'));
 
-//The Yelp API handling
+
+//Yelp API handling----------------------------------------
 var Yelp = require('yelp');
 
 var yelp = new Yelp({
@@ -70,11 +71,14 @@ app.get('/businessapi', function (req, res) {
             res.json(err);
         });
 });
+//Yelp ----------------------------------------------------
 
-    app.get('/hello', function(req, res){
-        res.send('hello world');
-    });
 
-    require("./public/project/server/app.js")(app);
+app.get('/hello', function(req, res){
+    res.send('hello world');
+});
 
-    app.listen(port, ipaddress);
+
+require("./public/project/server/app.js")(app);
+
+app.listen(port, ipaddress);

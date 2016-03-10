@@ -168,6 +168,11 @@ hr{
     background-image: url(../images/pasta-03.jpg);
 }
 
+.table-bg {
+    background-color: #7de2de;
+    background-image: url(../images/mini-cupcakes-right2.jpg);
+}
+
 /*home search styling*/
 
 #custom-search-input {

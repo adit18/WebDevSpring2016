@@ -26,7 +26,7 @@
             </ul>
         </div>
         <!--<a class="navbar-brand padding-taste" href="#/" ><h4 class="h2-custom"> Taste the Best!</h4></a>-->
-        <form ng-hide="$location.url().length <= 1" class="navbar-form navbar-right">
+        <form ng-hide="$location.url().length <= 1 || $location.url().indexOf('search') != -1" class="navbar-form navbar-right">
             <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control" placeholder="Cheese burger..." autofocus >
             <button id="searchFoodBtn" ng-click="model.searchRedirect()" class="btn btn-primary"><span class="glyphicon glyphicon-search glyphicon-size-small"></span></button>
         </form>

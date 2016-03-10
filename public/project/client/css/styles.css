@@ -162,3 +162,55 @@ hr{
     position: absolute;
     top: 102px;
 }
+
+.body-bg {
+    background-color: #7de2de;
+    background-image: url(../images/pasta-03.jpg);
+}
+
+/*home search styling*/
+
+#custom-search-input {
+    margin:0;
+    margin-top: 10px;
+    padding: 0;
+    position: absolute;
+    top: 200px;
+    left: 30px;
+
+}
+
+#custom-search-input .search-query {
+    position: relative;
+    padding-right: 3px;
+    padding-right: 4px \9;
+    padding-left: 3px;
+    padding-left: 4px \9;
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#custom-search-input button {
+    border: 0;
+    background: none;
+    /** belows styles are working good */
+    padding: 2px 5px;
+    margin-top: 2px;
+    position: relative;
+    left: -39px;
+    /*white-space: nowrap;*/
+    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color:#D9230F;
+}
+
+#searchFoodBtn {
+    z-index: 3;
+}

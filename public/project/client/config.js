@@ -8,7 +8,8 @@
                 .when("/",
                     {
                         templateUrl: "views/home/home.view.html",
-                        //controller: "courseList.controller"
+                        controller: "HomeController",
+                        controllerAs: "model"
                     })
                 .when("/register",
                     {

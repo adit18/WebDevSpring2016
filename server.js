@@ -15,7 +15,6 @@ app.use(session({ secret: "this is my secret",resave: true,
 app.use(cookieParser())
 app.use(express.static(__dirname + '/public'));
 
-
 //Yelp API handling----------------------------------------
 var Yelp = require('yelp');
 

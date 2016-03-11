@@ -31,7 +31,8 @@
                         vm.data = response.data;
                         console.log(response);
                     }, function errorCallback(response) {
-                        console.log("Node not working!")
+                        console.log("Node not working!");
+                        console.log(response);
                     });
             }
             else

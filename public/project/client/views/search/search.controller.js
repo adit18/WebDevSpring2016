@@ -28,8 +28,8 @@
                 $http.get('/searchapi?term=' + searchNewTerm) // + '&ll=' + coordsLoc)
                     .then(function successCallback(response) {
                         //Sample: Object {data: Object, status: 200, config: Object, statusText: "OK"}
-                        vm.data = response.data;
-                        console.log(response);
+                        vm.data = JSON.parse(response.data);
+                        console.log(response.data);
                     }, function errorCallback(response) {
                         console.log("Node not working!");
                         console.log(response);

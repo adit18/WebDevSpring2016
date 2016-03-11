@@ -138,6 +138,7 @@ hr{
 
 .h2-custom {
     margin: 0px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .padding-custom {
@@ -188,9 +189,9 @@ hr{
 #custom-search-input .search-query {
     position: relative;
     padding-right: 3px;
-    padding-right: 4px \9;
+    /*padding-right: 4px \9;*/
     padding-left: 3px;
-    padding-left: 4px \9;
+    /*padding-left: 4px \9;*/
     /* IE7-8 doesn't have border-radius, so don't indent the padding */
 
     margin-bottom: 0;
@@ -201,21 +202,34 @@ hr{
 
 #custom-search-input button {
     border: 0;
-    background: none;
+    background: #ff3c42;
+    height:38px;
+    width:45px;
     /** belows styles are working good */
     padding: 2px 5px;
-    margin-top: 2px;
+    margin-top: 0px;
     position: relative;
-    left: -39px;
+    left: -48px;
     /*white-space: nowrap;*/
     /* IE7-8 doesn't have border-radius, so don't indent the padding */
     margin-bottom: 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    color:#D9230F;
+    color: white;
+            /*#D9230F;*/
 }
 
 #searchFoodBtn {
     z-index: 3;
+}
+
+/*home search styling------------------*/
+
+.search-box {
+    border: 5px solid #2e2e2e;
+}
+
+.search-margin {
+    margin: auto;
 }

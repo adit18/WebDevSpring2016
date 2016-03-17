@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 app.use(session({ secret: "this is my secret",resave: true,
     saveUninitialized: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
 //Yelp API handling----------------------------------------
@@ -105,7 +105,7 @@ app.get('/hello', function(req, res){
     res.send('hello world');
 });
 
-
+require("./public/assignment/server/app.js")(app);
 require("./public/project/server/app.js")(app);
 
 app.listen(port, ipaddress);

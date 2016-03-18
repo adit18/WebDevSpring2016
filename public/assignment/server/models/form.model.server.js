@@ -3,11 +3,16 @@ var uuid = require('node-uuid');
 module.exports = function() {
     var api = {
         createFormForUser : createFormForUser,
+        createFieldForm : createFieldForm,
         findAllForms: findAllForms,
         findAllFormsForUser : findAllFormsForUser,
         findFormById: findFormById,
         findFormByTitle : findFormByTitle,
+        findFieldsByFormId : findFieldsByFormId,
+        findFieldByFieldFormId : findFieldByFieldFormId,
+        deleteFieldByFieldFormId : deleteFieldByFieldFormId,
         updateFormByID : updateFormByID,
+        updateFieldForm :updateFieldForm,
         deleteFormById : deleteFormById,
         setCurrentForm : setCurrentForm,
         getCurrentForm : getCurrentForm
@@ -20,6 +25,19 @@ module.exports = function() {
         form.userId = userId;
         forms.push(form);
         return forms;
+        //callback(form);
+    }
+
+    function createFieldForm(formId, field) {
+        //form._id = (new Date).getTime();
+        field._id = uuid.v1();
+        for(var i in forms){
+            if(forms[i].userId === userId){
+                forms[i].fields.push(field);
+                return forms[i].fields;
+            }
+        }
+        return null;
         //callback(form);
     }
 
@@ -57,6 +75,31 @@ module.exports = function() {
         return null;
     }
 
+    function findFieldsByFormId(formId) {
+        for(var i in forms){
+            if(forms[i]._id === formId){
+                return forms[i].fields;
+            }
+        }
+        return null;
+        //callback(userForms);
+    }
+
+    function findFieldByFieldFormId(formId, fieldId) {
+        for(var i in forms){
+            if(forms[i]._id === formId){
+                var iterFields = forms[i].fields;
+                for(var f in iterFields){
+                    if(iterFields[f]._id === fieldId){
+                        return iterFields[f];
+                    }
+                }
+            }
+        }
+        return null;
+        //callback(userForms);
+    }
+
     function updateFormByID(formId,form) {
         for(var u in forms) {
             if( forms[u]._id === formId ) {
@@ -65,6 +108,36 @@ module.exports = function() {
             }
         }
         return null;
+    }
+
+    function updateFieldForm(formId,fieldId,field) {
+        for(var u in forms) {
+            if(forms[i]._id === formId){
+                for(var f in forms[i].fields){
+                    if(forms[i].fields[f]._id === fieldId){
+                        forms[i].fields.splice(f,1,field);
+                        return forms[i].fields;
+                    }
+                }
+            }
+        }
+        return null;
+        //callback(userForms);
+    }
+
+    function deleteFieldByFieldFormId(formId, fieldId) {
+        for(var i in forms){
+            if(forms[i]._id === formId){
+                for(var f in forms[i].fields){
+                    if(forms[i].fields[f]._id === fieldId){
+                        forms[i].fields.splice(f,1);
+                        return forms[i].fields;
+                    }
+                }
+            }
+        }
+        return null;
+        //callback(userForms);
     }
 
     function deleteFormById(formId) {

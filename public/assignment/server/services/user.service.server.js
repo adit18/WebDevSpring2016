@@ -2,6 +2,7 @@ module.exports = function(app, foodModel, userModel) {
     app.post("/service/user/login", login);
     app.get("/service/user/loggedin", loggedin);
     app.post("/service/user/logout", logout);
+
     app.post("/api/assignment/user", register);
     app.get("/api/assignment/user", getAllUsers);
     app.get("/api/assignment/user/:id", profile);
@@ -51,8 +52,10 @@ module.exports = function(app, foodModel, userModel) {
 
     function updateProfile(req, res) {
         var user = req.body;
+        var userId = req.params.userId;
+        //user._id = userId;
         var allUsers = [];
-        allUsers = userModel.updateUser(user);
+        allUsers = userModel.updateUserByID(userId, user);
         req.session.currentUser = user;
         res.send(allUsers);
         //res.json(user);

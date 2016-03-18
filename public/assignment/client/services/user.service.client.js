@@ -19,9 +19,9 @@
 
         return service;
 
-        function findUserByCredentials(username, password)
+        function findUserByCredentials(tempCred)
         {
-            return $http.get("/api/assignment/user?username="+username+"&password="+password);
+            return $http.get("/api/assignment/user?username="+tempCred.username+"&password="+tempCred.password);
         }
 
         function findUserByUsername (username)

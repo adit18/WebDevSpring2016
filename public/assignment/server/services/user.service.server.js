@@ -6,8 +6,8 @@ module.exports = function(app, foodModel, userModel) {
     app.post("/api/assignment/user", register);
     app.get("/api/assignment/user", getAllUsers);
     app.get("/api/assignment/user/:id", profile);
-    app.get("/api/assignment/user?username=username", profileByUsername);
-    app.get("/api/assignment/user?username=alice&password=wonderland", profileByUsernamePassword);
+    //app.get("/api/assignment/user?username=username", profileByUsername);
+    //app.get("/api/assignment/user?username=alice&password=wonderland", profileByUsernamePassword);
     app.put("/api/assignment/user/:id", updateProfile);
     app.delete("/api/assignment/user/:id", deleteProfile);
 
@@ -21,10 +21,15 @@ module.exports = function(app, foodModel, userModel) {
     }
 
     function getAllUsers(req, res) {
-        var allUsers = [];
-        allUsers = userModel.findAllUsers();
-        res.send(allUsers);
-        //res.json(user);
+        if(req.query.username){
+            profileByUsername(req,res);
+        }
+        else {
+            var allUsers = [];
+            allUsers = userModel.findAllUsers();
+            res.send(allUsers);
+            //res.json(user);
+        }
     }
 
     function profile(req, res) {
@@ -35,10 +40,15 @@ module.exports = function(app, foodModel, userModel) {
     }
 
     function profileByUsername(req, res) {
-        var userName = req.query.username;
-        var user = userModel.findUserByUsername(userName);
-        res.json(user);
-        //if necessary res.send
+        if(req.query.password){
+            profileByUsernamePassword(req,res);
+        }
+        else {
+            var userName = req.query.username;
+            var user = userModel.findUserByUsername(userName);
+            res.json(user);
+            //if necessary res.send
+        }
     }
 
     function profileByUsernamePassword(req, res) {

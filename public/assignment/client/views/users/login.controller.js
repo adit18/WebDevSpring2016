@@ -10,21 +10,26 @@
 
         //event handler delarations
         function login(user){
-            //console.log(user.username);
-            UserService.findUserByCredentials(user.username, user.password, function(retUser){
-                if(retUser!=null){
-                    UserService.setCurrentUser(retUser);
-                    $('#pro').html($rootScope.currentUser.username);
-                    $location.url('/profile');
-                }
-                else{
-                    console.log("Invalid username or password incorrect!");
-                    alert("Invalid username or password incorrect!");
-                    $location.url('/login');
-                    $('#login')[0].reset();
-                }
+            UserService.
+                findUserByCredentials({
+                    username: user.username,
+                    password: user.password
+                })
+                .then(function(response){
+                    if(response.data!=null){
+                        console.log(response.data);
+                        UserService.setCurrentUser(response.data);
+                        $('#pro').html($rootScope.currentUser.username);
+                        $location.url('/profile');
+                    }
+                    else{
+                        console.log("Invalid username or password incorrect!");
+                        alert("Invalid username or password incorrect!");
+                        $location.url('/login');
+                        $('#login')[0].reset();
+                    }
 
-            });
+                });
         }
     }
 })();

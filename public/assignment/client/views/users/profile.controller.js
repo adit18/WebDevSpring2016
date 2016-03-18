@@ -7,7 +7,6 @@
 
         $scope.currentUser = UserService.getCurrentUser();
 
-
         //event handlers declarations
         $scope.update = update;
 
@@ -15,9 +14,11 @@
         function update(user){
             console.log("Sending "+user.username);
             var user_id = $rootScope.currentUser._id;
-            UserService.updateUser(user_id,user,function(user){
-                console.log("Updated "+user.username);
-            });
+            UserService.
+                updateUser(user_id,user)
+                .then(function(response){
+                    console.log("Updated "+user.username);
+                });
         }
     }
 })();

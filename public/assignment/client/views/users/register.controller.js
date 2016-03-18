@@ -11,10 +11,12 @@
         //event handler delarations
         function register(user){
             //console.log($scope.user.username);
-            UserService.createUser(user,function(retUser){
-                $rootScope.currentUser = retUser;
-                UserService.setCurrentUser(retUser);
-            });
+            UserService
+                .createUser(user)
+                .then(function(response){
+                    $rootScope.currentUser = response.data;
+                    UserService.setCurrentUser(response.data);
+                });
             $location.url('/profile');
             //$window.location.href("#/profile");
             //$location.url("#/profile");

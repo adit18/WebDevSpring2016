@@ -9,6 +9,7 @@
         var service = {
             createFormForUser : createFormForUser,
             findAllFormsForUser : findAllFormsForUser,
+            findFormById : findFormById,
             deleteFormById : deleteFormById,
             updateFormById : updateFormById,
             setCurrentForm : setCurrentForm,
@@ -26,6 +27,11 @@
         function findAllFormsForUser(userId)
         {
             return $http.get("/api/assignment/user/"+userId+"/form");
+        }
+
+        function findFormById(formId)
+        {
+            return $http.get("/api/assignment/form/"+formId);
         }
 
         function deleteFormById(formId)

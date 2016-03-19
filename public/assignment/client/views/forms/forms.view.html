@@ -10,7 +10,8 @@
             <h1 class="page-header">Forms</h1>
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#" class="disabled">Forms</a></li>
-                <li role="presentation"><a href="#/fields">Fields</a></li>
+                <li role="presentation"><a href="#/forms">Fields</a></li>
+                <!--#/fields-->
             </ul>
             <table class="table table-bordered table-50">
                 <thead>
@@ -49,7 +50,8 @@
                 <!--</tr>-->
                 <tr ng-repeat="form in forms">
                     <!--<td> {{movie}}</td>-->
-                    <td> {{form.title}}</td>
+                    <td> <a href="#/fields/{{user._id}}/{{form._id}}"> {{form.title}} </a>
+                    </td>
                     <td class="glyph-td">
                         <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"
                                                ng-click="deleteForm($index)"></span>

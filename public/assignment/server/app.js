@@ -4,4 +4,5 @@ module.exports = function(app) {
 
     var userService  = require("./services/user.service.server.js") (app, formModel, userModel);
     var formService = require("./services/form.service.server.js")(app, formModel, userModel);
+    var fieldService = require("./services/field.service.server.js")(app, formModel, userModel);
 }

@@ -7,61 +7,56 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-            <h1 class="page-header">Forms : Registration Form</h1>
+            <h1 class="page-header">Forms : {{form.title}}</h1>
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="#/forms">Forms</a></li>
                 <li role="presentation" class="active"><a href="#" class="disabled">Fields</a></li>
             </ul>
             <form>
-                <div class="row">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
-                        <label for="firstname" class="form-control-label custom-formlabel">First Name:</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                <div class="row" ng-repeat="field in fields">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'TEXT'">
+                        <label for="firstname" class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <input type="text" class="form-control" id="firstname" placeholder=field.placeholder>
                     </div>
-                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
+
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'DATE'">
+                        <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <input type="date" class="form-control" placeholder=field.placeholder>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
-                        <label for="lastname" class="form-control-label custom-formlabel">Last Name:</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Last Name">
-                    </div>
-                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
-                        <label for="dob" class="form-control-label custom-formlabel">Date Of Birth:</label>
-                        <input type="date" class="form-control" id="dob" placeholder="Select Date">
-                    </div>
-                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
-                        <label for="gender" class="form-control-label custom-formlabel">Gender:</label>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Male
+
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'OPTIONS'">
+                        <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <div class="dropdown" ng-model="fieldType">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{field.options[0].label}}
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Female</a></li>
+                                <li ng-repeat="option in field.options">{{option.label}}</li>
                             </ul>
                         </div>
                     </div>
+
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'CHECKBOXES'">
+                        <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <div class="checkbox" ng-repeat="option in field.options">
+                            <label>
+                                <input type="checkbox" value="option.value">
+                                {{option.label}}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'RADIOS'">
+                            <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <div class="radio" ng-repeat="option in field.options">
+                            <label>
+                                <input type="radio" value="option.value">
+                                {{option.label}}
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
                         <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
                         <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
@@ -69,63 +64,12 @@
                         <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
-                        <label class="form-control-label custom-formlabel">Roles:</label>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="option" checked>
-                                Admin
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="">
-                                Student
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="option" checked>
-                                User
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar">
-                        <label class="form-control-label custom-formlabel">License Agreement:</label>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                        <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
-                    </div>
-                </div>
+
                 <hr>
                 <div class="row">
                     <div class="form-group col-xs-9 col-sm-6 custom-divmar">
                         <label class="form-control-label custom-formlabel">Add New Field</label>
-                        <div class="dropdown">
+                        <div class="dropdown" ng-model="fieldType">
                             <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Single Line Text
                                 <span class="caret"></span>
@@ -140,7 +84,7 @@
                     </div>
                     <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
                         <span></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen" data-toggle="modal" data-target="#myModal"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen" ng-click="addField(fieldType)" data-toggle="modal" data-target="#myModal"></span>
 
                         <span></span>
                         <span></span>

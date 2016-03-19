@@ -25,7 +25,7 @@ module.exports = function() {
 
     function findUserById(userId) {
         for(var m in mock) {
-            if(mock[m]._id === userId) {
+            if(mock[m]._id == userId) {
                 return mock[m];
             }
         }
@@ -34,7 +34,7 @@ module.exports = function() {
 
     function findUserByUsername(username) {
         for(var m in mock) {
-            if(mock[m].username === username) {
+            if(mock[m].username == username) {
                 return mock[m];
             }
         }
@@ -43,8 +43,8 @@ module.exports = function() {
 
     function findUserByCredentials(credentials) {
         for(var u in mock) {
-            if( mock[u].username === credentials.username &&
-                mock[u].password === credentials.password) {
+            if( mock[u].username == credentials.username &&
+                mock[u].password == credentials.password) {
                 return mock[u];
             }
         }
@@ -53,7 +53,7 @@ module.exports = function() {
 
     function updateUserByID(userId,user) {
         for(var u in mock) {
-            if( mock[u]._id === userId ) {
+            if( mock[u]._id == userId ) {
                 mock.splice(u,1,user);
                 return mock;
             }
@@ -63,7 +63,7 @@ module.exports = function() {
 
     function deleteUserById(userId) {
         for(var u in mock) {
-            if( mock[u]._id === userId ) {
+            if( mock[u]._id == userId ) {
                 var deluser = mock[u].username;
                 mock.splice(u,1);
                 return mock;

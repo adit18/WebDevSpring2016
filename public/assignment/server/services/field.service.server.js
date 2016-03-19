@@ -8,6 +8,7 @@ module.exports = function(app, formModel, userModel) {
     function getFieldsByFormId (req, res) {
         var formFields = [];
         var formId = req.params.formId;
+        console.log("inside");
         formFields = formModel.findFieldsByFormId(formId);
         res.send(formFields);
         //res.json(user);

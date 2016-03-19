@@ -35,10 +35,10 @@
                         templateUrl: "views/forms/forms.view.html",
                         controller: "FormController"
                     })
-                .when("/fields",
+                .when("/fields/:userId/:formId",
                     {
-                        templateUrl: "views/forms/fields.view.html",
-                        //controller: "courseOverview.controller"
+                        templateUrl: "views/forms/field.view.html",
+                        controller: "FieldController"
                     })
                 .otherwise({
                     redirectTo: "/"

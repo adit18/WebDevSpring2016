@@ -1,48 +1,52 @@
 (function() {
     angular
         .module("FormBuilderApp")
-        .controller("FormController",FormController);
+        .controller("FieldController",FieldController);
 
-    function FormController($scope,$rootScope,$location,FormService,UserService){
+    function FieldController($scope,$routeParams,$rootScope,$location,FieldService,FormService){
 
-        //var locUser = UserService.getCurrentUser();
-        var locUser = $rootScope.currentUser;
+        var formId = $routeParams.formId;
         FormService
-            .findAllFormsForUser(locUser._id)
+            .findFormById(formId)
             .then(function (response){
-                console.log(response.data);
-                $scope.forms = response.data;
+                $scope.form = response.data;
             });
-        $scope.user = $rootScope.currentUser;
+
+        FieldService
+            .getFieldsForForm(formId)
+            .then(function (response){
+                $scope.fields = response.data;
+            });
+
         //event handlers declarations
-        $scope.addForm = addForm;
-        $scope.selectForm = selectForm;
-        $scope.updateForm = updateForm;
-        $scope.deleteForm = deleteForm;
+        $scope.addField = addField;
+        $scope.selectField = selectField;
+        $scope.updateField = updateField;
+        $scope.deleteField = deleteField;
 
         //event handler delarations
-        function addForm(){
+        function addField(fieldType){
             //console.log("Sending "+$scope.form.title);
-            var form = $scope.form;
-            FormService
-                .createFormForUser(locUser._id, form)
+            var newField = $scope.newField;
+            FieldService
+                .createFieldForForm($routeParams.formId, newField)
                 .then(function(response){
                     console.log("Added "+response.data.title);
-                    FormService
-                        .findAllFormsForUser(locUser._id)
+                    FieldService
+                        .getFieldsForForm($routeParams.formId)
                         .then(function (response){
-                            $scope.forms = response.data;
+                            $scope.fields = response.data;
                         });
                 });
         }
 
-        function selectForm(index){
+        function selectField(index){
             $rootScope.currentForm = $scope.forms[index];
             $scope.form = $rootScope.currentForm;
             console.log("Editing "+ $rootScope.currentForm.title);
         }
 
-        function updateForm(){
+        function updateField(){
             console.log("Updating "+$rootScope.currentForm._id);
             FormService
                 .updateFormById($rootScope.currentForm._id, $rootScope.currentForm)
@@ -61,7 +65,7 @@
             //$('#inputdefault').reset();
         }
 
-        function deleteForm(index){
+        function deleteField(index){
             $rootScope.currentForm = $scope.forms[index];
             FormService
                 .deleteFormById($rootScope.currentForm._id)

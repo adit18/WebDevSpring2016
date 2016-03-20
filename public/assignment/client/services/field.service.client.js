@@ -20,7 +20,6 @@
 
         function createFieldForForm(formId, field)
         {
-            //form.userId = userId;
             return $http.post("/api/assignment/form/"+formId+"/field/", field);
         }
 

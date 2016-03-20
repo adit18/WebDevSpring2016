@@ -1,4 +1,4 @@
-module.exports = function(app, formModel, userModel) {
+module.exports = function(app, formModel) {
     app.get("/api/assignment/form/:formId/field", getFieldsByFormId);
     app.get("/api/assignment/form/:formId/field/:fieldId", getFieldByFieldFormId);
     app.post("/api/assignment/form/:formId/field", createFieldForm);
@@ -10,7 +10,6 @@ module.exports = function(app, formModel, userModel) {
         var formId = req.params.formId;
         formFields = formModel.findFieldsByFormId(formId);
         res.send(formFields);
-        //res.json(user);
     }
 
     function getFieldByFieldFormId (req, res) {
@@ -18,16 +17,15 @@ module.exports = function(app, formModel, userModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         FieldObj = formModel.findFieldByFieldFormId(formId, fieldId);
-        res.send(formFields);
-        //res.json(user);
+        res.send(FieldObj);
     }
 
     function createFieldForm (req, res) {
+        var formsRecd = [];
         var field = req.body;
         var formId = req.params.formId;
         formsRecd = formModel.createFieldForm(formId,field);
         res.send(formsRecd);
-        //res.json(user);
     }
 
     function updateFieldForm (req, res) {
@@ -35,11 +33,8 @@ module.exports = function(app, formModel, userModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        console.log("server updating Field Label:"+ field.label);
-        console.log("server service updating Field Options:"+ field.options);
         fieldsRecd = formModel.updateFieldForm(formId, fieldId, field);
         res.send(fieldsRecd);
-        //res.json(user);
     }
 
     function deleteFieldByFieldFormId (req, res) {
@@ -48,6 +43,5 @@ module.exports = function(app, formModel, userModel) {
         var fieldId = req.params.fieldId;
         remFields = formModel.deleteFieldByFieldFormId(formId, fieldId);
         res.send(remFields);
-        //res.json(user);
     }
 }

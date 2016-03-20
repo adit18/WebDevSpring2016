@@ -5,7 +5,6 @@
 
     function FormController($scope,$rootScope,$location,FormService,UserService){
 
-        //var locUser = UserService.getCurrentUser();
         var locUser = $rootScope.currentUser;
         FormService
             .findAllFormsForUser(locUser._id)
@@ -14,13 +13,14 @@
                 $scope.forms = response.data;
             });
         $scope.user = $rootScope.currentUser;
+
         //event handlers declarations
         $scope.addForm = addForm;
         $scope.selectForm = selectForm;
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
 
-        //event handler delarations
+        //event handler definitions
         function addForm(){
             //console.log("Sending "+$scope.form.title);
             var form = $scope.form;

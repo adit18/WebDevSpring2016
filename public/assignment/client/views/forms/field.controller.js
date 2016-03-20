@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .controller("FieldController",FieldController);
 
-    function FieldController($scope,$routeParams,$rootScope,$location,FieldService,FormService){
+    function FieldController($scope,$routeParams,FieldService,FormService){
 
         var formId = $routeParams.formId;
         FormService
@@ -24,11 +24,9 @@
         $scope.updateField = updateField;
         $scope.removeField = removeField;
 
-        //event handler delarations
+        //event handler definitions
         function addField(fieldType){
             console.log("Sending "+$scope.selectedOption);
-            //console.log("Field: "+fieldType);
-            //console.log("OptionVal: "+$scope.selectedOption.value);
             var newField = {};
 
             //Handling different field types:
@@ -88,65 +86,54 @@
         }
 
         function editField(field){
-            $scope.field = field;
+            $scope.sub = field;
+            var locOptions = [];
+            locOptions = field.options;
+
             //Handling different field types:
             if(field.type == "DROPDOWN" || field.type == "CHECKBOXES" || field.type == "RADIOS"){
-                $scope.fieldData = field.options.map(function (element){
-                    return element.label+":"+element.value
+                $scope.sub.options = locOptions.map(function (element){
+                    return element.label+":"+element.value;
                 }).join('\n');
-                //$scope.field.options = JSON.stringify(field.options);
             }
             console.log("Editing "+ field.label);
         }
 
         function updateField(field){
-            console.log($scope.fieldData);
-            //field.options = JSON.parse($scope.fieldData);
-
-            var temp = $scope.fieldData;
-            var re = /[\n,]+/ ;
-            var arrLines = temp.toString().split(re);
-            var opt =[];
-            for(var a in arrLines){
+            var tempOptions = field.options;
+            var regEx = /[\n,]+/ ;
+            var optionLines = tempOptions.toString().split(regEx);
+            var formatOptions =[];
+            for(var a in optionLines){
                 var obj = {};
-                var keyVal = arrLines[a].toString().split(":");
+                var keyVal = optionLines[a].toString().split(":");
                 obj["label"] = keyVal[0];
                 obj["value"] = keyVal[1];
-                opt.push(obj);
+                formatOptions.push(obj);
             }
 
-            field.options = opt;
-            //console.log("op: "+opt);
-            console.log("Field Options: "+field.options);
-            //console.log("Updating "+field.label);
-            //console.log("Updatingo "+field.options[0].value);
+            //Validation
+            //console.log("ops: "+formatOptions);
+            //for(var a in formatOptions){
+            //    console.log(formatOptions[a].label);
+            //    console.log(formatOptions[a].value);
+            //}
+
+            field.options = formatOptions;
             FieldService
                 .updateField($routeParams.formId, field._id, field)
                 .then(function(response){
                     console.log("Updated "+field.label);
                     $scope.fields = response.data;
-                    //instead of this:
-                });
-            FieldService
-                .getFieldsForForm($routeParams.formId)
-                .then(function (response){
-                    $scope.fields = response.data;
-
                 });
         }
 
         function removeField(field){
-            //$rootScope.currentForm = $scope.forms[index];
-            //alert("Selected Case Number is STXT");
-            console.log("RemField: "+field.label);
-            console.log("RemField ID: "+field._id);
-
             FieldService
                 .deleteFieldFromForm($routeParams.formId, field._id)
                 .then(function(response){
                     console.log("Deleted "+field.label);
                     //$scope.fields = response.data;
-                    //instead of this:
                     FieldService
                         .getFieldsForForm($routeParams.formId)
                         .then(function (response){

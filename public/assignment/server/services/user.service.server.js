@@ -1,8 +1,7 @@
-module.exports = function(app, foodModel, userModel) {
+module.exports = function(app, userModel) {
     app.post("/service/user/login", login);
     app.get("/service/user/loggedin", loggedin);
     app.post("/service/user/logout", logout);
-
     app.post("/api/assignment/user", register);
     app.get("/api/assignment/user", getAllUsers);
     app.get("/api/assignment/user/:id", profile);
@@ -17,7 +16,6 @@ module.exports = function(app, foodModel, userModel) {
         req.session.currentUser = user;
         var allUsers = userModel.findAllUsers();
         res.send(allUsers);
-        //res.json(user);
     }
 
     function getAllUsers(req, res) {
@@ -28,7 +26,6 @@ module.exports = function(app, foodModel, userModel) {
             var allUsers = [];
             allUsers = userModel.findAllUsers();
             res.send(allUsers);
-            //res.json(user);
         }
     }
 
@@ -36,7 +33,6 @@ module.exports = function(app, foodModel, userModel) {
         var userId = req.params.id;
         var user = userModel.findUserById(userId);
         res.json(user);
-        //if necessary res.send
     }
 
     function profileByUsername(req, res) {
@@ -47,7 +43,6 @@ module.exports = function(app, foodModel, userModel) {
             var userName = req.query.username;
             var user = userModel.findUserByUsername(userName);
             res.json(user);
-            //if necessary res.send
         }
     }
 
@@ -57,7 +52,6 @@ module.exports = function(app, foodModel, userModel) {
         cred.password = req.query.password;
         var user = userModel.findUserByCredentials(cred);
         res.json(user);
-        //res.status(200).send(user);
     }
 
     function updateProfile(req, res) {
@@ -68,15 +62,13 @@ module.exports = function(app, foodModel, userModel) {
         allUsers = userModel.updateUserByID(userId, user);
         req.session.currentUser = user;
         res.send(allUsers);
-        //res.json(user);
     }
 
     function deleteProfile(req, res) {
         var remUsers = [];
         var userId = req.params.userId;
         remUsers = userModel.deleteUserById(userId);
-        res.send(allUsers);
-        //res.send(del_username);
+        res.send(remUsers);
     }
 
     function login(req, res) {

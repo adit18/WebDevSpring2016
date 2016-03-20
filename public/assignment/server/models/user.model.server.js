@@ -67,7 +67,6 @@ module.exports = function() {
                 var deluser = mock[u].username;
                 mock.splice(u,1);
                 return mock;
-                //return mock[u];
             }
         }
         return null;

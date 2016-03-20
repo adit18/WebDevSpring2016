@@ -12,7 +12,7 @@
                 <li role="presentation"><a href="#/forms">Forms</a></li>
                 <li role="presentation" class="active"><a href="#" class="disabled">Fields</a></li>
             </ul>
-            <form>
+            <form custom-field-sortable customAxis="y">
                 <div class="row" ng-repeat="field in fields">
                     <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'TEXT' || field.type == 'EMAIL'">
                         <label class="form-control-label custom-formlabel">{{field.label}}:</label>
@@ -32,8 +32,9 @@
                     <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'DROPDOWN'">
                         <label class="form-control-label custom-formlabel">{{field.label}}:</label>
                         <select class="form-control" ng-model="selectedOption"
-                                ng-options="option.label for option in field.options" ng-init="selectedOption=field.options[0].label">
+                                ng-options="option.label for option in field.options">
                             <!--<option ng-attr-value="{{option.value}}" ng-repeat="option in field.options">{{option.label}}</option>-->
+                            <!--<option value="">{{field.options[0].label}}</option>-->
                         </select>
                     </div>
 
@@ -91,60 +92,61 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <span class="glyphicon glyphicon-remove glyphicon-size-small col-md-1 glyphicon-colorred" data-dismiss="modal"></span>
-                                    <h4 class="modal-title custom-subhead2">Field Properties</h4>
+                                    <h4 class="modal-title custom-subhead2" id="myModalLabel">{{sub.label}} Properties</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form>
-                                        <div ng-model="field" ng-if="field.type == 'TEXT' || field.type == 'EMAIL'">
+                                        <div ng-if="sub.type == 'TEXT' || sub.type == 'EMAIL'">
                                         <div class="form-group row">
                                             <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                <input type="text" class="form-control" ng-model="sub.label" ng-attr-placeholder="{{sub.label}}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 form-control-label custom-formlabel">Placeholder:</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" ng-model="field.placeholder" ng-attr-placeholder="{{field.placeholder}}">
+                                                <input type="text" class="form-control" ng-model="sub.placeholder" ng-attr-placeholder="{{sub.placeholder}}">
                                             </div>
                                         </div>
                                         </div>
 
-                                        <div ng-model="field" ng-if="field.type == 'DATE'">
+                                        <div ng-if="sub.type == 'DATE'">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                    <input type="text" class="form-control" ng-model="sub.label" ng-attr-placeholder="{{sub.label}}">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div ng-model="field" ng-if="field.type == 'TEXTAREA'">
+                                        <div ng-if="sub.type == 'TEXTAREA'">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                    <input type="text" class="form-control" ng-model="sub.label" ng-attr-placeholder="{{sub.label}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 form-control-label custom-formlabel">Placeholder:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" ng-model="field.placeholder" ng-attr-placeholder="{{field.placeholder}}">
+                                                    <input type="text" class="form-control" ng-model="sub.placeholder" ng-attr-placeholder="{{sub.placeholder}}">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div ng-model="field" ng-if="field.type == 'DROPDOWN' || field.type == 'CHECKBOXES'|| field.type == 'RADIOS'">
+                                        <div ng-if="sub.type == 'DROPDOWN' || sub.type == 'CHECKBOXES'|| sub.type == 'RADIOS'">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                    <input type="text" class="form-control" ng-model="sub.label" ng-attr-placeholder="{{sub.label}}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 form-control-label custom-formlabel">Options:</label>
                                                 <div class="col-sm-6">
-                                                    <textarea type="text" class="form-control" rows="5" ng-model="fieldData" ng-attr-placeholder="{{field.placeholder}}"></textarea>
+                                                    <textarea type="text" class="form-control" rows="5" ng-model="sub.options" ng-attr-placeholder="{{sub.placeholder}}">
+                                                    </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,7 +156,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary" ng-click="updateField(field)" data-dismiss="modal">Save</button>
+                                    <button type="button" class="btn btn-primary" ng-click="updateField(sub)" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </div>

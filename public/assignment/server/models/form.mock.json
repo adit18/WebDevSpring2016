@@ -4,7 +4,7 @@
       {"_id": "111", "label": "First Name", "type": "TEXT", "placeholder": "First Name"},
       {"_id": "222", "label": "Last Name", "type": "TEXT", "placeholder": "Last Name"},
       {"_id": "333", "label": "Address", "type": "TEXT", "placeholder": "Address"},
-      {"_id": "444", "label": "State", "type": "OPTIONS", "options": [
+      {"_id": "444", "label": "State", "type": "DROPDOWN", "options": [
         {"label": "Massachussetts", "value": "MA"},
         {"label": "New Hampshire", "value": "NH"}
       ]

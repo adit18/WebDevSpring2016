@@ -21,7 +21,7 @@
         function createFieldForForm(formId, field)
         {
             //form.userId = userId;
-            return $http.post("/api/assignment/form/"+formId+"/field", field);
+            return $http.post("/api/assignment/form/"+formId+"/field/", field);
         }
 
         function getFieldsForForm(formId)
@@ -31,17 +31,17 @@
 
         function getFieldForForm(formId, fieldId)
         {
-            return $http.get("/api/assignment/form/"+formId+"/field"+fieldId);
+            return $http.get("/api/assignment/form/"+formId+"/field/"+fieldId);
         }
 
         function deleteFieldFromForm(formId, fieldId)
         {
-            return $http.delete("/api/assignment/form/"+formId+"/field"+fieldId);
+            return $http.delete("/api/assignment/form/"+formId+"/field/"+fieldId);
         }
 
         function updateField(formId, fieldId, field)
         {
-            return $http.put("/api/assignment/form/"+formId+"/field"+fieldId, field);
+            return $http.put("/api/assignment/form/"+formId+"/field/"+fieldId, field);
         }
 
         function setCurrentForm (form) {

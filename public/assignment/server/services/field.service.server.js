@@ -8,7 +8,6 @@ module.exports = function(app, formModel, userModel) {
     function getFieldsByFormId (req, res) {
         var formFields = [];
         var formId = req.params.formId;
-        console.log("inside");
         formFields = formModel.findFieldsByFormId(formId);
         res.send(formFields);
         //res.json(user);
@@ -34,8 +33,10 @@ module.exports = function(app, formModel, userModel) {
     function updateFieldForm (req, res) {
         var fieldsRecd = [];
         var formId = req.params.formId;
-        var fieldId = req.params.formId;
+        var fieldId = req.params.fieldId;
         var field = req.body;
+        console.log("server updating Field Label:"+ field.label);
+        console.log("server service updating Field Options:"+ field.options);
         fieldsRecd = formModel.updateFieldForm(formId, fieldId, field);
         res.send(fieldsRecd);
         //res.json(user);
@@ -46,7 +47,7 @@ module.exports = function(app, formModel, userModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         remFields = formModel.deleteFieldByFieldFormId(formId, fieldId);
-        res.send(formFields);
+        res.send(remFields);
         //res.json(user);
     }
 }

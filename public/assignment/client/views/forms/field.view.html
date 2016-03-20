@@ -14,53 +14,53 @@
             </ul>
             <form>
                 <div class="row" ng-repeat="field in fields">
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'TEXT'">
-                        <label for="firstname" class="form-control-label custom-formlabel">{{field.label}}:</label>
-                        <input type="text" class="form-control" id="firstname" placeholder=field.placeholder>
-                    </div>
-
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'DATE'">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'TEXT' || field.type == 'EMAIL'">
                         <label class="form-control-label custom-formlabel">{{field.label}}:</label>
-                        <input type="date" class="form-control" placeholder=field.placeholder>
+                        <input type="text" class="form-control" ng-attr-placeholder="{{field.placeholder}}">
                     </div>
 
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'OPTIONS'">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'TEXTAREA'">
                         <label class="form-control-label custom-formlabel">{{field.label}}:</label>
-                        <div class="dropdown" ng-model="fieldType">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {{field.options[0].label}}
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li ng-repeat="option in field.options">{{option.label}}</li>
-                            </ul>
-                        </div>
+                        <textarea type="text" class="form-control" rows="3" ng-attr-placeholder="{{field.placeholder}}"></textarea>
                     </div>
 
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'CHECKBOXES'">
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'DATE'">
+                        <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <input type="date" class="form-control" ng-attr-placeholder="{{field.placeholder}}">
+                    </div>
+
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'DROPDOWN'">
+                        <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                        <select class="form-control" ng-model="selectedOption"
+                                ng-options="option.label for option in field.options" ng-init="selectedOption=field.options[0].label">
+                            <!--<option ng-attr-value="{{option.value}}" ng-repeat="option in field.options">{{option.label}}</option>-->
+                        </select>
+                    </div>
+
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'CHECKBOXES'">
                         <label class="form-control-label custom-formlabel">{{field.label}}:</label>
                         <div class="checkbox" ng-repeat="option in field.options">
                             <label>
-                                <input type="checkbox" value="option.value">
+                                <input type="checkbox" ng-attr-value="{{option.value}}">
                                 {{option.label}}
                             </label>
                         </div>
                     </div>
 
-                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-if="field.type == 'RADIOS'">
-                            <label class="form-control-label custom-formlabel">{{field.label}}:</label>
+                    <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'RADIOS'">
+                        <label class="form-control-label custom-formlabel">{{field.label}}:</label>
                         <div class="radio" ng-repeat="option in field.options">
                             <label>
-                                <input type="radio" value="option.value">
+                                <input type="radio" ng-attr-value="{{option.value}}">
                                 {{option.label}}
                             </label>
                         </div>
                     </div>
 
                     <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
-                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
+                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro" ng-click="editField(field)" data-toggle="modal" data-target="#myModal"></span>
+                        <span></span>
+                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred" ng-click="removeField(field)"></span>
                         <span class="glyphicon glyphicon-list-alt glyphicon-size"></span>
                     </div>
                 </div>
@@ -69,81 +69,96 @@
                 <div class="row">
                     <div class="form-group col-xs-9 col-sm-6 custom-divmar">
                         <label class="form-control-label custom-formlabel">Add New Field</label>
-                        <div class="dropdown" ng-model="fieldType">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Single Line Text
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Checkbox</a></li>
-                                <li><a href="#">Radio Button</a></li>
-                                <li><a href="#">Dropdown</a></li>
-
-                            </ul>
-                        </div>
+                        <select class="form-control" ng-model="selectedOption">
+                            <option value="STXT">Single Line Text</option>
+                            <option value="MTXT">Multi Line Text</option>
+                            <option value="DATE">Date</option>
+                            <option value="DROP">Dropdown</option>
+                            <option value="CHK">Checkbox</option>
+                            <option value="RAD">Radio Button</option>
+                        </select>
                     </div>
                     <div class="col-xs-9 col-sm-6 glyph-div custom-divmar">
                         <span></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen" ng-click="addField(fieldType)" data-toggle="modal" data-target="#myModal"></span>
-
+                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen" ng-click="addField(selectedOption)"></span>
                         <span></span>
                         <span></span>
                     </div>
 
                     <!-- Modal -->
-                        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <span class="glyphicon glyphicon-plus glyphicon-size-small col-md-1 glyphicon-colorbro"></span>
-                                        <span class="glyphicon glyphicon-minus glyphicon-size-small col-md-1 glyphicon-colorbro"></span>
-                                        <span class="glyphicon glyphicon-remove glyphicon-size-small col-md-1 glyphicon-colorred" data-dismiss="modal"></span>
-                                        <h4 class="modal-title">Field Properties</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group row">
-                                                <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Label:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="inputdefault" placeholder="Label">
-                                                </div>
+                    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="glyphicon glyphicon-remove glyphicon-size-small col-md-1 glyphicon-colorred" data-dismiss="modal"></span>
+                                    <h4 class="modal-title custom-subhead2">Field Properties</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div ng-model="field" ng-if="field.type == 'TEXT' || field.type == 'EMAIL'">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Placeholder:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="inputdefault" placeholder="Placeholder">
-                                                </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 form-control-label custom-formlabel">Placeholder:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" ng-model="field.placeholder" ng-attr-placeholder="{{field.placeholder}}">
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Tooltip:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="inputdefault" placeholder="Tooltip">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                            <label class="col-sm-2 form-control-label custom-formlabel">Type:</label>
-                                            <div class="dropdown col-sm-6">
-                                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                    Options
-                                                    <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                    <li><a href="#">Option 1</a></li>
-                                                    <li><a href="#">Option 2</a></li>
-                                                    <li><a href="#">Option 3</a></li>
+                                        </div>
+                                        </div>
 
-                                                </ul>
+                                        <div ng-model="field" ng-if="field.type == 'DATE'">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                </div>
                                             </div>
+                                        </div>
+
+                                        <div ng-model="field" ng-if="field.type == 'TEXTAREA'">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary">OK</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 form-control-label custom-formlabel">Placeholder:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" ng-model="field.placeholder" ng-attr-placeholder="{{field.placeholder}}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div ng-model="field" ng-if="field.type == 'DROPDOWN' || field.type == 'CHECKBOXES'|| field.type == 'RADIOS'">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 form-control-label custom-formlabel">Label:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" ng-model="field.label" ng-attr-placeholder="{{field.label}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 form-control-label custom-formlabel">Options:</label>
+                                                <div class="col-sm-6">
+                                                    <textarea type="text" class="form-control" rows="5" ng-model="fieldData" ng-attr-placeholder="{{field.placeholder}}"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" ng-click="updateField(field)" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
                 </div>

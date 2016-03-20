@@ -31,8 +31,9 @@ module.exports = function() {
     function createFieldForm(formId, field) {
         //form._id = (new Date).getTime();
         field._id = uuid.v1();
+        console.log("FIELD ID ADDED: "+field._id);
         for(var i in forms){
-            if(forms[i].userId == userId){
+            if(forms[i]._id == formId){
                 forms[i].fields.push(field);
                 return forms[i].fields;
             }
@@ -91,7 +92,7 @@ module.exports = function() {
             if(forms[i]._id == formId){
                 var iterFields = forms[i].fields;
                 for(var f in iterFields){
-                    if(iterFields[f]._id === fieldId){
+                    if(iterFields[f]._id == fieldId){
                         return iterFields[f];
                     }
                 }
@@ -112,12 +113,18 @@ module.exports = function() {
     }
 
     function updateFieldForm(formId,fieldId,field) {
+        console.log("FORM ID: "+formId);
         for(var u in forms) {
-            if(forms[i]._id == formId){
-                for(var f in forms[i].fields){
-                    if(forms[i].fields[f]._id === fieldId){
-                        forms[i].fields.splice(f,1,field);
-                        return forms[i].fields;
+            if(forms[u]._id == formId){
+                console.log("FORM ID MATCHED: "+formId);
+                for(var f in forms[u].fields){
+                    console.log("FIELD IDs: "+forms[u].fields[f]._id);
+                    console.log("FIELD ID recd: "+fieldId);
+                    if(forms[u].fields[f]._id == fieldId){
+                        console.log("FIELD ID MATCHED: "+fieldId);
+                        forms[u].fields.splice(f,1,field);
+                        console.log("SERVER UPDATED :"+forms[u].fields[f].label);
+                        return forms[u].fields;
                     }
                 }
             }
@@ -130,7 +137,7 @@ module.exports = function() {
         for(var i in forms){
             if(forms[i]._id == formId){
                 for(var f in forms[i].fields){
-                    if(forms[i].fields[f]._id === fieldId){
+                    if(forms[i].fields[f]._id == fieldId){
                         forms[i].fields.splice(f,1);
                         return forms[i].fields;
                     }

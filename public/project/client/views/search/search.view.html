@@ -1,15 +1,15 @@
 <div class="container">
 <h2>Search</h2>
 
-<input ng-model="model.searchValue" class="form-control"
+<input ng-model="searchValue" class="form-control"
        placeholder="Cheese Burger"/>
 
-<button ng-click="model.searchFood()"
+<button ng-click="searchFood()"
         class="btn btn-primary btn-block">
     Search
 </button>
 
-<div ng-if="model.data">
+<div ng-if="data">
     <h3>Search Results:</h3>
     <!--<h3>{{model.data.region}}</h3>-->
     <table class="table table-hover table-bg">
@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="business in model.data.businesses">
+        <tr ng-repeat="business in data.businesses">
             <td>
                 <img ng-src="{{business.image_url}}"
                      height="100px"/>

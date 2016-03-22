@@ -32,8 +32,8 @@
                 .when("/search/:searchTerm",
                     {
                         templateUrl: "views/search/search.view.html",
-                        controller: "SearchController",
-                        controllerAs: "model"
+                        controller: "SearchController"
+                        //controllerAs: "model"
                     })
                 .when("/details/:bizID",
                     {

@@ -39,7 +39,7 @@
                     {
                         templateUrl: "views/details/details.view.html",
                         controller: "DetailsController",
-                        controllerAs: "model"
+                        //controllerAs: "model"
                     })
                 //.when("/admin",
                 //    {

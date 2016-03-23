@@ -1,46 +1,46 @@
 <div class="container">
 <h2>Details</h2>
 
-<h2>{{model.data.name}}</h2>
+<h2>{{data.name}}</h2>
 
-<img ng-src="{{model.data.image_url}}" height="200px"/>
+<img ng-src="{{data.image_url}}" height="200px"/>
     <h2>Rating</h2>
-    <img ng-src="{{model.data.rating_img_url}}" height="50px"/>
-    <h2> {{model.data.review_count}} reviews </h2>
+    <img ng-src="{{data.rating_img_url}}" height="50px"/>
+    <h2> {{data.review_count}} reviews </h2>
 
     <br/>
 <br/>
 
 <button class="btn btn-primary"
-        ng-click="model.favorite(model.data)">
+        ng-click="favorite(data)">
     <span class="glyphicon glyphicon-star-empty"></span>
 </button>
 
 <h3>Top Review:</h3>
 <h4><p>
-    {{model.data.snippet_text}}
+    {{data.snippet_text}}
 </p></h4>
 
 <!--model.data['reviews'][0].excerpt-->
     <h4>Phone: </h4>
     <h4><p>
-        {{model.data.phone}}
+        {{data.phone}}
     </p></h4>
 <h3>Address</h3>
 <ul>
-    <li ng-repeat="line in model.data.location.display_address">
+    <li ng-repeat="line in data.location.display_address">
         {{line}}
     </li>
 </ul>
 
 
 
-{{model.place.userLikes}}
+{{place.userLikes}}
 
-<div ng-if="model.place.userLikes">
+<div ng-if="place.userLikes">
     <h4>Other Users that Like This Place</h4>
     <ul>
-        <li ng-repeat="user in model.place.userLikes">
+        <li ng-repeat="user in place.userLikes">
             {{user.username}}
         </li>
     </ul>

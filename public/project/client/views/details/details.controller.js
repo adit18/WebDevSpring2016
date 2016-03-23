@@ -3,26 +3,23 @@
         .module("FoodQuotientApp")
         .controller("DetailsController", detailsController);
 
-    function detailsController($routeParams,$http,$rootScope,$location,FoodService) {
-        var vm = this;
+    function detailsController($routeParams,$scope,$rootScope,$location,FoodService,YelpService) {
+        //var vm = this;
         var bizID = $routeParams.bizID;
         var currentUser = $rootScope.currentUser;
-        vm.favorite = favorite;
+        $scope.favorite = favorite;
 
         function init() {
-            $http.get('/businessapi?biz=' + bizID) // + '&ll=' + coordsLoc)
-                .then(function successCallback(response) {
-                    //Sample: Object {data: Object, status: 200, config: Object, statusText: "OK"}
-                    vm.data = response.data;
-                    console.log(response);
-                }, function errorCallback(response) {
-                    console.log("Node not working!")
-                });
+            YelpService.searchBizYelp(bizID, function (response){
+                $scope.data = response;
+                console.log(response);
+                $scope.$apply();
+            });
 
             FoodService
                 .findUserLikes (bizID)
                 .then(function(response){
-                     vm.place = response.data;
+                    $scope.place = response.data;
 
                 });
         }

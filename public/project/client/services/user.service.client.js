@@ -50,6 +50,7 @@
         }
 
         function login(credentials) {
+            console.log("Calling server")
             return $http.post("/service/user/login", credentials);
         }
     }

@@ -42,9 +42,10 @@ module.exports = function(app, foodModel, userModel) {
 
     function login(req, res) {
         var credentials = req.body;
+        console.log("Calling cred");
         var user = userModel.findUserByCredentials(credentials);
         if(user){
-            console.log("User "+user.username+" logged in");
+            console.log("User "+user.username+" loggd in");
         }
         req.session.currentUser = user;
         res.json(user);

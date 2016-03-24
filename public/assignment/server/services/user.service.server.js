@@ -1,7 +1,7 @@
 module.exports = function(app, userModel) {
-    app.post("/service/user/login", login);
-    app.get("/service/user/loggedin", loggedin);
-    app.post("/service/user/logout", logout);
+    //app.post("/service/user/login", login);
+    //app.get("/service/user/loggedin", loggedin);
+    //app.post("/service/user/logout", logout);
     app.post("/api/assignment/user", register);
     app.get("/api/assignment/user", getAllUsers);
     app.get("/api/assignment/user/:id", profile);

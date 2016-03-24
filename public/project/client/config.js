@@ -2,14 +2,18 @@
 {
     angular
         .module("FoodQuotientApp")
-        .config(function($routeProvider)
-        {
+        .config(configuration);
+
+    function configuration($routeProvider) {
             $routeProvider
                 .when("/",
                     {
                         templateUrl: "views/home/home.view.html",
                         controller: "HomeController",
-                        controllerAs: "model"
+                        controllerAs: "model",
+                        resolve: {
+                            getLoggedIn: getLoggedIn
+                        }
                     })
                 .when("/register",
                     {
@@ -27,32 +31,65 @@
                     {
                         templateUrl: "views/profile/profile.view.html",
                         controller: "ProfileController",
-                        controllerAs: "model"
+                        controllerAs: "model",
+                        resolve: {
+                            checkLoggedIn: checkLoggedIn
+                        }
                     })
                 .when("/search/:searchTerm",
                     {
                         templateUrl: "views/search/search.view.html",
-                        controller: "SearchController"
+                        controller: "SearchController",
                         //controllerAs: "model"
+                        resolve: {
+                            getLoggedIn: getLoggedIn
+                        }
                     })
                 .when("/details/:bizID",
                     {
                         templateUrl: "views/details/details.view.html",
                         controller: "DetailsController",
                         //controllerAs: "model"
+                        resolve: {
+                            getLoggedIn: getLoggedIn
+                        }
                     })
-                //.when("/admin",
-                //    {
-                //        templateUrl: "views/admin/admin.view.html",
-                //        //controller: "courseOverview.controller"
-                //    })
-                //.when("/forms",
-                //    {
-                //        templateUrl: "views/forms/forms.view.html",
-                //        controller: "FormController"
-                //    })
                 .otherwise({
                     redirectTo: "/"
                 })
-        });
+        }
+
+    function getLoggedIn(UserService, $q) {
+        var deferred = $q.defer();
+
+        UserService
+            .getCurrentUser()
+            .then(function(response){
+                var currentUser = response.data;
+                UserService.setCurrentUser(currentUser);
+                deferred.resolve();
+            });
+
+        return deferred.promise;
+    }
+
+    function checkLoggedIn(UserService, $q, $location) {
+
+        var deferred = $q.defer();
+
+        UserService
+            .getCurrentUser()
+            .then(function(response) {
+                var currentUser = response.data;
+                if(currentUser) {
+                    UserService.setCurrentUser(currentUser);
+                    deferred.resolve();
+                } else {
+                    deferred.reject();
+                    $location.url("/");
+                }
+            });
+
+        return deferred.promise;
+    }
 })();

@@ -1,4 +1,4 @@
-var mock = require("./user.mock.json");
+var mock = require("./projuser.mock.json");
 module.exports = function() {
     var service = {
         findUserByCredentials: findUserByCredentials,
@@ -59,9 +59,11 @@ module.exports = function() {
     }
 
     function findUserByCredentials(credentials) {
+        console.log("Cred called");
         for(var u in mock) {
             if( mock[u].username === credentials.username &&
                 mock[u].password === credentials.password) {
+                console.log("Mock ID: "+mock[u]._id);
                 return mock[u];
             }
         }

@@ -13,6 +13,9 @@
 
         function init() {
             vm.$location = $location;
+            //$('.carousel').carousel({
+            //    interval: 10000
+            //})
         }
         init();
 

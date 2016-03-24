@@ -12,6 +12,14 @@
 
         function init() {
             vm.$location = $location;
+            UserService
+                .getCurrentUser()
+                .then(function(response) {
+                    var currentUser = response.data;
+                    if(currentUser) {
+                        $('#pro').html(currentUser.username);
+                    }
+            });
         }
         init();
 

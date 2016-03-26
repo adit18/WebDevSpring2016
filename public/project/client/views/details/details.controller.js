@@ -8,11 +8,21 @@
         var bizID = $routeParams.bizID;
         var currentUser = $rootScope.currentUser;
         $scope.favorite = favorite;
+        $scope.getStarCount = function(num) {
+            return new Array(num);
+        };
 
         function init() {
             YelpService.searchBizYelp(bizID, function (response){
-                $scope.data = response;
+
                 console.log(response);
+                $scope.starCount = parseInt(response.rating);
+                var img_temp = response.image_url.split("/");
+                img_temp.splice(-1,1,"o.jpg");
+                var trans = img_temp.join("/");
+                response.image_large = trans;
+                console.log(trans);
+                $scope.data = response;
                 $scope.$apply();
             });
 

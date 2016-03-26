@@ -1,49 +1,78 @@
-<div class="container">
-<h2>Details</h2>
+<div class="container-fluid">
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{data.image_large}}" class="img-responsive" style="height: 350px"/>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>{{data.name}}</h2>
+                        <!--<div ng-repeat="i in getStarCount(starCount)"><i class="fa fa-star fa-lg gold"></i></div>-->
+                        <!--<div><i class="fa fa-star fa-lg gold"></i> <i class="fa fa-star fa-lg gold"></i> <i class="fa fa-star fa-lg gold"></i> <i class="fa fa-star fa-lg gold"></i> <i class="fa fa-star-o fa-lg"></i> </div>-->
+                        <div><img src="{{data.rating_img_url_large}}" class="img-responsive"/></div>
+                        <h4>{{data.review_count}} Reviews</h4>
+                        <h3>Top Review: </h3>
+                        <p>
+                            {{data.snippet_text}}
+                        </p>
+                        <h3>How to get there: </h3>
+                        <div> <i class="fa fa-phone fa-lg"></i>   {{data.display_phone}}</div>
+                        <br />
+                        <div ng-repeat="line in data.location.display_address">
+                            <i class="fa fa-location-arrow fa-lg"></i>
+                            {{line}}
+                        </div>
+                        <br />
+                        <!--<div class="col-md-7">-->
+                        <!--<div class="btn-group cart">-->
+                        <!--<button type="button" class="btn btn-success">-->
+                        <!--Add to cart-->
+                        <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="btn-group wishlist">-->
+                        <!--<button type="button" class="btn btn-danger">-->
+                        <!--Add to wishlist-->
+                        <!--</button>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <h3>My Review Rating: </h3>
+                        <div>
+                            <button class="btn btn-success"
+                                    ng-click="favorite(data)">
+                                Loved it!
+                            </button>
+                            <span ng-show="place.likes.indexOf(currentUser._id) > -1">
+                                <i class="glyphicon glyphicon-star glyphicon-size"></i>
+                            </span>
+                            <span ng-show="!place || !place.likes || place.likes.indexOf(currentUser._id) == -1">
+                                <i class="glyphicon glyphicon-star-empty glyphicon-size"></i>
+                            </span>
+                        </div>
 
-<h2>{{data.name}}</h2>
+                        <h3>My Review Comments:</h3>
+                        <div>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
 
-<img ng-src="{{data.image_url}}" height="200px"/>
-    <h2>Rating</h2>
-    <img ng-src="{{data.rating_img_url}}" height="50px"/>
-    <h2> {{data.review_count}} reviews </h2>
+                        <br />
+                        <div ng-if="!currentUser" class="col-md-7">
+                            <p><a class="btn btn-success" href="#/register" role="button">Please signup to review!</a></p>
+                        </div>
 
-    <br/>
-<br/>
-
-<button class="btn btn-primary"
-        ng-click="favorite(data)">
-    <span class="glyphicon glyphicon-star-empty"></span>
-</button>
-
-<h3>Top Review:</h3>
-<h4><p>
-    {{data.snippet_text}}
-</p></h4>
-
-<!--model.data['reviews'][0].excerpt-->
-    <h4>Phone: </h4>
-    <h4><p>
-        {{data.phone}}
-    </p></h4>
-<h3>Address</h3>
-<ul>
-    <li ng-repeat="line in data.location.display_address">
-        {{line}}
-    </li>
-</ul>
+                        <div ng-if="place.userLikes" class="col-md-9">
+                            <h3>Other Users that like this Place: </h3>
+                            <ul>
+                                <li ng-repeat="user in place.userLikes">
+                                    {{user.username}}
+                                </li>
+                            </ul>
+                        </div>
 
 
-
-{{place.userLikes}}
-
-<div ng-if="place.userLikes">
-    <h4>Other Users that Like This Place</h4>
-    <ul>
-        <li ng-repeat="user in place.userLikes">
-            {{user.username}}
-        </li>
-    </ul>
-</div>
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -12,7 +12,7 @@ module.exports = function(app, foodModel, userModel) {
             var users = userModel.findUsersByIds(userLikesIDs);
             place.userLikes = users; //Objects
         }
-        res.json(place);
+        res.send(place);
     }
 
     function userLikesPlace(req, res) {

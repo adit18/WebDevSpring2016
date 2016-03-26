@@ -13,10 +13,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!--ng-class="{'active' : $location.url().indexOf('register') != -1}"-->
-                <li class="li-nowrap"><form ng-hide="$location.url().length <= 1 || $location.url().indexOf('search') != -1" class="navbar-form navbar-right">
+                <li class="li-nowrap">
+                    <div class="input-group col-xs-10 col-sm-10 col-md-12" style="margin-right: 15px">
+                    <form ng-hide="$location.url().length <= 1 || $location.url().indexOf('search') != -1" class="navbar-form navbar-right">
                     <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control" placeholder="Cheese burger..." autofocus >
                     <button id="searchFoodBtn" ng-click="model.searchRedirect()" class="btn btn-success"><span class="glyphicon glyphicon-search glyphicon-size-small"></span></button>
-                </form></li>
+                    </form>
+                    </div>
+                </li>
 
                 <li ng-hide="currentUser"
                     ng-class="{'active' : model.$location.url() == '/register'}" ><a href="#/register" class="padding-custom">Register</a></li>

@@ -14,8 +14,14 @@
             UserService
                 .createUser(user)
                 .then(function(response){
-                    $rootScope.currentUser = response.data;
-                    UserService.setCurrentUser(response.data);
+                    //$rootScope.currentUser = response.data;
+                    //UserService.setCurrentUser(response.data);
+                    var currentUser = response.data;
+                    if(currentUser != null) {
+                        UserService.setCurrentUser(currentUser);
+                        $('#pro').html(UserService.getCurrentUser().username);
+                        $location.url("/profile");
+                    }
                 });
             $location.url('/profile');
             //$window.location.href("#/profile");

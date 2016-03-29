@@ -1,7 +1,7 @@
 module.exports = function(app, userModel) {
     //app.post("/service/user/login", login);
-    //app.get("/service/user/loggedin", loggedin);
-    //app.post("/service/user/logout", logout);
+    app.get("/api/assignment/loggedin", loggedin);
+    app.post("/api/assignment/logout", logout);
     app.post("/api/assignment/user", register);
     app.get("/api/assignment/user", getAllUsers);
     app.get("/api/assignment/user/:id", profile);
@@ -51,6 +51,10 @@ module.exports = function(app, userModel) {
         cred.username = req.query.username;
         cred.password = req.query.password;
         var user = userModel.findUserByCredentials(cred);
+        if(user){
+            console.log("User "+user.username+" logged in");
+        }
+        req.session.currentUser = user;
         res.json(user);
     }
 

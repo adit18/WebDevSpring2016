@@ -12,10 +12,33 @@ module.exports = function(app, userModel) {
 
     function register(req, res) {
         var user = req.body;
-        user = userModel.createUser(user);
-        req.session.currentUser = user;
-        var allUsers = userModel.findAllUsers();
-        res.send(allUsers);
+        var userR = userModel.createUser(user)
+            .then(
+                // login user if promise resolved
+                function ( doc ) {
+                    req.session.currentUser = doc;
+                    //res.json(user);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
+
+        //var allUsers =
+        userModel.findAllUsers()
+            .then(
+                // login user if promise resolved
+                function ( doc ) {
+                    res.json(doc);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
+
+        //res.send(allUsers);
     }
 
     function getAllUsers(req, res) {
@@ -25,14 +48,34 @@ module.exports = function(app, userModel) {
         else {
             var allUsers = [];
             allUsers = userModel.findAllUsers();
-            res.send(allUsers);
+            userModel.findAllUsers()
+                .then(
+                    function ( doc ) {
+                        res.json(doc);
+                    },
+                    function ( err ) {
+                        res.status(400).send(err);
+                    }
+                );
         }
     }
 
     function profile(req, res) {
         var userId = req.params.id;
-        var user = userModel.findUserById(userId);
-        res.json(user);
+        //var user = userModel.findUserById(userId);
+
+        // use model to find user by id
+        userModel.findUserById(userId)
+            .then(
+                // retrieve the user by user id
+                function (doc) {
+                    res.json(doc);
+                },
+                // reject promise if error
+                function (err) {
+                    res.status(400).send(err);
+                });
+        //res.json(user);
     }
 
     function profileByUsername(req, res) {
@@ -41,8 +84,16 @@ module.exports = function(app, userModel) {
         }
         else {
             var userName = req.query.username;
-            var user = userModel.findUserByUsername(userName);
-            res.json(user);
+            var user = userModel.findUserByUsername(userName)
+                .then(
+                    function (user) {
+                        res.json(user);
+                    },
+                    // send error if promise rejected
+                    function ( err ) {
+                        res.status(400).send(err);
+                    }
+                )
         }
     }
 
@@ -50,12 +101,20 @@ module.exports = function(app, userModel) {
         var cred = {};
         cred.username = req.query.username;
         cred.password = req.query.password;
-        var user = userModel.findUserByCredentials(cred);
-        if(user){
-            console.log("User "+user.username+" logged in");
-        }
-        req.session.currentUser = user;
-        res.json(user);
+        var user = userModel.findUserByCredentials(cred)
+            .then(
+                function (user) {
+                    if(user){
+                        console.log("User "+user.username+" logged in");
+                    }
+                    req.session.currentUser = user;
+                    res.json(user);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
     }
 
     function updateProfile(req, res) {
@@ -63,9 +122,18 @@ module.exports = function(app, userModel) {
         var userId = req.params.userId;
         //user._id = userId;
         var allUsers = [];
-        allUsers = userModel.updateUserByID(userId, user);
-        req.session.currentUser = user;
-        res.send(allUsers);
+        allUsers = userModel.updateUserByID(userId, user)
+            .then(
+                function (users) {
+                    res.json(users);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+        //req.session.currentUser = user;
+        //res.send(allUsers);
     }
 
     function deleteProfile(req, res) {
@@ -75,15 +143,15 @@ module.exports = function(app, userModel) {
         res.send(remUsers);
     }
 
-    function login(req, res) {
-        var credentials = req.body;
-        var user = userModel.findUserByCredentials(credentials);
-        if(user){
-            console.log("User "+user.username+" logged in");
-        }
-        req.session.currentUser = user;
-        res.json(user);
-    }
+    //function login(req, res) {
+    //    var credentials = req.body;
+    //    var user = userModel.findUserByCredentials(credentials);
+    //    if(user){
+    //        console.log("User "+user.username+" logged in");
+    //    }
+    //    req.session.currentUser = user;
+    //    res.json(user);
+    //}
 
     function loggedin(req, res) {
         res.json(req.session.currentUser);

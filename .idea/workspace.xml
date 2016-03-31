@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55802f58-3434-4f04-9e4e-3ae9513444ab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/models/form.schema.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/app.js" afterPath="$PROJECT_DIR$/public/assignment/server/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/models/form.model.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/models/form.model.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="webdev2016.iws" />
@@ -28,61 +30,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1153846">
-              <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assignment/client/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assignment/server/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="83" selection-start-line="6" selection-start-column="83" selection-end-line="6" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+              <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.schema.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="field.schema.server.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5368421">
-              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            <state vertical-scroll-proportion="12.423077">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -98,11 +60,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.controller.js">
+      <file leaf-file-name="form.model.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assignment/server/models/form.model.server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.schema.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.model.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.model.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="137" column="14" selection-start-line="137" selection-start-column="14" selection-end-line="137" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assignment/server/services/user.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assignment/client/services/user.service.client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/assignment/client/views/users/register.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.3122807">
+              <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="field.schema.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -127,12 +149,9 @@
       <list>
         <option value="$PROJECT_DIR$/public/assignment/client/app.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/index.html" />
-        <option value="$PROJECT_DIR$/public/assignment/server/models/form.model.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/sidebar/sidebar.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/services/form.service.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/services/field.service.server.js" />
-        <option value="$PROJECT_DIR$/public/assignment/server/app.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/services/field.service.client.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/forms/forms.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/forms/field.controller.js" />
@@ -166,15 +185,18 @@
         <option value="$PROJECT_DIR$/public/assignment/client/config.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/users/register.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/services/user.service.client.js" />
-        <option value="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/users/login.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/register/register.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/header/header.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/users/profile.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/models/form.schema.server.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/public/assignment/server/app.js" />
+        <option value="$PROJECT_DIR$/public/assignment/server/models/form.model.server.js" />
+        <option value="$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js" />
+        <option value="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" />
+        <option value="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
@@ -290,6 +312,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -313,6 +361,88 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -413,12 +543,6 @@
       <created>1454205984874</created>
       <option name="number" value="Default" />
       <updated>1454205984874</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added Angular experiment to experiments.">
-      <created>1455155704495</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1455155704495</updated>
     </task>
     <task id="LOCAL-00016" summary="Added Documentation link to Project.">
       <created>1455328576690</created>
@@ -708,7 +832,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459222935266</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Added MongoDb, schema files in assignment.">
+      <created>1459305428350</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1459305428378</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -774,7 +904,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Details and Profile page enhanced." />
     <MESSAGE value="Minor changes to the profile page." />
     <MESSAGE value="Small changes in API handling." />
     <MESSAGE value="Changes in Folder structure for assignment." />
@@ -799,20 +928,14 @@
     <MESSAGE value="Search page and details page view enhanced." />
     <MESSAGE value="Login page view rendering altered." />
     <MESSAGE value="Session maintenance added in assignment, profile view altered in project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Session maintenance added in assignment, profile view altered in project." />
+    <MESSAGE value="Added MongoDb, schema files in assignment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MongoDb, schema files in assignment." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/project/client/oauthk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41262135">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/services/yelp.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -925,20 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/form.model.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.332506">
-          <caret line="137" column="29" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.model.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6153846">
-          <caret line="68" column="28" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/client/views/users/login.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -971,13 +1080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14705883">
           <caret line="40" column="69" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/services/form.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1044,13 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/views/users/register.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1396648">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/register/register.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3296089">
@@ -1058,24 +1153,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/services/user.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1396648">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/services/user.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/services/user.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1424581">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1100,18 +1181,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1153846">
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/form.mock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1124,18 +1205,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/app.js">
+    <entry file="file://$PROJECT_DIR$/public/project/client/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="83" selection-start-line="6" selection-start-column="83" selection-end-line="6" selection-end-column="83" />
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js">
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <caret line="2" column="75" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/services/form.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9972067">
+          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="12.423077">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1148,26 +1261,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/form.model.server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.schema.server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0753012">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js">
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.model.server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5368421">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="137" column="14" selection-start-line="137" selection-start-column="14" selection-end-line="137" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/services/user.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/client/services/user.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/client/views/users/register.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3122807">
+          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
           <folding />
         </state>
       </provider>

@@ -1,5 +1,16 @@
 var mock = require("./user.mock.json");
-module.exports = function() {
+
+// load q promise library
+var q = require("q");
+
+module.exports = function(db, mongoose) {
+
+    // load user schema
+    var UserSchema = require("./user.schema.server.js")(mongoose);
+
+    // create user model from schema
+    var UserModel = mongoose.model('User', UserSchema);
+
     var service = {
         createUser : createUser,
         findAllUsers : findAllUsers,
@@ -14,51 +25,118 @@ module.exports = function() {
     return service;
 
     function createUser(user) {
-        user._id = "ID_" + (new Date()).getTime();
-        mock.push(user);
-        return mock;
+        // use q to defer the response
+        var deferred = q.defer();
+
+        // insert new user with mongoose user model's create()
+        UserModel.create(user, function (err, doc) {
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+
+        });
+
+        // return a promise
+        return deferred.promise;
     }
 
     function findAllUsers() {
-        return mock;
+        var deferred = q.defer();
+
+        // find all users
+        UserModel.find({}, function (err, allusers) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(allusers);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function findUserById(userId) {
-        for(var m in mock) {
-            if(mock[m]._id == userId) {
-                return mock[m];
+        var deferred = q.defer();
+        UserModel.findOne(
+            {_id: userId},
+            function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
     function findUserByUsername(username) {
-        for(var m in mock) {
-            if(mock[m].username == username) {
-                return mock[m];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findOne(
+            // first argument is predicate
+            {username: username},
+            // doc is unique instance matches predicate
+            function(err, doc) {
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+        return deferred.promise;
     }
 
     function findUserByCredentials(credentials) {
-        for(var u in mock) {
-            if( mock[u].username == credentials.username &&
-                mock[u].password == credentials.password) {
-                return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findOne(
+            // first argument is predicate
+            { username: credentials.username,
+                password: credentials.password },
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+        return deferred.promise;
     }
 
     function updateUserByID(userId,user) {
-        for(var u in mock) {
-            if( mock[u]._id == userId ) {
-                mock.splice(u,1,user);
-                return mock;
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.update(
+            // first argument is predicate
+            { _id: userId},
+            {$set: user},
+            // doc is unique instance matches predicate
+            function(err, doc) {
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+        return deferred.promise;
     }
 
     function deleteUserById(userId) {

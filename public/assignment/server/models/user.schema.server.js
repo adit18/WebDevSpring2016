@@ -8,6 +8,6 @@ module.exports = function(mongoose) {
         lastName: String,
         emails: [String],
         phones: [String]
-    }, {collection: 'user'});
+    }, {collection: 'assignment.user'});
     return UserSchema;
 };

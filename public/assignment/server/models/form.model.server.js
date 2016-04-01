@@ -11,28 +11,38 @@ module.exports = function(db, mongoose) {
 
     var api = {
         createFormForUser : createFormForUser,
-        createFieldForm : createFieldForm,
         findAllForms: findAllForms,
         findAllFormsForUser : findAllFormsForUser,
         findFormById: findFormById,
         findFormByTitle : findFormByTitle,
-        findFieldsByFormId : findFieldsByFormId,
-        findFieldByFieldFormId : findFieldByFieldFormId,
-        deleteFieldByFieldFormId : deleteFieldByFieldFormId,
         updateFormByID : updateFormByID,
-        updateFieldForm :updateFieldForm,
         deleteFormById : deleteFormById,
         setCurrentForm : setCurrentForm,
-        getCurrentForm : getCurrentForm
+        getCurrentForm : getCurrentForm,
+        getMongooseModel : getMongooseModel
     };
     return api;
 
+    function getMongooseModel(){
+        return FormModel;
+    }
+
     function createFormForUser(userId, form) {
-        //form._id = (new Date).getTime();
-        form._id = uuid.v1();
-        form.userId = userId;
-        forms.push(form);
-        return forms;
+        var deferred = q.defer();
+
+        // insert new user with mongoose user model's create()
+        FormModel.create(form, function (err, doc) {
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+        });
+
+        // return a promise
+        return deferred.promise;
     }
 
     function createFieldForm(formId, field) {
@@ -44,6 +54,18 @@ module.exports = function(db, mongoose) {
             }
         }
         return null;
+
+        var deferred = q.defer();
+        UserModel.findOne(
+            {_id: userId},
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(doc);
+                }
+            });
+        return deferred.promise;
     }
 
     function findAllForms() {
@@ -78,62 +100,11 @@ module.exports = function(db, mongoose) {
         return null;
     }
 
-    function findFieldsByFormId(formId) {
-        for(var i in forms){
-            if(forms[i]._id == formId){
-                return forms[i].fields;
-            }
-        }
-        return null;
-    }
-
-    function findFieldByFieldFormId(formId, fieldId) {
-        for(var i in forms){
-            if(forms[i]._id == formId){
-                var iterFields = forms[i].fields;
-                for(var f in iterFields){
-                    if(iterFields[f]._id == fieldId){
-                        return iterFields[f];
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
     function updateFormByID(formId,form) {
         for(var u in forms) {
             if( forms[u]._id == formId ) {
                 forms.splice(u,1,form);
                 return forms;
-            }
-        }
-        return null;
-    }
-
-    function updateFieldForm(formId,fieldId,field) {
-        for(var u in forms) {
-            if(forms[u]._id == formId){
-                for(var f in forms[u].fields){
-                    if(forms[u].fields[f]._id == fieldId){
-                        forms[u].fields.splice(f,1,field);
-                        return forms[u].fields;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    function deleteFieldByFieldFormId(formId, fieldId) {
-        for(var i in forms){
-            if(forms[i]._id == formId){
-                for(var f in forms[i].fields){
-                    if(forms[i].fields[f]._id == fieldId){
-                        forms[i].fields.splice(f,1);
-                        return forms[i].fields;
-                    }
-                }
             }
         }
         return null;

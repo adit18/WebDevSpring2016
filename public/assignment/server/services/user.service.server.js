@@ -139,8 +139,18 @@ module.exports = function(app, userModel) {
     function deleteProfile(req, res) {
         var remUsers = [];
         var userId = req.params.userId;
-        remUsers = userModel.deleteUserById(userId);
-        res.send(remUsers);
+        remUsers = userModel.deleteUserById(userId)
+            .then(
+                function (users) {
+                    res.json(users);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+
+        //res.send(remUsers);
     }
 
     //function login(req, res) {

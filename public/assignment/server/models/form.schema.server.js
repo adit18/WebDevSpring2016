@@ -11,6 +11,6 @@ module.exports = function(mongoose) {
         updated: Date,
         emails: [String],
         phones: [String]
-    }, {collection: 'form'});
+    }, {collection: 'assignment.form'});
     return FormSchema;
 };

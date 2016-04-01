@@ -140,14 +140,17 @@ module.exports = function(db, mongoose) {
     }
 
     function deleteUserById(userId) {
-        for(var u in mock) {
-            if( mock[u]._id == userId ) {
-                var deluser = mock[u].username;
-                mock.splice(u,1);
-                return mock;
-            }
-        }
-        return null;
+        var deferred = q.defer();
+        UserModel.remove(
+            {_id: userId},
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(doc);
+                }
+            });
+        return deferred.promise;
     }
 
     function setCurrentUser (user) {

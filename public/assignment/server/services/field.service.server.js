@@ -5,10 +5,12 @@ module.exports = function(app, formModel) {
     app.put("/api/assignment/form/:formId/field/:fieldId", updateFieldForm);
     app.delete("/api/assignment/form/:formId/field/:fieldId", deleteFieldByFieldFormId);
 
+    var fieldModel   = require("./models/field.model.server.js")(formModel);
+
     function getFieldsByFormId (req, res) {
         var formFields = [];
         var formId = req.params.formId;
-        formFields = formModel.findFieldsByFormId(formId);
+        formFields = fieldModel.findFieldsByFormId(formId);
         res.send(formFields);
     }
 
@@ -16,7 +18,7 @@ module.exports = function(app, formModel) {
         var FieldObj;
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        FieldObj = formModel.findFieldByFieldFormId(formId, fieldId);
+        FieldObj = fieldModel.findFieldByFieldFormId(formId, fieldId);
         res.send(FieldObj);
     }
 
@@ -24,7 +26,7 @@ module.exports = function(app, formModel) {
         var formsRecd = [];
         var field = req.body;
         var formId = req.params.formId;
-        formsRecd = formModel.createFieldForm(formId,field);
+        formsRecd = fieldModel.createFieldForm(formId,field);
         res.send(formsRecd);
     }
 
@@ -33,7 +35,7 @@ module.exports = function(app, formModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        fieldsRecd = formModel.updateFieldForm(formId, fieldId, field);
+        fieldsRecd = fieldModel.updateFieldForm(formId, fieldId, field);
         res.send(fieldsRecd);
     }
 
@@ -41,7 +43,7 @@ module.exports = function(app, formModel) {
         var remFields = [];
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        remFields = formModel.deleteFieldByFieldFormId(formId, fieldId);
+        remFields = fieldModel.deleteFieldByFieldFormId(formId, fieldId);
         res.send(remFields);
     }
 }

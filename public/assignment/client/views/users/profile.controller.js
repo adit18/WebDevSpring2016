@@ -10,7 +10,8 @@
             .getCurrentUser()
             .then(function (response) {
                 $scope.currentUser = response.data;
-                //console.log(vm.profile);
+                console.log("Profile Refresh: ");
+                console.log(response.data);
             });
 
 
@@ -19,12 +20,14 @@
 
         //event handler definitions
         function update(user){
-            console.log("Sending "+user.username);
             var user_id = $scope.currentUser._id;
+            console.log("Sending "+user.username+" ID: "+user_id);
             UserService.
                 updateUser(user_id,user)
                 .then(function(response){
+                    $scope.currentUser = response.data;
                     console.log("Updated "+user.username);
+                    console.log(response.data);
                 });
         }
     }

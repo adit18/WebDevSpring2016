@@ -12,6 +12,7 @@
                 <li role="presentation"><a href="#/forms">Forms</a></li>
                 <li role="presentation" class="active"><a href="#" class="disabled">Fields</a></li>
             </ul>
+            <!--ng-model="all-fields"-->
             <form custom-field-sortable customAxis="y">
                 <div class="row" ng-repeat="field in fields">
                     <div class="form-group col-xs-9 col-sm-6 custom-divmar" ng-model="field" ng-if="field.type == 'TEXT' || field.type == 'EMAIL'">

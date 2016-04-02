@@ -119,13 +119,16 @@ module.exports = function(app, userModel) {
 
     function updateProfile(req, res) {
         var user = req.body;
-        var userId = req.params.userId;
+        var userId = req.params.id;
+        console.log("In User Service : "+userId);
         //user._id = userId;
-        var allUsers = [];
-        allUsers = userModel.updateUserByID(userId, user)
+        //var allUsers = [];
+        userModel.updateUserByID(userId, user)
             .then(
-                function (users) {
-                    res.json(users);
+                function (user) {
+                    console.log("Came till user server ");
+                    req.session.currentUser = user;
+                    res.json(user);
                 },
                 // send error if promise rejected
                 function ( err ) {
@@ -137,9 +140,9 @@ module.exports = function(app, userModel) {
     }
 
     function deleteProfile(req, res) {
-        var remUsers = [];
-        var userId = req.params.userId;
-        remUsers = userModel.deleteUserById(userId)
+        //var remUsers = [];
+        var userId = req.params.id;
+        userModel.deleteUserById(userId)
             .then(
                 function (users) {
                     res.json(users);

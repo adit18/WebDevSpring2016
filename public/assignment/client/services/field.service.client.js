@@ -12,6 +12,7 @@
             getFieldForForm : getFieldForForm,
             deleteFieldFromForm : deleteFieldFromForm,
             updateField : updateField,
+            reorderFields : reorderFields,
             setCurrentForm : setCurrentForm,
             getCurrentForm : getCurrentForm
         };
@@ -49,6 +50,11 @@
 
         function getCurrentForm () {
             return $rootScope.currentForm;
+        }
+
+        function reorderFields(formId,newFields)
+        {
+            return $http.put("/api/assignment/form/"+formId+"/field", newFields);
         }
     }
 })();

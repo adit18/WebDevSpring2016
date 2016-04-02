@@ -1,4 +1,4 @@
-var mock = require("./user.mock.json");
+//var mock = require("./user.mock.json");
 
 // load q promise library
 var q = require("q");
@@ -25,22 +25,14 @@ module.exports = function(db, mongoose) {
     return service;
 
     function createUser(user) {
-        // use q to defer the response
         var deferred = q.defer();
-
-        // insert new user with mongoose user model's create()
         UserModel.create(user, function (err, doc) {
             if (err) {
-                // reject promise if error
                 deferred.reject(err);
             } else {
-                // resolve promise
                 deferred.resolve(doc);
             }
-
         });
-
-        // return a promise
         return deferred.promise;
     }
 
@@ -48,7 +40,7 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         // find all users
-        UserModel.find({}, function (err, allusers) {
+        UserModel.find(function (err, allusers) {
             if (err) {
                 deferred.reject(err);
             } else {
@@ -61,13 +53,14 @@ module.exports = function(db, mongoose) {
 
     function findUserById(userId) {
         var deferred = q.defer();
-        UserModel.findOne(
-            {_id: userId},
-            function (err, doc) {
+
+        UserModel
+            .findById(userId,
+            function (err, user) {
             if (err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(doc);
+                deferred.resolve(user);
             }
         });
         return deferred.promise;
@@ -76,20 +69,14 @@ module.exports = function(db, mongoose) {
     function findUserByUsername(username) {
         var deferred = q.defer();
 
-        // find one retrieves one document
-        UserModel.findOne(
-            // first argument is predicate
-            {username: username},
-            // doc is unique instance matches predicate
+        UserModel
+            .findOne({username: username},
             function(err, doc) {
                 if (err) {
-                    // reject promise if error
                     deferred.reject(err);
                 } else {
-                    // resolve promise
                     deferred.resolve(doc);
                 }
-
             });
         return deferred.promise;
     }
@@ -97,19 +84,11 @@ module.exports = function(db, mongoose) {
     function findUserByCredentials(credentials) {
         var deferred = q.defer();
 
-        // find one retrieves one document
-        UserModel.findOne(
-            // first argument is predicate
-            { username: credentials.username,
-                password: credentials.password },
-
-            // doc is unique instance matches predicate
+        UserModel.findOne( { username: credentials.username, password: credentials.password },
             function(err, doc) {
                 if (err) {
-                    // reject promise if error
                     deferred.reject(err);
                 } else {
-                    // resolve promise
                     deferred.resolve(doc);
                 }
 
@@ -117,25 +96,36 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function updateUserByID(userId,user) {
+    function updateUserByID(userId,userObj) {
         var deferred = q.defer();
+        console.log("Inside berfore : "+userId);
 
-        // find one retrieves one document
-        UserModel.update(
-            // first argument is predicate
-            { _id: userId},
-            {$set: user},
-            // doc is unique instance matches predicate
-            function(err, doc) {
-                if (err) {
-                    // reject promise if error
-                    deferred.reject(err);
-                } else {
-                    // resolve promise
-                    deferred.resolve(doc);
+        UserModel
+            .findById(userId,
+                function (err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    }
+                    else {
+                        console.log("Inside Update User: ");
+                        console.log(JSON.stringify(user));
+                        user.username = userObj.username;
+                        user.firstName = userObj.firstName;
+                        user.lastName = userObj.lastName;
+                        user.emails = [userObj.email];
+                        //user.phones = [];
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updUser);
+                            }
+                        });
+                        console.log("Resolved!");
+                    }
                 }
-
-            });
+            );
         return deferred.promise;
     }
 

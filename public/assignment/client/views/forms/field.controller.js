@@ -142,5 +142,14 @@
                 });
         }
 
+        //$scope.$watch('all-fields', function (newVal, oldVal) {
+        //    FieldService
+        //        .reorderFields(formId,newVal)
+        //        .then(function (response){
+        //            $scope.fields = response.data;
+        //        });
+        //
+        //}, true);
+
     }
 })();

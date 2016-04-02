@@ -4,46 +4,103 @@ module.exports = function(app, formModel) {
     app.post("/api/assignment/form/:formId/field", createFieldForm);
     app.put("/api/assignment/form/:formId/field/:fieldId", updateFieldForm);
     app.delete("/api/assignment/form/:formId/field/:fieldId", deleteFieldByFieldFormId);
+    app.put("/api/assignment/form/:formId/field", reorderFields);
 
-    var fieldModel   = require("./models/field.model.server.js")(formModel);
+    var fieldModel   = require("./../models/field.model.server.js")(formModel);
 
     function getFieldsByFormId (req, res) {
-        var formFields = [];
+        //var formFields = [];
         var formId = req.params.formId;
-        formFields = fieldModel.findFieldsByFormId(formId);
-        res.send(formFields);
+        fieldModel.findFieldsByFormId(formId)
+            .then(
+                function ( fields ) {
+                    res.json(fields);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
+        //res.send(formFields);
     }
 
     function getFieldByFieldFormId (req, res) {
-        var FieldObj;
+        //var FieldObj;
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        FieldObj = fieldModel.findFieldByFieldFormId(formId, fieldId);
-        res.send(FieldObj);
+        fieldModel.findFieldByFieldFormId(formId, fieldId)
+            .then(
+                function ( field ) {
+                    res.json(field);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+        //res.send(FieldObj);
     }
 
     function createFieldForm (req, res) {
-        var formsRecd = [];
+        //var formsRecd = [];
         var field = req.body;
         var formId = req.params.formId;
-        formsRecd = fieldModel.createFieldForm(formId,field);
-        res.send(formsRecd);
+        fieldModel.createFieldForm(formId,field)
+            .then(
+                function ( form ) {
+                    res.json(form.fields);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+        //res.send(formsRecd);
     }
 
     function updateFieldForm (req, res) {
-        var fieldsRecd = [];
+        //var fieldsRecd = [];
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var field = req.body;
-        fieldsRecd = fieldModel.updateFieldForm(formId, fieldId, field);
-        res.send(fieldsRecd);
+        console.log("Field server service :");
+        console.log(field);
+        fieldModel.updateFieldForm(formId, fieldId, field)
+            .then(
+                function ( form ) {
+                    res.json(form.fields);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+        //res.send(fieldsRecd);
     }
 
     function deleteFieldByFieldFormId (req, res) {
-        var remFields = [];
+        //var remFields = [];
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        remFields = fieldModel.deleteFieldByFieldFormId(formId, fieldId);
-        res.send(remFields);
+        fieldModel.deleteFieldByFieldFormId(formId, fieldId)
+            .then(
+                function ( form ) {
+                    res.json(form.fields);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+        //res.send(remFields);
+    }
+
+    function reorderFields (req, res) {
+        var formId = req.params.formId;
+        var fields = req.body;
+        fieldModel.reorderFieldsInForm(formId,fields)
+            .then(
+                function ( form ) {
+                    res.json(form.fields);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
     }
 }

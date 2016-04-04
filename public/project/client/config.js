@@ -27,14 +27,23 @@
                         controller: "LoginController",
                         controllerAs: "model"
                     })
-                .when("/profile",
+                .when("/updateprofile",
                     {
-                        templateUrl: "views/profile/profile.view.html",
-                        controller: "ProfileController",
+                        templateUrl: "views/profile/updateprofile.view.html",
+                        controller: "UpdateprofileController",
                         controllerAs: "model",
                         resolve: {
                             checkLoggedIn: checkLoggedIn
                         }
+                    })
+                .when("/profile",
+                    {
+                        templateUrl: "views/profile/profile.view.html",
+                        //controller: "UpdateprofileController",
+                        //controllerAs: "model",
+                        //resolve: {
+                        //    checkLoggedIn: checkLoggedIn
+                        //}
                     })
                 .when("/search/:searchTerm",
                     {

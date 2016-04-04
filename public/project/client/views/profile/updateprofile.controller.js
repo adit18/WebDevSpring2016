@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("FoodQuotientApp")
-        .controller("ProfileController",ProfileController);
+        .controller("UpdateprofileController",UpdateprofileController);
 
-    function ProfileController($location,UserService) {
+    function UpdateprofileController($location,UserService) {
         var vm = this;
 
         //event handlers declarations

@@ -1,43 +1,43 @@
-<!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">-->
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+        <!--<div class="col-md-offset-2 col-md-10 col-lg-offset-3 col-lg-6">-->
+        <div class="col-md-12 col-lg-12">
             <div class="well profile">
-                <div class="col-sm-12">
-                    <div class="col-xs-12 col-sm-8">
-                        <h2>Alice Wonderland</h2>
-                        <p><strong>About: </strong> </p>
+                <div class="col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <figure>
+                            <img src="http://richlandtree.com/Images/ProfileIcon.png" alt="" class="img-circle img-responsive">
+                        </figure>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <h2>{{model.profile.firstName}} {{model.profile.lastName}}</h2>
+                        <p><strong>Email: </strong> {{model.profile.email}}</p>
                         <p><strong>Hobbies: </strong> </p>
-                        <p><strong>Skills: </strong>
-                            <span class="tags"></span>
-                            <span class="tags"></span>
-                            <span class="tags"></span>
+                        <p><strong>Cuisines: </strong>
+                            <span class="tags">indian</span>
+                            <span class="tags">chinese</span>
+                            <span class="tags">italian</span>
                             <span class="tags">bootstrap3</span>
                         </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 text-center">
-                        <figure>
-                            <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
-                            <figcaption class="ratings">
-                                <p>Ratings
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
+                        <div ng-if="model.profile.likesPlaces.length">
+                            <h3>Food Places I Like</h3>
+
+                            <div class="panel panel-default"
+                                 ng-repeat="place in model.profile.likesPlaces">
+                                <div class="panel-heading">
+                                    <a href="#/details/{{place.yelpID}}">
+                                        {{place.title}}
                                     </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
+                                </div>
+                                <div class="panel-body">
+                                    <a href="#/details/{{place.yelpID}}">
+                                        <img ng-src="{{place.poster}}" width="100px"/>
                                     </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star-o"></span>
-                                    </a>
-                                </p>
-                            </figcaption>
-                        </figure>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 divider text-center">

@@ -39,11 +39,11 @@
                 .when("/profile",
                     {
                         templateUrl: "views/profile/profile.view.html",
-                        //controller: "UpdateprofileController",
-                        //controllerAs: "model",
-                        //resolve: {
-                        //    checkLoggedIn: checkLoggedIn
-                        //}
+                        controller: "ProfileController",
+                        controllerAs: "model",
+                        resolve: {
+                            checkLoggedIn: checkLoggedIn
+                        }
                     })
                 .when("/search/:searchTerm",
                     {

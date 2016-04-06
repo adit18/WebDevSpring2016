@@ -54,6 +54,8 @@ body {
     margin-right: -21px; /* 20px padding + 1px border */
     margin-bottom: 20px;
     margin-left: -20px;
+
+
 }
 .nav-sidebar > li > a {
     padding-right: 20px;
@@ -63,8 +65,8 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
     color: #fff;
-    background-color: #22264b;
-    /*#e62739;*/
+    background-color:#22264b ;
+    /*#e62739; #22264b*/
 }
 
 /*

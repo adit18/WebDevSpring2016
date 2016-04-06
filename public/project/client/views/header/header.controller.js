@@ -16,9 +16,9 @@
                 .getCurrentUser()
                 .then(function(response) {
                     var currentUser = response.data;
-                    if(currentUser) {
-                        $('#pro').html(currentUser.username);
-                    }
+                    //if(currentUser) {
+                    //    $('#pro').html(currentUser.username);
+                    //}
             });
         }
         init();

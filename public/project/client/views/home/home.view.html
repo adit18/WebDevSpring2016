@@ -38,7 +38,7 @@
 <!--</div>-->
 
 <!--data-interval="10000"-->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div ng-hide="currentUser" id="myCarousel" class="carousel slide" data-ride="carousel">
     <div id="custom-search-input">
     <div class="input-group col-md-9 search-margin">
     <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control input-lg search-box"
@@ -185,3 +185,59 @@
 <!--</footer>-->
 
 <!--</div>&lt;!&ndash; /.container &ndash;&gt;-->
+
+
+
+    <!--<div class="row">-->
+        <!--<div class="col-md-3">-->
+            <!--<div class="profile-sidebar">-->
+                <!--&lt;!&ndash; SIDEBAR MENU &ndash;&gt;-->
+                <!--<div class="profile-usermenu">-->
+                    <!--<ul class="nav">-->
+                        <!--<li class="active">-->
+                            <!--<a href="#">-->
+                                <!--<i class="glyphicon glyphicon-home"></i>-->
+                                <!--Overview </a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">-->
+                                <!--<i class="glyphicon glyphicon-user"></i>-->
+                                <!--Account Settings </a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#" target="_blank">-->
+                                <!--<i class="glyphicon glyphicon-ok"></i>-->
+                                <!--Tasks </a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="#">-->
+                                <!--<i class="glyphicon glyphicon-flag"></i>-->
+                                <!--Help </a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; END MENU &ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<div class="row">
+<div class="col-sm-3 col-md-2 sidebar well profile">
+    <ul class="nav nav-sidebar">
+
+        <li ng-class="{'active' : model.$location.url() == '/'}" ><a href="#/">
+            <i class="glyphicon glyphicon-home"></i> &nbsp; &nbsp; Home</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/profile">
+            <i class="glyphicon glyphicon-user"></i> &nbsp; &nbsp; Profile Overview</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/">
+            <i class="fa fa-users"></i> &nbsp; &nbsp; Followers</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/profile">
+            <i class="fa fa-star"></i> &nbsp; &nbsp; Reviews</a></li>
+        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/profile">
+            <i class="fa fa-users"></i> &nbsp; &nbsp; Following</a></li>
+    </ul>
+</div>
+<div>
+    <h1>More things to follow!</h1>
+</div>
+</div>

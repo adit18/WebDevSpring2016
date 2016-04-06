@@ -11,13 +11,13 @@
                     </div>
                     <div class="col-xs-12 col-sm-8 col-md-8">
                         <h2>{{model.profile.firstName}} {{model.profile.lastName}}</h2>
-                        <p><strong>Email: </strong> {{model.profile.email}}</p>
-                        <p><strong>Hobbies: </strong> </p>
+                        <p><strong>Email: </strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{model.profile.email}}</p>
+                        <p><strong>Username: </strong>  &nbsp; {{model.profile.username}} </p>
+                        <p><strong>Password: </strong>  &nbsp; &nbsp;{{model.profile.password}} </p>
                         <p><strong>Cuisines: </strong>
                             <span class="tags">indian</span>
                             <span class="tags">chinese</span>
                             <span class="tags">italian</span>
-                            <span class="tags">bootstrap3</span>
                         </p>
                         <div ng-if="model.profile.likesPlaces.length">
                             <h3>Food Places I Like</h3>
@@ -38,6 +38,8 @@
                             <br/>
                             <br/>
                         </div>
+                        <br/>
+                        <a class="btn btn-success" href="#/updateprofile" ><span class="fa fa-pencil"></span> Edit Profile </a>
                     </div>
                 </div>
                 <div class="col-xs-12 divider text-center">

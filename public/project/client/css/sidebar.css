@@ -1,0 +1,112 @@
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 80px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: transparent;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: rgba(0, 150, 136, 0.7)  !important ;
+        opacity: 0.5;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.side-nav>li>ul>li>a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: whitesmoke;
+}
+
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 20px;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 100px;
+    }
+
+    #page-wrapper {
+        padding: 0px;
+        padding-top: 40px;
+
+    }
+}
+
+@media(max-width:767px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #page-wrapper {
+        padding-top: 20px;
+    }
+}
+
+.main {
+    padding: 50px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .main {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+
+.profile-bg {
+    background: url('https://s-media-cache-ak0.pinimg.com/originals/39/2f/38/392f38884a695299b0b0a295f5edb1a2.png') center center;
+    background-attachment: fixed;
+    min-height: 740px;
+    /*url('http://brandflow.pl/wp-content/uploads/2015/09/slider2.jpg')repeat-y center center;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}

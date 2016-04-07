@@ -40,15 +40,15 @@
 <!--data-interval="10000"-->
 <div ng-hide="currentUser" id="myCarousel" class="carousel slide" data-ride="carousel">
     <div id="custom-search-input">
-    <div class="input-group col-md-9 search-margin">
-    <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control input-lg search-box"
-    placeholder="Search for food..like 'Cheese Burger'">
+        <div class="input-group col-md-9 search-margin">
+            <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control input-lg search-box"
+                   placeholder="Search for food..like 'Cheese Burger'">
     <span class="input-group-btn">
     <button id="searchFoodBtn" ng-click="model.searchRedirect()" class="search-query btn btn-primary" type="button" >
-    <span class="glyphicon glyphicon-search glyphicon-size"></span>
+        <span class="glyphicon glyphicon-search glyphicon-size"></span>
     </button>
     </span>
-    </div>
+        </div>
     </div>
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -67,14 +67,14 @@
                 <h3>Search, Checkin, Review!</h3>
                 <p><a class="btn btn-lg btn-primary" href="#/register" role="button">Sign up today</a></p>
                 <!--<div class="row">-->
-                    <!--<div class="col-lg-9">-->
-                        <!--<div class="input-group">-->
-                            <!--<input type="text" class="form-control" placeholder="Search for...">-->
-                            <!--<span class="input-group-btn">-->
-                                <!--<button class="btn btn-default" type="button">Go!</button>-->
-                            <!--</span>-->
-                        <!--</div>&lt;!&ndash; /input-group &ndash;&gt;-->
-                    <!--</div>&lt;!&ndash; /.col-lg-6 &ndash;&gt;-->
+                <!--<div class="col-lg-9">-->
+                <!--<div class="input-group">-->
+                <!--<input type="text" class="form-control" placeholder="Search for...">-->
+                <!--<span class="input-group-btn">-->
+                <!--<button class="btn btn-default" type="button">Go!</button>-->
+                <!--</span>-->
+                <!--</div>&lt;!&ndash; /input-group &ndash;&gt;-->
+                <!--</div>&lt;!&ndash; /.col-lg-6 &ndash;&gt;-->
                 <!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
             </div>
         </div>
@@ -82,7 +82,7 @@
         <div class="item">
             <img class="img-carousel img-responsive center-block" src="http://lorempixel.com/1400/500/food/2/" alt="slide2">
             <div class="carousel-caption">
-                <h3>Like a food place?, review it!</h3>
+                <h3>What's your food quotient? Sign up to know more!</h3>
                 <p><a class="btn btn-lg btn-primary" href="#/register" role="button">Sign up today</a></p>
             </div>
         </div>
@@ -90,7 +90,7 @@
         <div class="item">
             <img class="img-carousel img-responsive center-block" src="http://lorempixel.com/1356/500/food/3/" alt="Flower">
             <div class="carousel-caption">
-                <h3>Like a place? Share it with your friends</h3>
+                <h3>Like a food place? Share it with your friends</h3>
                 <p><a class="btn btn-lg btn-primary" href="#/register" role="button">Sign up today</a></p>
             </div>
         </div>
@@ -187,57 +187,48 @@
 <!--</div>&lt;!&ndash; /.container &ndash;&gt;-->
 
 
+<div ng-show="currentUser" class="col-sm-3 col-md-2 sidebar well">
+    <ul class="nav nav-sidebar">
+        <li ng-class="{'active' : $location.url() == '/'}" >
+            <a href="#/"><i class="glyphicon glyphicon-home glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp; Home </a></li>
+        <li ng-class="{'active' : $location.url() == '/profile'}">
+            <a href="#/profile"><i class="glyphicon glyphicon-user glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp; Profile Overview </a></li>
+        <li ng-class="{'active' : $location.url() == '/followers'}">
+            <a href="#/admin"><i class="fa fa-users glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
+        <li ng-class="{'active' : $location.url() == '/reviews'}">
+            <a href="#/"><i class="fa fa-star glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
+        <li ng-class="{'active' : $location.url() == '/following'}">
+            <a href="#/admin"><i class="glyphicon glyphicon-circle-arrow-right glyphicon-size"></i>  &nbsp; &nbsp; &nbsp; &nbsp; Following </a></li>
+    </ul>
+</div>
 
-    <!--<div class="row">-->
-        <!--<div class="col-md-3">-->
-            <!--<div class="profile-sidebar">-->
-                <!--&lt;!&ndash; SIDEBAR MENU &ndash;&gt;-->
-                <!--<div class="profile-usermenu">-->
-                    <!--<ul class="nav">-->
-                        <!--<li class="active">-->
-                            <!--<a href="#">-->
-                                <!--<i class="glyphicon glyphicon-home"></i>-->
-                                <!--Overview </a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">-->
-                                <!--<i class="glyphicon glyphicon-user"></i>-->
-                                <!--Account Settings </a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#" target="_blank">-->
-                                <!--<i class="glyphicon glyphicon-ok"></i>-->
-                                <!--Tasks </a>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a href="#">-->
-                                <!--<i class="glyphicon glyphicon-flag"></i>-->
-                                <!--Help </a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; END MENU &ndash;&gt;-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="row">-->
+
+            <!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main jumbotron">-->
+
+                <!--<h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>-->
+                <!--<p>Food quotient is an app that let's you search food places, review them and share it with our friends!-->
+                    <!--Check in more frequently to know what's your food quotient, and what your taste buds crave!-->
+                <!--</p>-->
+
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
 
-<div class="row">
-<div class="col-sm-3 col-md-2 sidebar well profile">
-    <ul class="nav nav-sidebar">
+<div class="container-fluid">
+    <div class="row">
 
-        <li ng-class="{'active' : model.$location.url() == '/'}" ><a href="#/">
-            <i class="glyphicon glyphicon-home"></i> &nbsp; &nbsp; Home</a></li>
-        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/profile">
-            <i class="glyphicon glyphicon-user"></i> &nbsp; &nbsp; Profile Overview</a></li>
-        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/">
-            <i class="fa fa-users"></i> &nbsp; &nbsp; Followers</a></li>
-        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/profile">
-            <i class="fa fa-star"></i> &nbsp; &nbsp; Reviews</a></li>
-        <li ng-class="{'active' : model.$location.url() == '/profile'}" ><a href="#/profile">
-            <i class="fa fa-users"></i> &nbsp; &nbsp; Following</a></li>
-    </ul>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+            <h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>
+            <p>Food quotient is an app that let's you search food places, review them and share it with our friends!
+            Check in more frequently to know what's your food quotient, and what your taste buds crave!
+            </p>
+
+        </div>
+    </div>
 </div>
-<div>
-    <h1>More things to follow!</h1>
-</div>
-</div>
+
+

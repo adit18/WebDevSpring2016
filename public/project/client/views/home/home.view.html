@@ -42,7 +42,7 @@
     <div id="custom-search-input">
         <div class="input-group col-md-9 search-margin">
             <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control input-lg search-box"
-                   placeholder="Search for food..like 'Cheese Burger'">
+                   placeholder="Search for food..like 'Pasta'">
     <span class="input-group-btn">
     <button id="searchFoodBtn" ng-click="model.searchRedirect()" class="search-query btn btn-primary" type="button" >
         <span class="glyphicon glyphicon-search glyphicon-size"></span>
@@ -190,15 +190,15 @@
 <div ng-show="currentUser" class="col-sm-3 col-md-2 sidebar well">
     <ul class="nav nav-sidebar">
         <li ng-class="{'active' : $location.url() == '/'}" >
-            <a href="#/"><i class="glyphicon glyphicon-home glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp; Home </a></li>
+            <a href="#/"><i class="glyphicon glyphicon-home"></i> &nbsp; &nbsp; &nbsp; &nbsp; Home </a></li>
         <li ng-class="{'active' : $location.url() == '/profile'}">
-            <a href="#/profile"><i class="glyphicon glyphicon-user glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp; Profile Overview </a></li>
+            <a href="#/profile"><i class="glyphicon glyphicon-user"></i> &nbsp; &nbsp; &nbsp; &nbsp; Profile Overview </a></li>
         <li ng-class="{'active' : $location.url() == '/followers'}">
-            <a href="#/admin"><i class="fa fa-users glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
+            <a href="#/admin"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
         <li ng-class="{'active' : $location.url() == '/reviews'}">
-            <a href="#/"><i class="fa fa-star glyphicon-size"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
+            <a href="#/"><i class="fa fa-star"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
         <li ng-class="{'active' : $location.url() == '/following'}">
-            <a href="#/admin"><i class="glyphicon glyphicon-circle-arrow-right glyphicon-size"></i>  &nbsp; &nbsp; &nbsp; &nbsp; Following </a></li>
+            <a href="#/admin"><i class="glyphicon glyphicon-circle-arrow-right "></i>  &nbsp; &nbsp; &nbsp; &nbsp; Following </a></li>
     </ul>
 </div>
 
@@ -216,7 +216,7 @@
         <!--</div>-->
     <!--</div>-->
 
-<div class="container-fluid">
+<div ng-show="currentUser" class="container-fluid">
     <div class="row">
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -224,9 +224,50 @@
 
             <h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>
             <p>Food quotient is an app that let's you search food places, review them and share it with our friends!
-            Check in more frequently to know what's your food quotient, and what your taste buds crave!
+            Check in more frequently to know what's your food quotient, and what your tastebuds crave!
             </p>
+            <hr/>
+            <br/>
+            <br/>
+            <h2 class="page-header"> Recent activity from foodies you follow</h2>
 
+            <div>
+                <div class="row">
+                    <article class="search-result row">
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                            <h3><a href="#" title="">Science has not yet mastered prophecy.</a></h3>
+                            <p>When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is.
+                                Mankind, let us preserve and increase this beauty, and not destroy it!</p>
+
+                        </div>
+                        <span class="clearfix borda"></span>
+                        <hr/>
+                    </article>
+
+                    <article class="search-result row">
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2">
+                            <ul class="meta-search">
+                                <li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
+                                <li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
+                                <li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                            <h3><a href="#" title="">Spaceflights cannot be stopped.</a></h3>
+                            <p>Curious that we spend more time congratulating people who have succeeded than encouraging people who have not.</p>
+                            <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+                        </div>
+                        <span class="clearfix borda"></span>
+                        <hr/>
+                    </article>
+                </div>
+            </div>
         </div>
     </div>
 </div>

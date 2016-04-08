@@ -27,7 +27,7 @@
             });
 
             FoodService
-                .findUserLikes (bizID)
+                .findUserReviews (bizID)
                 .then(function(response){
                     $scope.place = response.data;
 
@@ -36,9 +36,10 @@
         init();
 
         function favorite(place) {
+            console.log("Buffer: "+place.buffer);
             if(currentUser) {
                 FoodService
-                    .userLikesFood(currentUser._id, place);
+                    .userReviewsFood(currentUser._id, place);
             } else {
                 $location.url("/login");
             }

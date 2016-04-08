@@ -1,21 +1,21 @@
 module.exports = function(app, foodModel, userModel) {
-    app.post("/service/food/user/:userId/food/:yelpID", userLikesPlace);
-    app.get("/service/food/place/:yelpID/user", findUserLikes);
+    app.post("/service/food/user/:userId/food/:yelpID", userReviewsPlace);
+    app.get("/service/food/place/:yelpID/user", findUserReviews);
 
-    function findUserLikes (req, res) {
+    function findUserReviews (req, res) {
         var yelpID = req.params.yelpID;
         console.log(yelpID);
         var place = foodModel.findPlaceByYelpID(yelpID);
         if(place) {
-            var userLikesIDs = place.likes;
+            var userLikesIDs = place.reviews;
             console.log(userLikesIDs);
-            var users = userModel.findUsersByIds(userLikesIDs);
-            place.userLikes = users; //Objects
+            //var users = userModel.findUsersByIds(userLikesIDs);
+            //place.userLikes = users; //Objects
         }
         res.send(place);
     }
 
-    function userLikesPlace(req, res) {
+    function userReviewsPlace(req, res) {
         var placeYelp  = req.body;
         var userId = req.params.userId;
         var yelpID = req.params.yelpID;
@@ -23,24 +23,32 @@ module.exports = function(app, foodModel, userModel) {
         if(!place) {
             place = foodModel.createFoodPlace(placeYelp);
         }
-        if(!place.likes) {
-            place.likes = [];
+
+        var review = {};
+        review.userID = userId;
+        review.yelpID = yelpID;
+        review.comment = placeYelp.buffer;
+        //review.ratval = placeYelp.ratval;
+
+        if(!place.reviews) {
+            place.reviews = [];
         }
-        place.likes.push(userId);
+        place.reviews.push(review);
 
         var user = userModel.findUserById(userId);
-        if(!user.likes) {
-            user.likes = [];
+        if(!user.reviews) {
+            user.reviews = [];
         }
-        user.likes.push(yelpID);
+
+        user.reviews.push(review);
 
         //if(!user.likesPlaces) {
         //    user.likesPlaces = [];
         //}
         //user.likesPlaces.push(place);
 
-        console.log(user);
-        console.log(place);
+        //console.log("This: "+user);
+        //console.log(place);
         res.send(200);
     }
 }

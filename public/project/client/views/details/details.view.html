@@ -4,7 +4,7 @@
             <div class="well">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{data.image_large}}" class="img-responsive" style="height: 350px"/>
+                        <img src="{{data.image_large}}" class="img-responsive" />
                     </div>
                     <div class="col-md-6">
                         <h2>{{data.name}}</h2>
@@ -36,41 +36,48 @@
                         <!--</button>-->
                         <!--</div>-->
                         <!--</div>-->
-                        <h3>My Review Rating: </h3>
-                        <div>
-                            <button class="btn btn-success"
-                                    ng-click="favorite(data)">
-                                Loved it!
-                            </button>
+
+                        <br />
+                    </div>
+                </div>
+                <div>
+                    <div ng-if="!currentUser">
+                        <p><a class="btn btn-success" href="#/register" role="button">Please signup to review!</a></p>
+                    </div>
+                    <h3>My Review Rating: </h3>
+                    <div>
+                        <button class="btn btn-success"
+                                ng-click="favorite(data)">
+                            Loved it!
+                        </button>
                             <span ng-show="place.likes.indexOf(currentUser._id) > -1">
                                 <i class="glyphicon glyphicon-star glyphicon-size"></i>
                             </span>
                             <span ng-show="!place || !place.likes || place.likes.indexOf(currentUser._id) == -1">
                                 <i class="glyphicon glyphicon-star-empty glyphicon-size"></i>
                             </span>
-                        </div>
-
-                        <h3>My Review Comments:</h3>
-                        <div>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-
-                        <br />
-                        <div ng-if="!currentUser" class="col-md-7">
-                            <p><a class="btn btn-success" href="#/register" role="button">Please signup to review!</a></p>
-                        </div>
-
-                        <div ng-if="place.userLikes" class="col-md-9">
-                            <h3>Other Users that like this Place: </h3>
-                            <ul>
-                                <li ng-repeat="user in place.userLikes">
-                                    {{user.username}}
-                                </li>
-                            </ul>
-                        </div>
-
-
                     </div>
+
+                    <h3>Write Review :</h3>
+                    <div>
+                        <textarea ng-model="data.buffer" class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                    <br/>
+                    <button class="btn btn-success"
+                            ng-click="favorite(data)">
+                        Add Review
+                    </button>
+
+                    <div ng-if="place.reviews">
+                        <h3>Other Users that like this Place: </h3>
+                        <ul>
+                            <li ng-repeat="review in place.reviews">
+                                User: {{review.userID}}
+                                Review: {{review.comment}}
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>

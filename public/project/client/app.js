@@ -1,5 +1,5 @@
 (function()
 {
     angular
-        .module("FoodQuotientApp", ["ngRoute"]);
+        .module("FoodQuotientApp", ["ngRoute",'ngAnimate', 'ui.bootstrap']);
 })();

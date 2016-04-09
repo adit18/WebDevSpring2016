@@ -7,10 +7,21 @@
         //var vm = this;
         var bizID = $routeParams.bizID;
         var currentUser = $rootScope.currentUser;
-        $scope.favorite = favorite;
-        $scope.getStarCount = function(num) {
-            return new Array(num);
+        $scope.addReview = addReview;
+
+        //Rating
+        $scope.rate = 3;
+        $scope.max = 5;
+        $scope.isReadonly = false;
+
+        $scope.hoveringOver = function(value) {
+            $scope.overStar = value;
+            $scope.percent = 100 * (value / $scope.max);
         };
+
+        //$scope.ratingStates = [
+        //    {stateOn: 'glyphicon glyphicon-star', stateOff: 'glyphicon glyphicon-star-empty'}
+        //];
 
         function init() {
             YelpService.searchBizYelp(bizID, function (response){
@@ -35,8 +46,10 @@
         }
         init();
 
-        function favorite(place) {
+        function addReview(place) {
             console.log("Buffer: "+place.buffer);
+            place.ratval = $scope.rate;
+            console.log("Rating: "+place.ratval);
             if(currentUser) {
                 FoodService
                     .userReviewsFood(currentUser._id, place);

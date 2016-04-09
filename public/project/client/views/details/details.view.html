@@ -19,9 +19,13 @@
                         <h3>How to get there: </h3>
                         <div> <i class="fa fa-phone fa-lg"></i>   {{data.display_phone}}</div>
                         <br />
-                        <div ng-repeat="line in data.location.display_address">
-                            <i class="fa fa-location-arrow fa-lg"></i>
+                        <div class="row">
+                            <i class="fa fa-location-arrow fa-lg col-md-1"></i>
+                            <div class="col-md-5">
+                            <div ng-repeat="line in data.location.display_address">
                             {{line}}
+                            </div>
+                            </div>
                         </div>
                         <br />
                         <!--<div class="col-md-7">-->
@@ -44,18 +48,29 @@
                     <div ng-if="!currentUser">
                         <p><a class="btn btn-success" href="#/register" role="button">Please signup to review!</a></p>
                     </div>
-                    <h3>My Review Rating: </h3>
+                    <h3>Select your Rating: </h3>
+                    <!--<div>-->
+                        <!--<button class="btn btn-success"-->
+                                <!--ng-click="favorite(data)">-->
+                            <!--Loved it!-->
+                        <!--</button>-->
+                            <!--<span ng-show="place.likes.indexOf(currentUser._id) > -1">-->
+                                <!--<i class="glyphicon glyphicon-star glyphicon-size"></i>-->
+                            <!--</span>-->
+                            <!--<span ng-show="!place || !place.likes || place.likes.indexOf(currentUser._id) == -1">-->
+                                <!--<i class="glyphicon glyphicon-star-empty glyphicon-size"></i>-->
+                            <!--</span>-->
+                    <!--</div>-->
                     <div>
-                        <button class="btn btn-success"
-                                ng-click="favorite(data)">
-                            Loved it!
-                        </button>
-                            <span ng-show="place.likes.indexOf(currentUser._id) > -1">
-                                <i class="glyphicon glyphicon-star glyphicon-size"></i>
-                            </span>
-                            <span ng-show="!place || !place.likes || place.likes.indexOf(currentUser._id) == -1">
-                                <i class="glyphicon glyphicon-star-empty glyphicon-size"></i>
-                            </span>
+                        <uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+                        <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+                        <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+                        <hr />
+
+                        <h4>Custom icons</h4>
+                        <!--<div ng-init="x = 5"><uib-rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" aria-labelledby="custom-icons-1"></uib-rating> <b>(<i>Rate:</i> {{x}})</b></div>-->
+                        <!--<div ng-init="y = 2"><uib-rating ng-model="y" rating-states="ratingStates" aria-labelledby="custom-icons-2"></uib-rating> <b>(<i>Rate:</i> {{y}})</b></div>-->
                     </div>
 
                     <h3>Write Review :</h3>
@@ -64,7 +79,7 @@
                     </div>
                     <br/>
                     <button class="btn btn-success"
-                            ng-click="favorite(data)">
+                            ng-click="addReview(data)">
                         Add Review
                     </button>
 

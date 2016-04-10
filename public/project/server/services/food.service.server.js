@@ -2,6 +2,7 @@ module.exports = function(app, foodModel, userModel) {
     app.post("/service/food/user/:userId/food/:yelpID", userReviewsPlace);
     app.get("/service/food/place/:yelpID/user", findUserReviews);
     app.put("/service/food/review/:reviewId", updateReviewInFood);
+    app.post("/service/food/place/deletereview", deleteReviewInFood);
 
     function findUserReviews (req, res) {
         var yelpID = req.params.yelpID;
@@ -58,5 +59,13 @@ module.exports = function(app, foodModel, userModel) {
         var updReview = foodModel.updateReviewByID(revId, review);
         var userReview = userModel.updateUserReviewByID(revId, review);
         res.send(updReview);
+    }
+
+    function deleteReviewInFood (req, res) {
+        var allRevs = [];
+        var review = req.body;
+        allRevs = foodModel.deleteReviewById(review._id,review.yelpID);
+        var allUserRevs = userModel.deleteUserReviewById(review._id,review.userID);
+        res.send(allRevs);
     }
 }

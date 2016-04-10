@@ -12,8 +12,9 @@
         $scope.addReview = addReview;
         $scope.selectReview = selectReview;
         $scope.updateReview = updateReview;
-        //$scope.deleteReview = deleteReview;
+        $scope.deleteReview = deleteReview;
 
+        $scope.updFlag = false;
         //Rating
         $scope.rate = 3;
         $scope.max = 5;
@@ -79,6 +80,7 @@
             $rootScope.currentReview = review;
             $scope.rate = review.ratval;
             $scope.data.buffer = review.comment;
+            $scope.updFlag = true;
             console.log("Editing "+ review._id);
         }
 
@@ -91,6 +93,25 @@
                 .updateReviewById($rootScope.currentReview._id, tempReview)
                 .then(function (response) {
                     console.log("Review updated "+ response.data._id);
+                    FoodService
+                        .findUserReviews (bizID)
+                        .then(function(response){
+                            $scope.place = response.data;
+                            $scope.data.buffer = null;
+                            $scope.updFlag = false;
+                        });
+                });
+
+            //Update user reviews
+        }
+
+        function deleteReview(review){
+            //var tempReview = $rootScope.currentReview ;
+            console.log("Deleting "+review._id);
+            FoodService
+                .deleteReviewById(review)
+                .then(function (response) {
+                    console.log("Review deleted: "+review._id);
                     FoodService
                         .findUserReviews (bizID)
                         .then(function(response){

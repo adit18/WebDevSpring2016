@@ -7,6 +7,7 @@
         var api = {
             userReviewsFood: userReviewsFood,
             updateReviewById : updateReviewById,
+            deleteReviewById : deleteReviewById,
             findUserReviews: findUserReviews
         };
         return api;
@@ -22,6 +23,11 @@
         function updateReviewById(reviewId, review)
         {
             return $http.put("/service/food/review/"+reviewId, review);
+        }
+
+        function deleteReviewById(review)
+        {
+            return $http.post("/service/food/place/deletereview",review);
         }
     }
 })();

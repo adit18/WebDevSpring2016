@@ -5,7 +5,8 @@ module.exports = function() {
         findPlacesByYelpIDs: findPlacesByYelpIDs,
         createFoodPlace: createFoodPlace,
         addReviewFoodPlace : addReviewFoodPlace,
-        updateReviewByID : updateReviewByID
+        updateReviewByID : updateReviewByID,
+        deleteReviewById: deleteReviewById
     };
     return api;
 
@@ -81,5 +82,17 @@ module.exports = function() {
         return null;
     }
 
-
+    function deleteReviewById(reviewId,yelpID) {
+        for(var u in foodPlaces) {
+            if(foodPlaces[u].yelpID == yelpID){
+                for(var f in foodPlaces[u].reviews){
+                    if(foodPlaces[u].reviews[f]._id == reviewId){
+                        foodPlaces[u].reviews.splice(f,1);
+                        return foodPlaces[u].reviews;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

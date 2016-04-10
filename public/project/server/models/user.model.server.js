@@ -8,7 +8,8 @@ module.exports = function() {
         findUserById: findUserById,
         findUsersByIds: findUsersByIds,
         addReviewToUser: addReviewToUser,
-        updateUserReviewByID: updateUserReviewByID
+        updateUserReviewByID: updateUserReviewByID,
+        deleteUserReviewById: deleteUserReviewById
     };
     return service;
 
@@ -89,6 +90,20 @@ module.exports = function() {
                     if(mock[u].reviews[f]._id == reviewId){
                         mock[u].reviews.splice(f,1,review);
                         return mock[u].reviews[f];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    function deleteUserReviewById(reviewId,userID) {
+        for(var u in mock) {
+            if(mock[u]._id == userID){
+                for(var f in mock[u].reviews){
+                    if(mock[u].reviews[f]._id == reviewId){
+                        mock[u].reviews.splice(f,1);
+                        return mock[u].reviews;
                     }
                 }
             }

@@ -5,7 +5,8 @@
     "password": "alice",
     "firstName": "Alice",
     "lastName": "Wonderland",
-    "email": "alice@alice.com"
+    "email": "alice@alice.com",
+    "reviews": []
   },
   {
     "_id": "234wer",
@@ -13,7 +14,8 @@
     "password": "bob",
     "firstName": "Bob",
     "lastName": "Marley",
-    "email": "bob@marley.com"
+    "email": "bob@marley.com",
+    "reviews": []
   },
   {
     "_id": "345ert",
@@ -21,6 +23,7 @@
     "password": "charlie",
     "firstName": "Charlie",
     "lastName": "Brown",
-    "email": "charlie@brown.com"
+    "email": "charlie@brown.com",
+    "reviews": []
   }
 ]

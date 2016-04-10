@@ -7,7 +7,12 @@
         //var vm = this;
         var bizID = $routeParams.bizID;
         var currentUser = $rootScope.currentUser;
+
+        //Event Declarations
         $scope.addReview = addReview;
+        $scope.selectReview = selectReview;
+        $scope.updateReview = updateReview;
+        //$scope.deleteReview = deleteReview;
 
         //Rating
         $scope.rate = 3;
@@ -25,7 +30,6 @@
 
         function init() {
             YelpService.searchBizYelp(bizID, function (response){
-
                 console.log(response);
                 $scope.starCount = parseInt(response.rating);
                 var img_temp = response.image_url.split("/");
@@ -46,16 +50,56 @@
         }
         init();
 
+        //Event Definitions
         function addReview(place) {
             console.log("Buffer: "+place.buffer);
+            //place.buffer = $scope.data.buffer;
             place.ratval = $scope.rate;
             console.log("Rating: "+place.ratval);
             if(currentUser) {
                 FoodService
-                    .userReviewsFood(currentUser._id, place);
+                    .userReviewsFood(currentUser._id, place)
+                    .then(function(response){
+                        console.log("Review added");
+                        FoodService
+                            .findUserReviews (bizID)
+                            .then(function(response){
+                                $scope.place = response.data;
+                                $scope.data.buffer = null;
+                            });
+                    });
+                $scope.rate = 3;
             } else {
                 $location.url("/login");
             }
+
+        }
+
+        function selectReview(review){
+            $rootScope.currentReview = review;
+            $scope.rate = review.ratval;
+            $scope.data.buffer = review.comment;
+            console.log("Editing "+ review._id);
+        }
+
+        function updateReview(){
+            var tempReview = $rootScope.currentReview ;
+            tempReview.ratval = $scope.rate;
+            tempReview.comment = $scope.data.buffer;
+            console.log("Updating "+$rootScope.currentReview._id);
+            FoodService
+                .updateReviewById($rootScope.currentReview._id, tempReview)
+                .then(function (response) {
+                    console.log("Review updated "+ response.data._id);
+                    FoodService
+                        .findUserReviews (bizID)
+                        .then(function(response){
+                            $scope.place = response.data;
+                            $scope.data.buffer = null;
+                        });
+                });
+
+            //Update user reviews
         }
     }
 })();

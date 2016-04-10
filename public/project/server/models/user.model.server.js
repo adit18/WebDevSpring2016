@@ -6,7 +6,9 @@ module.exports = function() {
         updateUser: updateUser,
         deleteUserById : deleteUserById,
         findUserById: findUserById,
-        findUsersByIds: findUsersByIds
+        findUsersByIds: findUsersByIds,
+        addReviewToUser: addReviewToUser,
+        updateUserReviewByID: updateUserReviewByID
     };
     return service;
 
@@ -23,7 +25,7 @@ module.exports = function() {
 
     function findUserById(userId) {
         for(var u in mock) {
-            if( mock[u]._id === userId ) {
+            if( mock[u]._id == userId ) {
                 return mock[u];
             }
         }
@@ -65,6 +67,30 @@ module.exports = function() {
                 mock[u].password === credentials.password) {
                 console.log("Mock ID: "+mock[u]._id);
                 return mock[u];
+            }
+        }
+        return null;
+    }
+
+    function addReviewToUser(userId,review) {
+        for(var u in mock) {
+            if( mock[u]._id == userId ) {
+                mock[u].reviews.push(review);
+                return mock[u];
+            }
+        }
+        return null;
+    }
+
+    function updateUserReviewByID(reviewId,review) {
+        for(var u in mock) {
+            if(mock[u]._id == review.userID){
+                for(var f in mock[u].reviews){
+                    if(mock[u].reviews[f]._id == reviewId){
+                        mock[u].reviews.splice(f,1,review);
+                        return mock[u].reviews[f];
+                    }
+                }
             }
         }
         return null;

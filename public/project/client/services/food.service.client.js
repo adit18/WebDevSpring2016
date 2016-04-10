@@ -6,6 +6,7 @@
     function foodService($http) {
         var api = {
             userReviewsFood: userReviewsFood,
+            updateReviewById : updateReviewById,
             findUserReviews: findUserReviews
         };
         return api;
@@ -16,6 +17,11 @@
 
         function userReviewsFood(userId, foodplace) {
             return $http.post("/service/food/user/"+userId+"/food/"+foodplace.id,foodplace);
+        }
+
+        function updateReviewById(reviewId, review)
+        {
+            return $http.put("/service/food/review/"+reviewId, review);
         }
     }
 })();

@@ -62,35 +62,59 @@
                             <!--</span>-->
                     <!--</div>-->
                     <div>
-                        <uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+                        <uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating" stateOn="glyphicon glyphicon-star glyphicon-size" stateOff="glyphicon glyphicon-star-empty glyphicon-size"
+                                    style="color: goldenrod"></uib-rating>
                         <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
-
-                        <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
-                        <hr />
-
-                        <h4>Custom icons</h4>
-                        <!--<div ng-init="x = 5"><uib-rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" aria-labelledby="custom-icons-1"></uib-rating> <b>(<i>Rate:</i> {{x}})</b></div>-->
-                        <!--<div ng-init="y = 2"><uib-rating ng-model="y" rating-states="ratingStates" aria-labelledby="custom-icons-2"></uib-rating> <b>(<i>Rate:</i> {{y}})</b></div>-->
                     </div>
 
                     <h3>Write Review :</h3>
                     <div>
-                        <textarea ng-model="data.buffer" class="form-control" rows="5" id="comment"></textarea>
+                        <textarea ng-model="data.buffer" class="form-control" rows="3" id="comment"></textarea>
                     </div>
                     <br/>
                     <button class="btn btn-success"
                             ng-click="addReview(data)">
                         Add Review
                     </button>
+                    <button class="btn btn-success"
+                            ng-click="updateReview()">
+                        Update Review
+                    </button>
 
                     <div ng-if="place.reviews">
                         <h3>Other Users that like this Place: </h3>
-                        <ul>
-                            <li ng-repeat="review in place.reviews">
-                                User: {{review.userID}}
-                                Review: {{review.comment}}
-                            </li>
-                        </ul>
+                        <article ng-repeat="review in place.reviews" class="search-result row">
+                            <!--<div class="col-xs-12 col-sm-12 col-md-3">-->
+                                <!--<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>-->
+                            <!--</div>-->
+
+                            <div class="well">
+                                <h3><a href="#" title="">{{review.username}}</a> wrote a review</h3>
+                                <uib-rating ng-model="review.ratval" max="max" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
+                                <p>{{review.comment}}</p>
+                                <!--<span class="plus" ng-click="updateReview()"><a href="#" title="update"><i class="glyphicon glyphicon-pencil"></i></a></span>-->
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"
+                                                                     ng-click="deleteReview(review)"></span></button>
+                                <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"
+                                                                      ng-click="selectReview(review)"></span></button>
+                            </div>
+                            <span class="clearfix borda"></span>
+                        </article>
+                        <h4>
+
+                        </h4>
+
+                        <!--<ul>-->
+                            <!--<li ng-repeat="review in place.reviews">-->
+                                <!--{{review.username}} wrote a review:-->
+                                <!--<uib-rating ng-model="review.ratval" max="max" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>-->
+                                <!--<p>-->
+                                    <!--{{review.comment}}-->
+                                <!--</p>-->
+                            <!--</li>-->
+                        <!--</ul>-->
                     </div>
 
                 </div>

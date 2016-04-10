@@ -12,7 +12,7 @@ module.exports = function(app, foodModel, userModel) {
         var user = userModel.findUserById(userId);
         var yelpIDs = user.likes;
         var places = foodModel.findPlacesByYelpIDs(yelpIDs);
-        console.log("Updated likesPlaces: "+places);
+        console.log("Retrieved reviewPlaces: "+places);
         user.likesPlaces = places;
         res.json(user);
     }

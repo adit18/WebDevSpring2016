@@ -3,19 +3,21 @@ module.exports = function() {
     var api = {
         findPlaceByYelpID: findPlaceByYelpID,
         findPlacesByYelpIDs: findPlacesByYelpIDs,
-        createFoodPlace: createFoodPlace
+        createFoodPlace: createFoodPlace,
+        addReviewFoodPlace : addReviewFoodPlace,
+        updateReviewByID : updateReviewByID
     };
     return api;
 
     function findPlacesByYelpIDs (yelpIDs) {
-        var foodPlaces = [];
+        var retfoodPlaces = [];
         for (var id in yelpIDs) {
             var place = findPlaceByYelpID (yelpIDs[id]);
             if (place) {
-               foodPlaces.push(place);
+               retfoodPlaces.push(place);
             }
         }
-        return foodPlaces;
+        return retfoodPlaces;
     }
 
     function createFoodPlace(place) {
@@ -23,7 +25,8 @@ module.exports = function() {
             _id: "ID_" + (new Date()).getTime(),
             yelpID: place.id,
             poster: place.image_url,
-            title: place.name
+            title: place.name,
+            reviews: []
         };
         foodPlaces.push(place);
         return place;
@@ -37,4 +40,46 @@ module.exports = function() {
         }
         return null;
     }
+
+    function addReviewFoodPlace(inpPlace,user) {
+        var place = findPlaceByYelpID(inpPlace.id);
+        if(!place) {
+            place = createFoodPlace(inpPlace);
+        }
+
+        for(var u in foodPlaces) {
+            //can compare with _id too later
+            if(foodPlaces[u].yelpID == inpPlace.id){
+                var review = {};
+                review._id = "ID_" + (new Date()).getTime();
+                review.userID = user._id;
+                review.username = user.username;
+                review.yelpID = inpPlace.id;
+                review.placeName = inpPlace.name;
+                review.placePoster = inpPlace.image_url;
+                review.comment = inpPlace.buffer;
+                review.ratval = inpPlace.ratval;
+                foodPlaces[u].reviews.push(review);
+                return review;
+            }
+        }
+        return null;
+    }
+
+    function updateReviewByID(reviewId,review) {
+        for(var u in foodPlaces) {
+            //can compare with _id too later
+            if(foodPlaces[u].yelpID == review.yelpID){
+                for(var f in foodPlaces[u].reviews){
+                    if(foodPlaces[u].reviews[f]._id == reviewId){
+                        foodPlaces[u].reviews.splice(f,1,review);
+                        return foodPlaces[u].reviews[f];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+
 }

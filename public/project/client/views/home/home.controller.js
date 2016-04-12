@@ -9,13 +9,23 @@
         //event handlers declarations
         vm.logout = logout;
         vm.searchRedirect = searchRedirect;
-        //vm.searchKeyPress = searchKeyPress;
+
+        if(UserService.getCurrentUser()) {
+            UserService
+                .getFollowing()
+                .then(function (response) {
+                    console.log("Got following ");
+                    vm.followingProfiles = response.data;
+                    console.log(vm.followingProfiles);
+                });
+        }
 
         function init() {
             vm.$location = $location;
             $('.carousel').carousel({
                 interval: 5000
             })
+
         }
         init();
 

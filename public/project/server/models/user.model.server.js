@@ -9,7 +9,9 @@ module.exports = function() {
         findUsersByIds: findUsersByIds,
         addReviewToUser: addReviewToUser,
         updateUserReviewByID: updateUserReviewByID,
-        deleteUserReviewById: deleteUserReviewById
+        deleteUserReviewById: deleteUserReviewById,
+        addFollowing: addFollowing,
+        addFollower: addFollower
     };
     return service;
 
@@ -110,4 +112,27 @@ module.exports = function() {
         }
         return null;
     }
+
+    function addFollowing(selfId,toFollowUserId){
+        for(var u in mock) {
+            if( mock[u]._id == selfId ) {
+                mock[u].following.push(toFollowUserId);
+                console.log("Following push!");
+                return mock[u];
+            }
+        }
+        return null;
+    }
+
+    function addFollower(selfId,FollowerUserId){
+        for(var u in mock) {
+            if( mock[u]._id == selfId ) {
+                mock[u].followers.push(FollowerUserId);
+                console.log("Follower push!");
+                return mock[u];
+            }
+        }
+        return null;
+    }
+
 }

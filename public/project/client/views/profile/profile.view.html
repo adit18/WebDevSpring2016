@@ -19,6 +19,16 @@
                             <span class="tags">chinese</span>
                             <span class="tags">italian</span>
                         </p>
+                        <div class="col-xs-12 divider text-center">
+                            <div>
+                                <h2><strong> {{model.profile.followers.length}} </strong></h2>
+                                <p><small>Followers</small></p>
+                            </div>
+                            <div>
+                                <h2><strong> {{model.profile.following.length}} </strong></h2>
+                                <p><small>Following</small></p>
+                            </div>
+                        </div>
                         <div ng-if="model.profile.reviews">
                             <h3>Food Places I Like</h3>
 

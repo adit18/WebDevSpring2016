@@ -6,6 +6,9 @@ module.exports = function(app, foodModel, userModel) {
     app.get("/service/user/profile/:userId", profile);
     app.post("/service/user/updateprofile", updateProfile);
     app.get("/service/user/deleteprofile/:userId", deleteProfile);
+    app.get("/service/user/self/:selfId/follow/:toFollowUserId", followUser);
+    app.get("/service/user/following/:userId", getFollowing);
+    app.get("/service/user/followers/:userId", getFollowers);
 
     function profile(req, res) {
         var userId = req.params.userId;
@@ -32,6 +35,48 @@ module.exports = function(app, foodModel, userModel) {
         //user.likesMovies = movies;
         res.send(del_username);
     }
+
+    function followUser(req, res) {
+        var selfId = req.params.selfId;
+        var toFollowUserId = req.params.toFollowUserId;
+
+        //var follower = userModel.findUserById(selfId);
+        //var master = userModel.findUserById(toFollowUserId);
+
+        var updFollower = userModel.addFollowing(selfId,toFollowUserId);
+        var updMaster = userModel.addFollower(toFollowUserId,selfId);
+
+        res.json(updMaster);
+        //res.send(200);
+    }
+
+    function getFollowing(req, res) {
+        var userId = req.params.userId;
+        var user = userModel.findUserById(userId);
+        if(user) {
+            var followingIDs = user.following;
+
+            var followingUsers = userModel.findUsersByIds(followingIDs);
+            console.log("Retrieved following ");
+
+            res.json(followingUsers);
+        }
+        else {
+            res.send(null);
+        }
+    }
+
+    function getFollowers(req, res) {
+        var userId = req.params.userId;
+        var user = userModel.findUserById(userId);
+        var followersIDs = user.followers;
+
+        var followersUsers = userModel.findUsersByIds(followersIDs);
+        console.log("Retrieved followers ");
+
+        res.json(followersUsers);
+    }
+
 
     function register(req, res) {
         var user = req.body;

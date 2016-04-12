@@ -13,6 +13,7 @@
         $scope.selectReview = selectReview;
         $scope.updateReview = updateReview;
         $scope.deleteReview = deleteReview;
+        $scope.cancel = cancel;
 
         $scope.updFlag = false;
         //Rating
@@ -121,6 +122,11 @@
                 });
 
             //Update user reviews
+        }
+
+        function cancel(){
+            $scope.data.buffer = null;
+            $scope.updFlag = false;
         }
     }
 })();

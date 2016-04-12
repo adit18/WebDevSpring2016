@@ -6,7 +6,9 @@
     "firstName": "Alice",
     "lastName": "Wonderland",
     "email": "alice@alice.com",
-    "reviews": []
+    "reviews": [],
+    "following": [],
+    "followers": []
   },
   {
     "_id": "234wer",
@@ -15,7 +17,9 @@
     "firstName": "Bob",
     "lastName": "Marley",
     "email": "bob@marley.com",
-    "reviews": []
+    "reviews": [],
+    "following": [],
+    "followers": []
   },
   {
     "_id": "345ert",
@@ -24,6 +28,8 @@
     "firstName": "Charlie",
     "lastName": "Brown",
     "email": "charlie@brown.com",
-    "reviews": []
+    "reviews": [],
+    "following": [],
+    "followers": []
   }
 ]

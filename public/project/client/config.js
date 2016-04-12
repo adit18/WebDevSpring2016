@@ -27,6 +27,15 @@
                         controller: "LoginController",
                         controllerAs: "model"
                     })
+                .when("/othersprofile/:userId",
+                    {
+                        templateUrl: "views/profile/othersprofile.view.html",
+                        controller: "OthersprofileController",
+                        //controllerAs: "model"
+                        resolve: {
+                            checkLoggedIn: checkLoggedIn
+                        }
+                    })
                 .when("/updateprofile",
                     {
                         templateUrl: "views/profile/updateprofile.view.html",

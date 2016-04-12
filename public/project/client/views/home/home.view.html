@@ -230,6 +230,25 @@
             <br/>
             <br/>
             <h2 class="page-header"> Recent activity from foodies you follow</h2>
+            <p>{{currentUser.username}}</p>
+
+            <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="foll in model.followingProfiles">
+                <article class="search-result row" ng-repeat="rev in foll.reviews">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <!--can put place image-->
+                        <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                        <h3><a href="#/othersprofile/{{foll._id}}" title="">{{foll.username}}</a> wrote a review for
+                            <a href="#/details/{{rev.yelpID}}">{{rev.placeName}}
+                        </a></h3>
+                        <p>{{rev.comment}}</p>
+
+                    </div>
+                    <span class="clearfix borda"></span>
+                    <hr/>
+                </article>
+            </section>
 
             <div>
                 <div class="row">

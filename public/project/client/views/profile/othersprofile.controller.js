@@ -11,7 +11,8 @@
 
         //event handlers declarations
         $scope.startFollow = startFollow;
-        //$scope.deleteProfile = deleteProfile;
+        $scope.stopFollow = stopFollow;
+        //$scope.follFlag = false;
 
         function init() {
             $scope.$location = $location;
@@ -20,7 +21,17 @@
                 .then(function (response) {
                     $scope.profile = response.data;
                     console.log($scope.profile);
+                    var followers = response.data.followers;
+                    console.log("Called");
+                    for(var f in followers){
+                        console.log("Running");
+                        if(followers[f] == currentUser._id){
+                            $scope.follFlag = true;
+                            console.log("Flag set: "+$scope.follFlag)
+                        }
+                    }
                 });
+
         }
         init();
 
@@ -29,12 +40,36 @@
         //event handler definitions
         function startFollow(){
             console.log("Foll Start");
+            console.log("Flag: "+$scope.follFlag);
             if(currentUser) {
                 UserService
                     .startFollow(reqUserId)
                     .then(function (response) {
                         console.log("Followed ");
                         $scope.profile = response.data;
+                        $scope.follFlag = true;
+                        console.log("Flag: "+$scope.follFlag);
+                        //UserService
+                        //    .getOthersProfile(reqUserId)
+                        //    .then(function (response) {
+                        //        $scope.profile = response.data;
+                        //        console.log($scope.profile);
+                        //    });
+                    });
+            } else {
+                $location.url("/login");
+            }
+        }
+
+        function stopFollow(){
+            console.log("Foll Stop");
+            if(currentUser) {
+                UserService
+                    .stopFollow(reqUserId)
+                    .then(function (response) {
+                        console.log("Unfollowed ");
+                        $scope.profile = response.data;
+                        $scope.follFlag = false;
                         //UserService
                         //    .getOthersProfile(reqUserId)
                         //    .then(function (response) {

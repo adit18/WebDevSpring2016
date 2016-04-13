@@ -17,6 +17,7 @@
             updateProfile: updateProfile,
             deleteProfile: deleteProfile,
             startFollow: startFollow,
+            stopFollow: stopFollow,
             getFollowing: getFollowing,
             getFollowers: getFollowers
         };
@@ -45,6 +46,11 @@
         function startFollow(toFollowUserId) {
             //$rootScope.currentUser
             return $http.get("/service/user/self/"+$rootScope.currentUser._id+"/follow/"+toFollowUserId);
+        }
+
+        function stopFollow(toFollowUserId) {
+            //$rootScope.currentUser
+            return $http.get("/service/user/self/"+$rootScope.currentUser._id+"/unfollow/"+toFollowUserId);
         }
 
         function register(user) {

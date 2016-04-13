@@ -194,7 +194,7 @@
         <li ng-class="{'active' : $location.url() == '/profile'}">
             <a href="#/profile"><i class="glyphicon glyphicon-user"></i> &nbsp; &nbsp; &nbsp; &nbsp; Profile Overview </a></li>
         <li ng-class="{'active' : $location.url() == '/followers'}">
-            <a href="#/admin"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
+            <a href="#/" ng-click = "changeDisplay('FOLLOWERS')"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
         <li ng-class="{'active' : $location.url() == '/reviews'}">
             <a href="#/"><i class="fa fa-star"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
         <li ng-class="{'active' : $location.url() == '/following'}">
@@ -202,19 +202,19 @@
     </ul>
 </div>
 
-    <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
+<!--<div class="container-fluid">-->
+<!--<div class="row">-->
 
-            <!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main jumbotron">-->
+<!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main jumbotron">-->
 
-                <!--<h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>-->
-                <!--<p>Food quotient is an app that let's you search food places, review them and share it with our friends!-->
-                    <!--Check in more frequently to know what's your food quotient, and what your taste buds crave!-->
-                <!--</p>-->
+<!--<h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>-->
+<!--<p>Food quotient is an app that let's you search food places, review them and share it with our friends!-->
+<!--Check in more frequently to know what's your food quotient, and what your taste buds crave!-->
+<!--</p>-->
 
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 <div ng-show="currentUser" class="container-fluid">
     <div class="row">
@@ -224,7 +224,7 @@
 
             <h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>
             <p>Food quotient is an app that let's you search food places, review them and share it with our friends!
-            Check in more frequently to know what's your food quotient, and what your tastebuds crave!
+                Check in more frequently to know what's your food quotient, and what your tastebuds crave!
             </p>
             <hr/>
             <br/>
@@ -241,7 +241,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
                         <h3><a href="#/othersprofile/{{foll._id}}" title="">{{foll.username}}</a> wrote a review for
                             <a href="#/details/{{rev.yelpID}}">{{rev.placeName}}
-                        </a></h3>
+                            </a></h3>
                         <p>{{rev.comment}}</p>
 
                     </div>
@@ -291,4 +291,22 @@
     </div>
 </div>
 
-
+<div ng-if="display == 'FOLLOWERS'">
+    <h2 class="page-header"> My Followers</h2>
+    <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="follower in model.followersProfiles">
+        <article class="search-result row">
+            <!--<div class="col-xs-12 col-sm-12 col-md-5">-->
+            <!--&lt;!&ndash;can put place image&ndash;&gt;-->
+            <!--<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>-->
+            <!--</div>-->
+            <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                <h3><a href="#/othersprofile/{{follower._id}}" title="">{{foll.username}}</a></h3>
+                <h3>Reviews: {{follower.reviews.length}}</h3>
+                <h3>Followers: {{follower.followers.length}}</h3>
+                <h3>Following: {{follower.following.length}}</h3>
+            </div>
+            <span class="clearfix borda"></span>
+            <hr/>
+        </article>
+    </section>
+</div>

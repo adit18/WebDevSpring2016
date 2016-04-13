@@ -7,6 +7,7 @@ module.exports = function(app, foodModel, userModel) {
     app.post("/service/user/updateprofile", updateProfile);
     app.get("/service/user/deleteprofile/:userId", deleteProfile);
     app.get("/service/user/self/:selfId/follow/:toFollowUserId", followUser);
+    app.get("/service/user/self/:selfId/unfollow/:toFollowUserId", unfollowUser);
     app.get("/service/user/following/:userId", getFollowing);
     app.get("/service/user/followers/:userId", getFollowers);
 
@@ -50,6 +51,20 @@ module.exports = function(app, foodModel, userModel) {
         //res.send(200);
     }
 
+    function unfollowUser(req, res) {
+        var selfId = req.params.selfId;
+        var toFollowUserId = req.params.toFollowUserId;
+
+        //var follower = userModel.findUserById(selfId);
+        //var master = userModel.findUserById(toFollowUserId);
+
+        var updFollower = userModel.stopFollowing(selfId,toFollowUserId);
+        var updMaster = userModel.removeFollower(toFollowUserId,selfId);
+
+        res.json(updMaster);
+        //res.send(200);
+    }
+
     function getFollowing(req, res) {
         var userId = req.params.userId;
         var user = userModel.findUserById(userId);
@@ -69,12 +84,17 @@ module.exports = function(app, foodModel, userModel) {
     function getFollowers(req, res) {
         var userId = req.params.userId;
         var user = userModel.findUserById(userId);
-        var followersIDs = user.followers;
+        if(user){
+            var followersIDs = user.followers;
 
-        var followersUsers = userModel.findUsersByIds(followersIDs);
-        console.log("Retrieved followers ");
+            var followersUsers = userModel.findUsersByIds(followersIDs);
+            console.log("Retrieved followers ");
 
-        res.json(followersUsers);
+            res.json(followersUsers);
+        }
+        else {
+            res.send(null);
+        }
     }
 
 

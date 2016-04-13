@@ -11,7 +11,9 @@ module.exports = function() {
         updateUserReviewByID: updateUserReviewByID,
         deleteUserReviewById: deleteUserReviewById,
         addFollowing: addFollowing,
-        addFollower: addFollower
+        addFollower: addFollower,
+        stopFollowing: stopFollowing,
+        removeFollower: removeFollower
     };
     return service;
 
@@ -130,6 +132,36 @@ module.exports = function() {
                 mock[u].followers.push(FollowerUserId);
                 console.log("Follower push!");
                 return mock[u];
+            }
+        }
+        return null;
+    }
+
+    function stopFollowing(selfId,toFollowUserId){
+        for(var u in mock) {
+            if( mock[u]._id == selfId ) {
+                for(var f in mock[u].following){
+                    if(mock[u].following[f] == toFollowUserId){
+                        mock[u].following.splice(f,1);
+                        console.log("Following removed!");
+                        return mock[u];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    function removeFollower(selfId,toFollowUserId){
+        for(var u in mock) {
+            if( mock[u]._id == selfId ) {
+                for(var f in mock[u].followers){
+                    if(mock[u].followers[f] == toFollowUserId){
+                        mock[u].followers.splice(f,1);
+                        console.log("Follower removed!");
+                        return mock[u];
+                    }
+                }
             }
         }
         return null;

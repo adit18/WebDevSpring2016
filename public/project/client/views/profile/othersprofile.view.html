@@ -47,9 +47,13 @@
                     <div>
                         <h2><strong> {{profile.followers.length}} </strong></h2>
                         <p><small>Followers</small></p>
-                        <button class="btn btn-success"
+                        <button ng-if="!follFlag" class="btn btn-success"
                                 ng-click="startFollow()">
                             Follow
+                        </button>
+                        <button ng-if="follFlag" class="btn btn-danger"
+                                ng-click="stopFollow()">
+                            Unfollow
                         </button>
                     </div>
                     <!--<div class="col-xs-12 col-sm-4 emphasis">-->

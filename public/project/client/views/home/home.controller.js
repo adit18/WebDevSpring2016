@@ -18,6 +18,13 @@
                     vm.followingProfiles = response.data;
                     console.log(vm.followingProfiles);
                 });
+            UserService
+                .getFollowers()
+                .then(function (response) {
+                    console.log("Got followers ");
+                    vm.followersProfiles = response.data;
+                    console.log(vm.followersProfiles);
+                });
         }
 
         function init() {
@@ -49,6 +56,10 @@
                 alert("Please enter a search term!");
             }
 
+        }
+
+        function changeDisplay(key){
+            console.log("Change called "+key);
         }
 
         //function searchKeyPress (e) {

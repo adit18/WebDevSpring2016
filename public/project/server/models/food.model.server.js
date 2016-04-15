@@ -1,4 +1,14 @@
-module.exports = function() {
+// load q promise library
+var q = require("q");
+
+module.exports = function(db, mongoose) {
+
+    // load user schema
+    var FoodSchema = require("./foodplace.schema.server.js")(mongoose);
+
+    // create user model from schema
+    var FoodModel = mongoose.model('Food', FoodSchema);
+
     var foodPlaces = [];
     var api = {
         findPlaceByYelpID: findPlaceByYelpID,
@@ -11,88 +21,172 @@ module.exports = function() {
     return api;
 
     function findPlacesByYelpIDs (yelpIDs) {
-        var retfoodPlaces = [];
-        for (var id in yelpIDs) {
-            var place = findPlaceByYelpID (yelpIDs[id]);
-            if (place) {
-               retfoodPlaces.push(place);
-            }
-        }
-        return retfoodPlaces;
-    }
+        var deferred = q.defer();
 
-    function createFoodPlace(place) {
-        place = {
-            _id: "ID_" + (new Date()).getTime(),
-            yelpID: place.id,
-            poster: place.image_url,
-            title: place.name,
-            reviews: []
-        };
-        foodPlaces.push(place);
-        return place;
+        FoodModel
+            .find({yelpID: {$in: yelpIDs}},
+                function (err, places) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(places);
+                    }
+                });
+        return deferred.promise;
     }
 
     function findPlaceByYelpID(yelpID) {
-        for(var m in foodPlaces) {
-            if(foodPlaces[m].yelpID === yelpID) {
-                return foodPlaces[m];
+        var deferred = q.defer();
+
+        FoodModel
+            .findOne({yelpID: yelpID},
+                function (err, place) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        console.log("In findPlaceByYelpID food model: "+JSON.stringify(place));
+                        deferred.resolve(place);
+                    }
+                });
+        return deferred.promise;
+    }
+
+    function createFoodPlace(place) {
+        var deferred = q.defer();
+
+        var placeObj = {
+            //_id: "ID_" + (new Date()).getTime(),
+            yelpID: place.id,
+            poster: place.image_url,
+            title: place.name,
+            reviews: [],
+            categories: place.categories
+        };
+
+        FoodModel.create(placeObj, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                console.log("Place created!");
+                deferred.resolve(doc);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 
     function addReviewFoodPlace(inpPlace,user) {
-        var place = findPlaceByYelpID(inpPlace.id);
-        if(!place) {
-            place = createFoodPlace(inpPlace);
-        }
+        var deferred = q.defer();
+        console.log("Came to addReview first");
+        //var place = {};
+        //findPlaceByYelpID(inpPlace.id)
+        //    .then(
+        //        function ( placeRecd ) {
+        //            console.log("Came to addReview then");
+        //            console.log("Place received!");
+        //            place = placeRecd;
+        //        },
+        //        function ( err ) {
+        //            console.log("Came to addReview then errpart");
+        //            place = null;
+        //            console.log("Error! ");
+        //            //deferred.reject(err);
+        //        }
+        //    );
+        //
+        //if(!place) {
+        //    createFoodPlace(inpPlace)
+        //        .then(
+        //            function ( placeRecd ) {
+        //                console.log("Place received after creation!");
+        //                place = placeRecd;
+        //            },
+        //            function ( err ) {
+        //                deferred.reject(err);
+        //            }
+        //        );
+        //}
 
-        for(var u in foodPlaces) {
-            //can compare with _id too later
-            if(foodPlaces[u].yelpID == inpPlace.id){
-                var review = {};
-                review._id = "ID_" + (new Date()).getTime();
-                review.userID = user._id;
-                review.username = user.username;
-                review.yelpID = inpPlace.id;
-                review.placeName = inpPlace.name;
-                review.placePoster = inpPlace.image_url;
-                review.comment = inpPlace.buffer;
-                review.ratval = inpPlace.ratval;
-                foodPlaces[u].reviews.push(review);
-                return review;
-            }
-        }
-        return null;
+        FoodModel.findOne({yelpID: inpPlace.id},
+            function(err, foodplace) {
+                if (err) {
+                    console.log("Are u here?");
+                    deferred.reject(err);
+                }
+                else {
+                    console.log("Are u here2?");
+                    var revObj = {};
+                    revObj.userID = user._id;
+                    revObj.username = user.username;
+                    revObj.yelpID = inpPlace.id;
+                    revObj.placeName = inpPlace.name;
+                    revObj.placePoster = inpPlace.image_url;
+                    revObj.comment = inpPlace.buffer;
+                    revObj.ratval = inpPlace.ratval;
+                    console.log("Inside food addRev: "+ revObj);
+                    foodplace.reviews.push(revObj);
+                    foodplace.save(function (err, updPlace) {
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else {
+                            console.log("FOodPlace revs: "+JSON.stringify(updPlace.reviews));
+                            deferred.resolve(updPlace);
+                        }
+                    });
+                }
+            });
+        return deferred.promise;
     }
 
     function updateReviewByID(reviewId,review) {
-        for(var u in foodPlaces) {
-            //can compare with _id too later
-            if(foodPlaces[u].yelpID == review.yelpID){
-                for(var f in foodPlaces[u].reviews){
-                    if(foodPlaces[u].reviews[f]._id == reviewId){
-                        foodPlaces[u].reviews.splice(f,1,review);
-                        return foodPlaces[u].reviews[f];
+        var deferred = q.defer();
+
+        FoodModel
+            .find({yelpID: review.yelpID},
+                function (err, place) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        var reviewLocal = place.reviews.id(reviewId);
+                        reviewLocal.userID = review.userID;
+                        reviewLocal.username = review.username;
+                        reviewLocal.yelpID = review.yelpID;
+                        reviewLocal.placeName = review.placeName;
+                        reviewLocal.placePoster = review.placePoster;
+                        reviewLocal.comment = review.comment;
+                        reviewLocal.ratval = review.ratval;
+                        place.save(function (err, updPlace) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updPlace.reviews.id(reviewId));
+                            }
+                        });
                     }
-                }
-            }
-        }
-        return null;
+                });
+        return deferred.promise;
     }
 
     function deleteReviewById(reviewId,yelpID) {
-        for(var u in foodPlaces) {
-            if(foodPlaces[u].yelpID == yelpID){
-                for(var f in foodPlaces[u].reviews){
-                    if(foodPlaces[u].reviews[f]._id == reviewId){
-                        foodPlaces[u].reviews.splice(f,1);
-                        return foodPlaces[u].reviews;
+        var deferred = q.defer();
+        FoodModel
+            .find({yelpID: yelpID},
+                function(err, form) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        place.reviews.id(reviewId).remove();
+                        place.save(function (err, updPlace) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updPlace);
+                            }
+                        });
                     }
-                }
-            }
-        }
-        return null;
+                });
+        return deferred.promise;
     }
 }

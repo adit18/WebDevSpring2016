@@ -13,28 +13,52 @@ module.exports = function(app, foodModel, userModel) {
 
     function profile(req, res) {
         var userId = req.params.userId;
-        var user = userModel.findUserById(userId);
-        var yelpIDs = user.likes;
-        var places = foodModel.findPlacesByYelpIDs(yelpIDs);
-        console.log("Retrieved reviewPlaces: "+places);
-        user.likesPlaces = places;
-        res.json(user);
+
+        userModel.findUserById(userId)
+            .then(
+                // retrieve the user by user id
+                function (user) {
+                    res.json(user);
+                },
+                // reject promise if error
+                function (err) {
+                    res.status(400).send(err);
+                });
+        //var yelpIDs = user.likes;
+        //var places = foodModel.findPlacesByYelpIDs(yelpIDs);
+        //console.log("Retrieved reviewPlaces: "+places);
+        //user.likesPlaces = places;
+        //res.json(user);
     }
 
     function updateProfile(req, res) {
         var user = req.body;
-        user = userModel.updateUser(user);
-        req.session.currentUser = user;
-        res.json(user);
+        userModel.updateUser(user)
+            .then(
+                function (user) {
+                    console.log("Came till user server proj");
+                    req.session.currentUser = user;
+                    res.json(user);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteProfile(req, res) {
-        var userId = req.params.userId;
-        var del_username = userModel.deleteUserById(userId);
-        //var yelpIDs = user.likes;
-        //var movies = movieModel.findMoviesByImdbIDs(movieImdbIDs);
-        //user.likesMovies = movies;
-        res.send(del_username);
+        var userId = req.params.id;
+        userModel.deleteUserById(userId)
+            .then(
+                function (users) {
+                    res.json(users);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
     }
 
     function followUser(req, res) {
@@ -44,10 +68,28 @@ module.exports = function(app, foodModel, userModel) {
         //var follower = userModel.findUserById(selfId);
         //var master = userModel.findUserById(toFollowUserId);
 
-        var updFollower = userModel.addFollowing(selfId,toFollowUserId);
-        var updMaster = userModel.addFollower(toFollowUserId,selfId);
+        userModel.addFollowing(selfId,toFollowUserId)
+            .then(
+                function ( user ) {
+                    console.log("Added following in user server");
+                    //res.json(user);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
+        userModel.addFollower(toFollowUserId,selfId)
+            .then(
+                function ( user ) {
+                    console.log("Added follower in user server");
+                    res.json(user);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
 
-        res.json(updMaster);
+        //res.json(updMaster);
         //res.send(200);
     }
 
@@ -58,23 +100,61 @@ module.exports = function(app, foodModel, userModel) {
         //var follower = userModel.findUserById(selfId);
         //var master = userModel.findUserById(toFollowUserId);
 
-        var updFollower = userModel.stopFollowing(selfId,toFollowUserId);
-        var updMaster = userModel.removeFollower(toFollowUserId,selfId);
+        userModel.stopFollowing(selfId,toFollowUserId)
+            .then(
+                function ( user ) {
+                    console.log("Stopped following in user server");
+                    //res.json(user);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
+        userModel.removeFollower(toFollowUserId,selfId)
+            .then(
+                function ( user ) {
+                    console.log("Removed follower in user server");
+                    res.json(user);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
 
-        res.json(updMaster);
+
+
+        //res.json(updMaster);
         //res.send(200);
     }
 
     function getFollowing(req, res) {
         var userId = req.params.userId;
-        var user = userModel.findUserById(userId);
+        var user;
+
+        userModel.findUserById(userId)
+            .then(
+                function ( userRecd ) {
+                    user = userRecd;
+                },
+                function ( err ) {
+                    console.log("User not found");
+                    res.status(400).send(err);
+                }
+            );
+
         if(user) {
             var followingIDs = user.following;
 
-            var followingUsers = userModel.findUsersByIds(followingIDs);
-            console.log("Retrieved following ");
-
-            res.json(followingUsers);
+            var followingUsers = userModel.findUsersByIds(followingIDs)
+                .then(
+                    function ( followingUsers ) {
+                        console.log("Retrieved following ");
+                        res.json(followingUsers);
+                    },
+                    function ( err ) {
+                        res.status(400).send(err);
+                    }
+                );
         }
         else {
             res.send(null);
@@ -83,14 +163,30 @@ module.exports = function(app, foodModel, userModel) {
 
     function getFollowers(req, res) {
         var userId = req.params.userId;
-        var user = userModel.findUserById(userId);
+        var user;
+        userModel.findUserById(userId)
+            .then(
+                function ( userRecd ) {
+                    user = userRecd;
+                },
+                function ( err ) {
+                    //console.log("User not found");
+                    res.status(400).send(err);
+                }
+            );
         if(user){
             var followersIDs = user.followers;
 
-            var followersUsers = userModel.findUsersByIds(followersIDs);
-            console.log("Retrieved followers ");
-
-            res.json(followersUsers);
+            var followersUsers = userModel.findUsersByIds(followersIDs)
+                .then(
+                    function ( followersUsers ) {
+                        console.log("Retrieved followers ");
+                        res.json(followersUsers);
+                    },
+                    function ( err ) {
+                        res.status(400).send(err);
+                    }
+                );
         }
         else {
             res.send(null);
@@ -100,20 +196,35 @@ module.exports = function(app, foodModel, userModel) {
 
     function register(req, res) {
         var user = req.body;
-        user = userModel.createUser(user);
-        req.session.currentUser = user;
-        res.json(user);
+        userModel.createUser(user)
+            .then(
+                function ( doc ) {
+                    req.session.currentUser = doc;
+                    res.json(doc);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function login(req, res) {
         var credentials = req.body;
         console.log("Calling cred");
-        var user = userModel.findUserByCredentials(credentials);
-        if(user){
-            console.log("User "+user.username+" loggd in");
-        }
-        req.session.currentUser = user;
-        res.json(user);
+        var user = userModel.findUserByCredentials(credentials)
+            .then(
+                function (user) {
+                    if(user){
+                        console.log("User "+user.username+" loggd in");
+                    }
+                    req.session.currentUser = user;
+                    res.json(user);
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
     }
 
     function loggedin(req, res) {

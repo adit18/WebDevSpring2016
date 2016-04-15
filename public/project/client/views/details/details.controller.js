@@ -3,7 +3,7 @@
         .module("FoodQuotientApp")
         .controller("DetailsController", detailsController);
 
-    function detailsController($routeParams,$scope,$rootScope,$location,FoodService,YelpService) {
+    function detailsController($routeParams,$scope,$rootScope,$location,FoodService,YelpService,ReviewService) {
         //var vm = this;
         var bizID = $routeParams.bizID;
         var currentUser = $rootScope.currentUser;
@@ -43,11 +43,11 @@
                 $scope.$apply();
             });
 
-            FoodService
-                .findUserReviews (bizID)
+            ReviewService
+                .findUserReviewsByYelpId (bizID)
                 .then(function(response){
-                    $scope.place = response.data;
-
+                    //$scope.place = response.data;
+                    $scope.reviews = response.data;
                 });
         }
         init();
@@ -59,14 +59,14 @@
             place.ratval = $scope.rate;
             console.log("Rating: "+place.ratval);
             if(currentUser) {
-                FoodService
-                    .userReviewsFood(currentUser._id, place)
+                ReviewService
+                    .createReview(currentUser._id, place)
                     .then(function(response){
                         console.log("Review added");
-                        FoodService
-                            .findUserReviews (bizID)
+                        ReviewService
+                            .findUserReviewsByYelpId (bizID)
                             .then(function(response){
-                                $scope.place = response.data;
+                                $scope.reviews = response.data;
                                 $scope.data.buffer = null;
                             });
                     });
@@ -90,16 +90,17 @@
             tempReview.ratval = $scope.rate;
             tempReview.comment = $scope.data.buffer;
             console.log("Updating "+$rootScope.currentReview._id);
-            FoodService
+            ReviewService
                 .updateReviewById($rootScope.currentReview._id, tempReview)
                 .then(function (response) {
                     console.log("Review updated "+ response.data._id);
-                    FoodService
-                        .findUserReviews (bizID)
+                    ReviewService
+                        .findUserReviewsByYelpId (bizID)
                         .then(function(response){
-                            $scope.place = response.data;
+                            $scope.reviews = response.data;
                             $scope.data.buffer = null;
                             $scope.updFlag = false;
+                            $scope.rate = 3;
                         });
                 });
 
@@ -109,14 +110,14 @@
         function deleteReview(review){
             //var tempReview = $rootScope.currentReview ;
             console.log("Deleting "+review._id);
-            FoodService
-                .deleteReviewById(review)
+            ReviewService
+                .deleteReviewById(review._id)
                 .then(function (response) {
                     console.log("Review deleted: "+review._id);
-                    FoodService
-                        .findUserReviews (bizID)
+                    ReviewService
+                        .findUserReviewsByYelpId (bizID)
                         .then(function(response){
-                            $scope.place = response.data;
+                            $scope.reviews = response.data;
                             $scope.data.buffer = null;
                         });
                 });

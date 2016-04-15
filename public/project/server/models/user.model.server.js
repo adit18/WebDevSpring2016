@@ -1,5 +1,16 @@
 var mock = require("./projuser.mock.json");
-module.exports = function() {
+
+// load q promise library
+var q = require("q");
+
+module.exports = function(db, mongoose) {
+
+    // load user schema
+    var projUserSchema = require("./projuser.schema.server.js")(mongoose);
+
+    // create user model from schema
+    var UserModel = mongoose.model('projUser', projUserSchema);
+
     var service = {
         findUserByCredentials: findUserByCredentials,
         createUser: createUser,
@@ -18,153 +29,303 @@ module.exports = function() {
     return service;
 
     function findUsersByIds (userIds) {
-        var users = [];
-        for (var u in userIds) {
-            var user = findUserById (userIds[u]);
-            if (user) {
-                users.push (user);
-            }
-        }
-        return users;
+        var deferred = q.defer();
+
+        UserModel
+            .find({_id: {$in: userIds}},
+                function (err, users) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(users);
+                    }
+                });
+        return deferred.promise;
     }
 
     function findUserById(userId) {
-        for(var u in mock) {
-            if( mock[u]._id == userId ) {
-                return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        UserModel
+            .findById(userId,
+                function (err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        console.log("User found: "+JSON.stringify(user));
+                        deferred.resolve(user);
+                    }
+                });
+        return deferred.promise;
     }
 
     function createUser(user) {
-        user._id = "ID_" + (new Date()).getTime();
-        mock.push(user);
-        return user;
+        var deferred = q.defer();
+        UserModel.create(user, function (err, doc) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
+            }
+        });
+        return deferred.promise;
     }
 
-    function updateUser(user) {
-        for(var u in mock) {
-            if( mock[u]._id === user._id ) {
-                mock.splice(u,1,user);
-                return mock[u];
-            }
-        }
-        return null;
+    function updateUser(userObj) {
+        var deferred = q.defer();
+
+        var userId = userObj._id;
+        console.log("Inside before update : "+userId);
+
+        UserModel
+            .findById(userId,
+                function (err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    }
+                    else {
+                        console.log("Inside Update User: ");
+                        console.log(JSON.stringify(user));
+                        user.username = userObj.username;
+                        user.firstName = userObj.firstName;
+                        user.lastName = userObj.lastName;
+                        user.email = userObj.email;
+                        user.gender = userObj.gender;
+                        user.aboutMe = userObj.aboutMe;
+                        user.location = userObj.location;
+                        user.contact = userObj.contact;
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updUser);
+                            }
+                        });
+                        console.log("Resolved!");
+                    }
+                }
+            );
+        return deferred.promise;
     }
 
     function deleteUserById(userId) {
-        for(var u in mock) {
-            if( mock[u]._id === userId ) {
-                var deluser = mock[u].username;
-                mock.splice(u,1);
-                return deluser;
-                //return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+        UserModel.remove(
+            {_id: userId},
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    console.log("Deleted user from model!")
+                    deferred.resolve(doc);
+                }
+            });
+        return deferred.promise;
     }
 
     function findUserByCredentials(credentials) {
         console.log("Cred called");
-        for(var u in mock) {
-            if( mock[u].username === credentials.username &&
-                mock[u].password === credentials.password) {
-                console.log("Mock ID: "+mock[u]._id);
-                return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        UserModel.findOne( { username: credentials.username, password: credentials.password },
+            function(err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(doc);
+                }
+
+            });
+        return deferred.promise;
     }
 
     function addReviewToUser(userId,review) {
-        for(var u in mock) {
-            if( mock[u]._id == userId ) {
-                mock[u].reviews.push(review);
-                return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+
+        UserModel.findById(userId,
+            function(err, user) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    var revObj = {};
+                    revObj._id = review._id;
+                    revObj.userID = review.userID;
+                    revObj.username = review.username;
+                    revObj.yelpID = review.yelpID;
+                    revObj.placeName = review.placeName;
+                    revObj.placePoster = review.placePoster;
+                    revObj.comment = review.comment;
+                    revObj.ratval = review.ratval;
+                    user.reviews.push(revObj);
+                    user.save(function (err, updUser) {
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else {
+                            deferred.resolve(updUser);
+                        }
+                    });
+                }
+            });
+        return deferred.promise;
     }
 
     function updateUserReviewByID(reviewId,review) {
-        for(var u in mock) {
-            if(mock[u]._id == review.userID){
-                for(var f in mock[u].reviews){
-                    if(mock[u].reviews[f]._id == reviewId){
-                        mock[u].reviews.splice(f,1,review);
-                        return mock[u].reviews[f];
+        var deferred = q.defer();
+        var userId = review.userID;
+        UserModel
+            .findById(userId,
+                function(err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        var reviewLocal = user.reviews.id(reviewId);
+                        reviewLocal.userID = review.userID;
+                        reviewLocal.username = review.username;
+                        reviewLocal.yelpID = review.yelpID;
+                        reviewLocal.placeName = review.placeName;
+                        reviewLocal.placePoster = review.placePoster;
+                        reviewLocal.comment = review.comment;
+                        reviewLocal.ratval = review.ratval;
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updUser.reviews.id(reviewId));
+                            }
+                        });
                     }
-                }
-            }
-        }
-        return null;
+                });
+        return deferred.promise;
     }
 
     function deleteUserReviewById(reviewId,userID) {
-        for(var u in mock) {
-            if(mock[u]._id == userID){
-                for(var f in mock[u].reviews){
-                    if(mock[u].reviews[f]._id == reviewId){
-                        mock[u].reviews.splice(f,1);
-                        return mock[u].reviews;
+        var deferred = q.defer();
+        UserModel
+            .findById(userID,
+                function(err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        user.reviews.id(reviewId).remove();
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updUser);
+                            }
+                        });
                     }
-                }
-            }
-        }
-        return null;
+                });
+        return deferred.promise;
     }
 
     function addFollowing(selfId,toFollowUserId){
-        for(var u in mock) {
-            if( mock[u]._id == selfId ) {
-                mock[u].following.push(toFollowUserId);
-                console.log("Following push!");
-                return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+        UserModel
+            .findById(selfId,
+                function(err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        var followingLocal = user.following;
+                        followingLocal.push(toFollowUserId);
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                console.log("Following push!");
+                                deferred.resolve(updUser);
+                            }
+                        });
+                    }
+                });
+        return deferred.promise;
     }
 
     function addFollower(selfId,FollowerUserId){
-        for(var u in mock) {
-            if( mock[u]._id == selfId ) {
-                mock[u].followers.push(FollowerUserId);
-                console.log("Follower push!");
-                return mock[u];
-            }
-        }
-        return null;
+        var deferred = q.defer();
+        UserModel
+            .findById(selfId,
+                function(err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        var followersLocal = user.followers;
+                        followersLocal.push(FollowerUserId);
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                console.log("Follower push!");
+                                deferred.resolve(updUser);
+                            }
+                        });
+                    }
+                });
+        return deferred.promise;
     }
 
     function stopFollowing(selfId,toFollowUserId){
-        for(var u in mock) {
-            if( mock[u]._id == selfId ) {
-                for(var f in mock[u].following){
-                    if(mock[u].following[f] == toFollowUserId){
-                        mock[u].following.splice(f,1);
-                        console.log("Following removed!");
-                        return mock[u];
+        var deferred = q.defer();
+        UserModel
+            .findById(selfId,
+                function(err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        var followingLocal = user.following;
+                        for(var f in followingLocal){
+                            if(followingLocal[f] == toFollowUserId){
+                                followingLocal.splice(f,1);
+                            }
+                        }
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                console.log("Following removed!");
+                                deferred.resolve(updUser);
+                            }
+                        });
                     }
-                }
-            }
-        }
-        return null;
+                });
+        return deferred.promise;
     }
 
     function removeFollower(selfId,toFollowUserId){
-        for(var u in mock) {
-            if( mock[u]._id == selfId ) {
-                for(var f in mock[u].followers){
-                    if(mock[u].followers[f] == toFollowUserId){
-                        mock[u].followers.splice(f,1);
-                        console.log("Follower removed!");
-                        return mock[u];
+        var deferred = q.defer();
+        UserModel
+            .findById(selfId,
+                function(err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        var followersLocal = user.followers;
+                        for(var f in followersLocal){
+                            if(followersLocal[f] == toFollowUserId){
+                                followersLocal.splice(f,1);
+                            }
+                        }
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                console.log("Follower removed!");
+                                deferred.resolve(updUser);
+                            }
+                        });
                     }
-                }
-            }
-        }
-        return null;
+                });
+        return deferred.promise;
     }
 
 }

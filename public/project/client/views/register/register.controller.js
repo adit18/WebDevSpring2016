@@ -23,7 +23,7 @@
                     if(currentUser != null) {
                         UserService.setCurrentUser(currentUser);
                         $('#pro').html(UserService.getCurrentUser().username);
-                        $location.url("/profile");
+                        $location.url("/updateprofile");
                     }
                 });
         }

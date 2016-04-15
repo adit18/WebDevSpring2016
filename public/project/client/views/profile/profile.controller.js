@@ -3,7 +3,7 @@
         .module("FoodQuotientApp")
         .controller("ProfileController",ProfileController);
 
-    function ProfileController($location,UserService) {
+    function ProfileController($location,UserService, ReviewService) {
         var vm = this;
 
         //event handlers declarations
@@ -17,7 +17,17 @@
                 .then(function (response) {
                     vm.profile = response.data;
                     console.log(vm.profile);
+
+                    ReviewService
+                        .findUserReviewsByUserId (response.data._id)
+                        .then(function(response){
+                            //$scope.place = response.data;
+                            vm.reviews = response.data;
+                        });
+
                 });
+
+
         }
         return init();
 

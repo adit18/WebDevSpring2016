@@ -39,7 +39,7 @@ app.get('/hello', function(req, res){
 });
 
 require("./public/assignment/server/app.js")(app, db, mongoose);
-require("./public/project/server/app.js")(app);
+require("./public/project/server/app.js")(app, db, mongoose);
 
 
 app.listen(port, ipaddress);

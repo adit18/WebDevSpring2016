@@ -3,35 +3,43 @@
         .module("FoodQuotientApp")
         .controller("HomeController",HomeController);
 
-    function HomeController($location,UserService) {
-        var vm = this;
+    function HomeController($scope,$location,UserService,ReviewService) {
+        //var vm = this;
 
         //event handlers declarations
-        vm.logout = logout;
-        vm.searchRedirect = searchRedirect;
+        $scope.logout = logout;
+        $scope.searchRedirect = searchRedirect;
 
-        if(UserService.getCurrentUser()) {
-            UserService
-                .getFollowing()
+        if(UserService.getCurrentUser()._id) {
+            console.log("HOME BASE!");
+            //UserService
+            //    .getFollowing()
+            //    .then(function (response) {
+            //        console.log("Got following ");
+            //        $scope.followingProfiles = response.data;
+            //        console.log($scope.followingProfiles);
+            //    });
+            //UserService
+            //    .getFollowers()
+            //    .then(function (response) {
+            //        console.log("Got followers ");
+            //        $scope.followersProfiles = response.data;
+            //        console.log($scope.followersProfiles);
+            //    });
+            ReviewService
+                .findFollowingReviews(UserService.getCurrentUser()._id)
                 .then(function (response) {
-                    console.log("Got following ");
-                    vm.followingProfiles = response.data;
-                    console.log(vm.followingProfiles);
-                });
-            UserService
-                .getFollowers()
-                .then(function (response) {
-                    console.log("Got followers ");
-                    vm.followersProfiles = response.data;
-                    console.log(vm.followersProfiles);
+                    console.log("Got following reviews");
+                    $scope.followingReviews = response.data;
+                    console.log($scope.followingReviews);
                 });
         }
 
         function init() {
-            vm.$location = $location;
+            $scope.$location = $location;
             $('.carousel').carousel({
                 interval: 5000
-            })
+            });
 
         }
         init();
@@ -46,8 +54,8 @@
         }
 
         function searchRedirect() {
-            if(vm.searchTxt){
-                var searcholdTerm = vm.searchTxt;
+            if($scope.searchTxt){
+                var searcholdTerm = $scope.searchTxt;
                 searchTerm = searcholdTerm.replace(/ /g, "+");
                 console.log("SearchText: "+ searchTerm);
                 $location.url("/search/"+searchTerm);

@@ -41,10 +41,10 @@
 <div ng-hide="currentUser" id="myCarousel" class="carousel slide" data-ride="carousel">
     <div id="custom-search-input">
         <div class="input-group col-md-9 search-margin">
-            <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control input-lg search-box"
+            <input id="foodTitleTxt" ng-model="searchTxt" type="search" class="form-control input-lg search-box"
                    placeholder="Search for food..like 'Pasta'">
     <span class="input-group-btn">
-    <button id="searchFoodBtn" ng-click="model.searchRedirect()" class="search-query btn btn-primary" type="button" >
+    <button id="searchFoodBtn" ng-click="searchRedirect()" class="search-query btn btn-primary" type="button" >
         <span class="glyphicon glyphicon-search glyphicon-size"></span>
     </button>
     </span>
@@ -194,7 +194,8 @@
         <li ng-class="{'active' : $location.url() == '/profile'}">
             <a href="#/profile"><i class="glyphicon glyphicon-user"></i> &nbsp; &nbsp; &nbsp; &nbsp; Profile Overview </a></li>
         <li ng-class="{'active' : $location.url() == '/followers'}">
-            <a href="#/" ng-click = "changeDisplay('FOLLOWERS')"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
+            <!--<button class="btn btn-default" ng-click = "changeDisplay()"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </button></li>-->
+            <a href="" ng-click = "changeDisplay('FOLLOWERS')"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
         <li ng-class="{'active' : $location.url() == '/reviews'}">
             <a href="#/"><i class="fa fa-star"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
         <li ng-class="{'active' : $location.url() == '/following'}">
@@ -232,14 +233,15 @@
             <h2 class="page-header"> Recent activity from foodies you follow</h2>
             <p>{{currentUser.username}}</p>
 
-            <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="foll in model.followingProfiles">
-                <article class="search-result row" ng-repeat="rev in foll.reviews">
+            <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="rev in followingReviews">
+                <!--ng-repeat="rev in foll.reviews"-->
+                <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-3">
                         <!--can put place image-->
                         <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                        <h3><a href="#/othersprofile/{{foll._id}}" title="">{{foll.username}}</a> wrote a review for
+                        <h3><a href="#/othersprofile/{{rev.userID}}" title="">{{rev.username}}</a> wrote a review for
                             <a href="#/details/{{rev.yelpID}}">{{rev.placeName}}
                             </a></h3>
                         <p>{{rev.comment}}</p>

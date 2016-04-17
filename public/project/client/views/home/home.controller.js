@@ -3,14 +3,14 @@
         .module("FoodQuotientApp")
         .controller("HomeController",HomeController);
 
-    function HomeController($scope,$location,UserService,ReviewService) {
+    function HomeController($scope,$rootScope,$location,UserService,ReviewService) {
         //var vm = this;
 
         //event handlers declarations
         $scope.logout = logout;
         $scope.searchRedirect = searchRedirect;
 
-        if(UserService.getCurrentUser()._id) {
+        if($rootScope.currentUser) {
             console.log("HOME BASE!");
             //UserService
             //    .getFollowing()
@@ -26,8 +26,9 @@
             //        $scope.followersProfiles = response.data;
             //        console.log($scope.followersProfiles);
             //    });
+
             ReviewService
-                .findFollowingReviews(UserService.getCurrentUser()._id)
+                .findFollowingReviews($rootScope.currentUser._id)
                 .then(function (response) {
                     console.log("Got following reviews");
                     $scope.followingReviews = response.data;

@@ -1,30 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55802f58-3434-4f04-9e4e-3ae9513444ab" name="Default" comment="Added database access to the project.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/services/review.service.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/foodplace.schema.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/projuser.schema.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/review.model.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/review.schema.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/services/review.service.server.js" />
+    <list default="true" id="55802f58-3434-4f04-9e4e-3ae9513444ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/config.js" afterPath="$PROJECT_DIR$/public/project/client/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/index.html" afterPath="$PROJECT_DIR$/public/project/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/details/details.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/details/details.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/details/details.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/details/details.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/home/home.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/home/home.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/profile/profile.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/profile/profile.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/profile/updateprofile.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/profile/updateprofile.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/register/register.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/register/register.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/app.js" afterPath="$PROJECT_DIR$/public/project/server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/food.model.server.js" afterPath="$PROJECT_DIR$/public/project/server/models/food.model.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/review.model.server.js" afterPath="$PROJECT_DIR$/public/project/server/models/review.model.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/user.model.server.js" afterPath="$PROJECT_DIR$/public/project/server/models/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/services/food.service.server.js" afterPath="$PROJECT_DIR$/public/project/server/services/food.service.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/services/review.service.server.js" afterPath="$PROJECT_DIR$/public/project/server/services/review.service.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="webdev2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,61 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.view.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.view.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17302799">
-              <caret line="197" column="12" selection-start-line="197" selection-start-column="12" selection-end-line="197" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="review.service.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/services/review.service.server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/services/user.service.server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="review.model.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/server/models/review.model.server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.service.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/services/user.service.client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+            <state vertical-scroll-proportion="12.423077">
+              <caret line="202" column="9" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -109,7 +43,57 @@
         <entry file="file://$PROJECT_DIR$/public/project/client/services/review.service.client.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/client/services/user.service.client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="review.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/services/review.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project/server/services/user.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38663486">
+              <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="review.model.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/models/review.model.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -119,17 +103,17 @@
         <entry file="file://$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/profile/profile.view.html">
+      <file leaf-file-name="user.model.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/models/user.model.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
-              <caret line="37" column="60" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -192,17 +176,17 @@
         <option value="$PROJECT_DIR$/public/project/client/index.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/details/details.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/profile/profile.view.html" />
-        <option value="$PROJECT_DIR$/public/project/server/models/user.model.server.js" />
-        <option value="$PROJECT_DIR$/public/project/server/services/review.service.server.js" />
-        <option value="$PROJECT_DIR$/public/project/client/services/review.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/details/details.controller.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/review.schema.server.js" />
         <option value="$PROJECT_DIR$/public/project/client/config.js" />
-        <option value="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" />
-        <option value="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
-        <option value="$PROJECT_DIR$/public/project/server/models/review.model.server.js" />
-        <option value="$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/home/home.view.html" />
+        <option value="$PROJECT_DIR$/public/project/server/models/review.model.server.js" />
+        <option value="$PROJECT_DIR$/public/project/client/services/review.service.client.js" />
+        <option value="$PROJECT_DIR$/public/project/server/services/review.service.server.js" />
+        <option value="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" />
+        <option value="$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js" />
+        <option value="$PROJECT_DIR$/public/project/server/models/user.model.server.js" />
+        <option value="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
       </list>
     </option>
   </component>
@@ -1007,12 +991,6 @@
       <option name="number" value="Default" />
       <updated>1454205984874</updated>
     </task>
-    <task id="LOCAL-00030" summary="Changed Controller and Server, got the API working.">
-      <created>1456890540226</created>
-      <option name="number" value="00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1456890540226</updated>
-    </task>
     <task id="LOCAL-00031" summary="Login functionality added,styles modified.">
       <created>1456953493835</created>
       <option name="number" value="00031" />
@@ -1301,7 +1279,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460515126965</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Added database access to the project.">
+      <created>1460764548215</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1460764548359</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1324,7 +1308,7 @@
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26324505" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.294702" sideWeight="0.49737436" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25827813" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25662252" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24684015" sideWeight="0.50800914" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39900663" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1581,14 +1565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.5">
@@ -1640,14 +1616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/user.model.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4175">
-          <caret line="119" column="56" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/server/models/field.schema.server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1696,42 +1664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/services/user.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/review.model.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/details/details.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.1475">
           <caret line="102" column="44" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/services/review.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1752,22 +1688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/services/user.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/profile/othersprofile.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.090909">
@@ -1784,18 +1704,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/services/review.service.server.js">
+    <entry file="file://$PROJECT_DIR$/public/project/client/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/services/review.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/home/home.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17302799">
-          <caret line="197" column="12" selection-start-line="197" selection-start-column="12" selection-end-line="197" selection-end-column="12" />
+        <state vertical-scroll-proportion="12.423077">
+          <caret line="202" column="9" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/services/user.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/profile/profile.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/review.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/user.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/services/review.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/services/user.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38663486">
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
           <folding />
         </state>
       </provider>

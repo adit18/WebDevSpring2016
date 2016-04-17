@@ -48,7 +48,8 @@ module.exports = function(app, foodModel, userModel) {
     }
 
     function deleteProfile(req, res) {
-        var userId = req.params.id;
+        var userId = req.params.userId;
+        console.log("To delete serv: "+userId);
         userModel.deleteUserById(userId)
             .then(
                 function (users) {

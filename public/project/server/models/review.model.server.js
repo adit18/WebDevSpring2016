@@ -89,6 +89,7 @@ module.exports = function(db, mongoose) {
             .find({userID: {$in: userIds}},
                 function (err, reviews) {
                     if (err) {
+                        console.log("CALLED ERR!");
                         deferred.reject(err);
                     } else {
                         console.log("CALLED!");

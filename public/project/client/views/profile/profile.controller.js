@@ -50,13 +50,16 @@
                 .then(function (response) {
                     console.log("Deleted User:"+response);
                     //console.log(vm.profile);
+
+                    UserService
+                        .logout()
+                        .then(function() {
+                            UserService.setCurrentUser(null);
+                            $location.url("/");
+                        })
+
                 });
-            UserService
-                .logout()
-                .then(function() {
-                    UserService.setCurrentUser(null);
-                    $location.url("/");
-                })
+
         }
     }
 })();

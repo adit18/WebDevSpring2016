@@ -1,4 +1,4 @@
-var mock = require("./projuser.mock.json");
+//var mock = require("./projuser.mock.json");
 
 // load q promise library
 var q = require("q");
@@ -111,6 +111,7 @@ module.exports = function(db, mongoose) {
 
     function deleteUserById(userId) {
         var deferred = q.defer();
+        console.log("To delete: "+userId);
         UserModel.remove(
             {_id: userId},
             function (err, doc) {

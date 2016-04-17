@@ -64,11 +64,12 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
 
     function findFollowingReviews (req, res) {
         var userID = req.params.userID;
-
+        //user._id = $rootScope.currentUser._id;
         userModel.findUserById(userID)
             .then(
                 function ( userRecd ) {
                     console.log("Finding following reviews by user in Review Server: "+userID);
+                    console.log("Following IDs: "+ userRecd.following);
                     reviewModel.findReviewsByUserIds(userRecd.following)
                         .then(
                             function ( followingReviews ) {
@@ -81,7 +82,7 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
                         );
                 },
                 function ( err ) {
-                    console.log("User not found");
+                    console.log("User not found in revSer");
                     res.status(400).send(err);
                 }
             );

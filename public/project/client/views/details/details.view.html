@@ -63,7 +63,7 @@
                     <!--</div>-->
                     <div>
                         <uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating" stateOn="glyphicon glyphicon-star glyphicon-size" stateOff="glyphicon glyphicon-star-empty glyphicon-size"
-                                    style="color: goldenrod"></uib-rating>
+                                    class="star-color" ></uib-rating>
                         <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
                     </div>
 
@@ -93,7 +93,7 @@
                             <!--</div>-->
 
                             <div class="well">
-                                <h3><a href="#/othersprofile/{{review.userID}}" title="">{{review.username}}</a> wrote a review</h3>
+                                <h3><a href="#/othersprofile/{{review.userID}}" title="">{{review.username}}</a> wrote a review at {{review.updated}}</h3>
                                 <uib-rating ng-model="review.ratval" max="max" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
                                 <p>{{review.comment}}</p>
                                 <!--<span class="plus" ng-click="updateReview()"><a href="#" title="update"><i class="glyphicon glyphicon-pencil"></i></a></span>-->

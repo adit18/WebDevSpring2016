@@ -3,11 +3,12 @@
         .module("FoodQuotientApp")
         .controller("OthersprofileController",OthersprofileController);
 
-    function OthersprofileController($scope,$rootScope,$location,$routeParams,UserService) {
+    function OthersprofileController($scope,$rootScope,$location,$routeParams,UserService,ReviewService) {
         //var vm = this;
 
         var reqUserId = $routeParams.userId;
         var currentUser = $rootScope.currentUser;
+        $scope.currentUser = $rootScope.currentUser;
 
         //event handlers declarations
         $scope.startFollow = startFollow;
@@ -30,6 +31,14 @@
                             console.log("Flag set: "+$scope.follFlag)
                         }
                     }
+
+                    ReviewService
+                        .findUserReviewsByUserId (response.data._id)
+                        .then(function(response){
+                            //$scope.place = response.data;
+                            $scope.reviews = response.data;
+                        });
+
                 });
 
         }

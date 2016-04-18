@@ -178,6 +178,10 @@ hr{
     background-image: url(../images/mini-cupcakes-right2.jpg);
 }
 
+.star-color {
+    color: goldenrod;
+}
+
 /*home search styling*/
 
 #custom-search-input {

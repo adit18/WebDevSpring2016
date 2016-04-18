@@ -10,8 +10,8 @@ module.exports = function(mongoose) {
         comment: String,
         ratval: String,
         categories: [[String]],
-        created: Date,
-        updated: Date
+        created: String,
+        updated: String
     }, {collection: 'proj.review'});
     return ReviewSchema;
 };

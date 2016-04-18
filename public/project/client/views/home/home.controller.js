@@ -12,28 +12,39 @@
 
         if($rootScope.currentUser) {
             console.log("HOME BASE!");
-            //UserService
-            //    .getFollowing()
-            //    .then(function (response) {
-            //        console.log("Got following ");
-            //        $scope.followingProfiles = response.data;
-            //        console.log($scope.followingProfiles);
-            //    });
-            //UserService
-            //    .getFollowers()
-            //    .then(function (response) {
-            //        console.log("Got followers ");
-            //        $scope.followersProfiles = response.data;
-            //        console.log($scope.followersProfiles);
-            //    });
+            UserService
+                .getFollowing()
+                .then(function (response) {
+                    console.log("Got following ");
+                    $scope.followingProfiles = response.data;
+                    console.log($scope.followingProfiles);
+                });
+            UserService
+                .getFollowers()
+                .then(function (response) {
+                    console.log("REALLY Got followers ");
+                    $scope.followersProfiles = response.data;
+                    console.log(JSON.stringify($scope.followersProfiles));
+                });
 
             ReviewService
                 .findFollowingReviews($rootScope.currentUser._id)
                 .then(function (response) {
                     console.log("Got following reviews");
-                    $scope.followingReviews = response.data;
-                    console.log($scope.followingReviews);
+                    //$scope.followingReviews = response.data;
+                    //console.log($scope.followingReviews);
+                    var unsortedRevs = response.data;
+                    unsortedRevs.sort(compareMilli);
+                    $scope.followingReviews = unsortedRevs.reverse();
                 });
+        }
+
+        function compareMilli(a,b) {
+            var amil = moment(a.updated).valueOf();
+            var bmil = moment(b.updated).valueOf();
+            if(amil < bmil) return -1;
+            if(amil > bmil) return 1;
+            return 0;
         }
 
         function init() {

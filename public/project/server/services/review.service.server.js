@@ -20,6 +20,8 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
         revObj.comment = placeYelp.buffer;
         revObj.ratval = placeYelp.ratval;
         revObj.categories = placeYelp.categories;
+        revObj.created = placeYelp.created;
+        revObj.updated = placeYelp.updated;
         reviewModel.createReview(revObj)
             .then(
                 function ( doc ) {

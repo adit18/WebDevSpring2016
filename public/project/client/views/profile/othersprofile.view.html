@@ -19,11 +19,11 @@
                             <span class="tags">chinese</span>
                             <span class="tags">italian</span>
                         </p>
-                        <div ng-if="profile.reviews">
+                        <div ng-if="reviews">
                             <h3>Food Places {{profile.username}} likes</h3>
 
                             <div class="panel panel-default"
-                                 ng-repeat="review in profile.reviews">
+                                 ng-repeat="review in reviews">
                                 <div class="panel-heading">
                                     <a href="#/details/{{review.yelpID}}">
                                         {{review.placeName}}
@@ -43,7 +43,7 @@
                         <!--<a class="btn btn-success" href="#/updateprofile" ><span class="fa fa-pencil"></span> Edit Profile </a>-->
                     </div>
                 </div>
-                <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 divider text-center" ng-if="profile._id != currentUser._id">
                     <div>
                         <h2><strong> {{profile.followers.length}} </strong></h2>
                         <p><small>Followers</small></p>

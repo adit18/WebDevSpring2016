@@ -129,6 +129,7 @@ module.exports = function(db, mongoose) {
                         console.log(JSON.stringify(review));
                         review.comment = reviewObj.comment;
                         review.ratval = reviewObj.ratval;
+                        review.updated = reviewObj.updated;
                         review.save(function (err, updReview) {
                             if (err) {
                                 deferred.reject(err);

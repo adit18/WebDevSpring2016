@@ -57,6 +57,12 @@
             console.log("Buffer: "+place.buffer);
             //place.buffer = $scope.data.buffer;
             place.ratval = $scope.rate;
+            //var storedDate = $filter('date')(new Date(), "dd/MM/yyyy");
+            place.created = moment().format('YYYY-MM-DD HH:mm:ss');
+            place.updated = moment().format('YYYY-MM-DD HH:mm:ss');
+            //(new Date).getTime();
+            $scope.relative = moment(place.created).fromNow();
+            console.log("Relative: "+ $scope.relative);
             console.log("Rating: "+place.ratval);
             if(currentUser) {
                 ReviewService
@@ -89,6 +95,8 @@
             var tempReview = $rootScope.currentReview ;
             tempReview.ratval = $scope.rate;
             tempReview.comment = $scope.data.buffer;
+            tempReview.updated = moment().format('YYYY-MM-DD HH:mm:ss');
+            //(new Date).getTime();
             console.log("Updating "+$rootScope.currentReview._id);
             ReviewService
                 .updateReviewById($rootScope.currentReview._id, tempReview)

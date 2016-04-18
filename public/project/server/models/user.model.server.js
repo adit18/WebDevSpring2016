@@ -61,13 +61,24 @@ module.exports = function(db, mongoose) {
 
     function createUser(user) {
         var deferred = q.defer();
-        UserModel.create(user, function (err, doc) {
-            if (err) {
-                deferred.reject(err);
-            } else {
-                deferred.resolve(doc);
-            }
-        });
+
+        UserModel.findOne( { username: user.username },
+            function(err, doc) {
+                if (doc) {
+                    //deferred.reject(err);
+                    console.log("value found: "+doc);
+                    deferred.resolve(null);
+                } else {
+                    UserModel.create(user, function (err, doc) {
+                                if (err) {
+                                    deferred.reject(err);
+                                } else {
+                                    deferred.resolve(doc);
+                                }
+                            });
+                }
+
+            });
         return deferred.promise;
     }
 

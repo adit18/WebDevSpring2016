@@ -53,6 +53,7 @@ module.exports = function(app, foodModel, userModel) {
         userModel.deleteUserById(userId)
             .then(
                 function (users) {
+                    req.session.destroy();
                     res.json(users);
                 },
                 // send error if promise rejected
@@ -136,6 +137,16 @@ module.exports = function(app, foodModel, userModel) {
             .then(
                 function ( userRecd ) {
                     user = userRecd;
+                    userModel.findUsersByIds(userRecd.following)
+                        .then(
+                            function ( followingUsers ) {
+                                console.log("Retrieved following ");
+                                res.json(followingUsers);
+                            },
+                            function ( err ) {
+                                res.status(400).send(err);
+                            }
+                        );
                 },
                 function ( err ) {
                     console.log("User not found");
@@ -143,23 +154,23 @@ module.exports = function(app, foodModel, userModel) {
                 }
             );
 
-        if(user) {
-            var followingIDs = user.following;
-
-            var followingUsers = userModel.findUsersByIds(followingIDs)
-                .then(
-                    function ( followingUsers ) {
-                        console.log("Retrieved following ");
-                        res.json(followingUsers);
-                    },
-                    function ( err ) {
-                        res.status(400).send(err);
-                    }
-                );
-        }
-        else {
-            res.send(null);
-        }
+        //if(user) {
+        //    var followingIDs = user.following;
+        //
+        //    userModel.findUsersByIds(followingIDs)
+        //        .then(
+        //            function ( followingUsers ) {
+        //                console.log("Retrieved following ");
+        //                res.json(followingUsers);
+        //            },
+        //            function ( err ) {
+        //                res.status(400).send(err);
+        //            }
+        //        );
+        //}
+        //else {
+        //    res.send(null);
+        //}
     }
 
     function getFollowers(req, res) {
@@ -168,30 +179,42 @@ module.exports = function(app, foodModel, userModel) {
         userModel.findUserById(userId)
             .then(
                 function ( userRecd ) {
+                    console.log("Server part1");
                     user = userRecd;
+                    userModel.findUsersByIds(userRecd.followers)
+                        .then(
+                            function ( followersUsers ) {
+                                console.log("Server part2");
+                                console.log("Retrieved followers ");
+                                res.json(followersUsers);
+                            },
+                            function ( err ) {
+                                res.status(400).send(err);
+                            }
+                        );
                 },
                 function ( err ) {
                     //console.log("User not found");
                     res.status(400).send(err);
                 }
             );
-        if(user){
-            var followersIDs = user.followers;
-
-            var followersUsers = userModel.findUsersByIds(followersIDs)
-                .then(
-                    function ( followersUsers ) {
-                        console.log("Retrieved followers ");
-                        res.json(followersUsers);
-                    },
-                    function ( err ) {
-                        res.status(400).send(err);
-                    }
-                );
-        }
-        else {
-            res.send(null);
-        }
+        //if(user){
+        //    var followersIDs = user.followers;
+        //    console.log("Server part2");
+        //    userModel.findUsersByIds(followersIDs)
+        //        .then(
+        //            function ( followersUsers ) {
+        //                console.log("Retrieved followers ");
+        //                res.json(followersUsers);
+        //            },
+        //            function ( err ) {
+        //                res.status(400).send(err);
+        //            }
+        //        );
+        //}
+        //else {
+        //    res.send(null);
+        //}
     }
 
 

@@ -16,6 +16,13 @@
 
         //event handler declarations
         function register(user){
+            if(user.password !== user.vpassword){
+                alert("Password mismatch!, Please re-enter");
+                $location.url('/register');
+                $('#register')[0].reset();
+                return;
+            }
+
             UserService
                 .register(user)
                 .then(function(response){
@@ -24,6 +31,12 @@
                         UserService.setCurrentUser(currentUser);
                         $('#pro').html(UserService.getCurrentUser().username);
                         $location.url("/updateprofile");
+                    }
+                    else{
+                        console.log("Username already exists!, please try another");
+                        alert("Username already exists! Please try another!");
+                        $location.url('/register');
+                        $('#register')[0].reset();
                     }
                 });
         }

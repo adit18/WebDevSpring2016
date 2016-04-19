@@ -22,7 +22,8 @@
                 $('#register')[0].reset();
                 return;
             }
-
+            //Initializeimage
+            user.profile_img = "http://richlandtree.com/Images/ProfileIcon.png";
             UserService
                 .register(user)
                 .then(function(response){

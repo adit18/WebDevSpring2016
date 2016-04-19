@@ -10,7 +10,7 @@
         };
         return api;
 
-        function searchYelp (searchTerm, callback) {
+        function searchYelp (searchTerm, searchLoc, callback) {
 
             var accessor = {
                 consumerSecret: auth.consumerSecret,
@@ -18,7 +18,7 @@
             };
             var parameters = [];
             parameters.push(['term', searchTerm]);
-            parameters.push(['location', 'Boston,MA']);
+            parameters.push(['location', searchLoc]);
             parameters.push(['limit', 10]);
             parameters.push(['category_filter', 'restaurants']);
             parameters.push(['callback', 'angular.callbacks._0']);

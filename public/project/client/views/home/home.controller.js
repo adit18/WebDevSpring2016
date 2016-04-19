@@ -9,6 +9,7 @@
         //event handlers declarations
         $scope.logout = logout;
         $scope.searchRedirect = searchRedirect;
+        $scope.followersflag = false;
 
         if($rootScope.currentUser) {
             console.log("HOME BASE!");
@@ -53,6 +54,12 @@
                 interval: 5000
             });
 
+
+            //$('.nav a').on('click', function(){
+            //    $('.btn-navbar').click(); //bootstrap 2.x
+            //    $('.navbar-toggle').click() //bootstrap 3.x by Richard
+            //});
+
         }
         init();
 
@@ -68,28 +75,19 @@
         function searchRedirect() {
             if($scope.searchTxt){
                 var searcholdTerm = $scope.searchTxt;
+                var searcholdLoc = $scope.searchLoc;
+                if(!searcholdLoc){
+                    searcholdLoc = "Boston,MA";
+                }
                 searchTerm = searcholdTerm.replace(/ /g, "+");
                 console.log("SearchText: "+ searchTerm);
-                $location.url("/search/"+searchTerm);
+                console.log("SearchLoc: "+ searcholdLoc);
+                $location.url("/search/"+searchTerm+"/location/"+searcholdLoc);
             }
             else{
                 alert("Please enter a search term!");
             }
 
         }
-
-        function changeDisplay(key){
-            console.log("Change called "+key);
-        }
-
-        //function searchKeyPress (e) {
-        //    e = e || window.event;
-        //    if (e.keyCode == 13)
-        //    {
-        //        document.getElementById('searchFoodBtn').click();
-        //        return false;
-        //    }
-        //    return true;
-        //}
     }
 })();

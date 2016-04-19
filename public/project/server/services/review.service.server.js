@@ -14,6 +14,7 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
         var revObj = {};
         revObj.userID = userId;
         revObj.username = req.session.currentUser.username;
+        revObj.userimg = req.session.currentUser.profile_img;
         revObj.yelpID = placeYelp.id;
         revObj.placeName = placeYelp.name;
         revObj.placePoster = placeYelp.image_url;

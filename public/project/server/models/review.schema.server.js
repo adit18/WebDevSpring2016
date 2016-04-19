@@ -4,6 +4,7 @@ module.exports = function(mongoose) {
     var ReviewSchema = mongoose.Schema({
         userID: String,
         username: String,
+        userimg: String,
         yelpID: String,
         placeName: String,
         placePoster: String,

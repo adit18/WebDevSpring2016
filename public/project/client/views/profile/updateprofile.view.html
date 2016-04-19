@@ -1,105 +1,106 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-2 main">
             <h1 class="page-header">Edit Profile</h1>
 
-            <!--<div ng-if="model.profile.likesPlaces.length">-->
-                <!--<h3>Food Places I Like</h3>-->
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <figure>
+                    <img ng-src="{{model.profile.profile_img}}" style="width:341px; height:339px" alt="{{model.profile.username}}" class="img-circle img-responsive">
+                </figure>
 
-                <!--<div class="panel panel-default"-->
-                     <!--ng-repeat="place in model.profile.likesPlaces">-->
-                    <!--<div class="panel-heading">-->
-                        <!--<a href="#/details/{{place.yelpID}}">-->
-                            <!--{{place.title}}-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <!--<div class="panel-body">-->
-                        <!--<a href="#/details/{{place.yelpID}}">-->
-                            <!--<img ng-src="{{place.poster}}" width="100px"/>-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<br/>-->
-                <!--<br/>-->
-            <!--</div>-->
+                <form action="/service/user/upload"
+                      method="post"
+                      enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="profile-image" class="col-sm-2 form-control-label custom-formlabel">Profile pic:</label>
+                        <div class="col-sm-6">
+                            <input name="userId" value="{{model.profile._id}}" style="display: none"/>
+                            <input  type="file" name="myFile" id="profile-image" class="form-control"/>
+                            <button type="submit" class="btn btn-block btn-primary">
+                                Upload Image
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8">
+                <form role="form">
+                    <div class="form-group row">
+                        <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Username:</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="model.profile.username" class="form-control" id="inputdefault" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 form-control-label custom-formlabel">Password:</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="model.profile.password" class="form-control" id="inputPassword3" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputdefault2" class="col-sm-2 form-control-label custom-formlabel">First Name:</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="model.profile.firstName" class="form-control" id="inputdefault2" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputdefault3" class="col-sm-2 form-control-label custom-formlabel">Last Name:</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="model.profile.lastName" class="form-control" id="inputdefault3" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 form-control-label custom-formlabel">Email:</label>
+                        <div class="col-sm-6">
+                            <input type="email" ng-model="model.profile.email" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 form-control-label custom-formlabel">Gender:</label>
+                        <div class="col-sm-6">
+                            <label>
+                                <input type="radio" ng-model="model.profile.gender" value="M">
+                                Male
+                            </label>
+                            <label>
+                                <input type="radio" ng-model="model.profile.gender" value="F">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputdefault5" class="col-sm-2 form-control-label custom-formlabel">About Me:</label>
+                        <div class="col-sm-6">
+                            <textarea type="text" ng-model="model.profile.aboutMe" class="form-control" id="inputdefault5" placeholder="Tell us something about yourself.."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputdefault6" class="col-sm-2 form-control-label custom-formlabel">My Location:</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="model.profile.location" class="form-control" id="inputdefault6" placeholder="Boston,MA">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputdefault7" class="col-sm-2 form-control-label custom-formlabel">My Contact:</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="model.profile.contact" class="form-control" id="inputdefault7" placeholder="+1 (857)-999-9999">
+                        </div>
+                    </div>
 
-            <form role="form">
-                <div class="form-group row">
-                    <label for="inputdefault" class="col-sm-2 form-control-label custom-formlabel">Username:</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="model.profile.username" class="form-control" id="inputdefault" placeholder="Username">
+                    <div class="form-group row">
+                        <div class="col-sm-offset-4 col-sm-10">
+                            <button type="submit" ng-click="model.update(model.profile)" class="btn btn-success">Update</button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 form-control-label custom-formlabel">Password:</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="model.profile.password" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputdefault2" class="col-sm-2 form-control-label custom-formlabel">First Name:</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="model.profile.firstName" class="form-control" id="inputdefault2" placeholder="First Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputdefault3" class="col-sm-2 form-control-label custom-formlabel">Last Name:</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="model.profile.lastName" class="form-control" id="inputdefault3" placeholder="Last Name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 form-control-label custom-formlabel">Email:</label>
-                    <div class="col-sm-6">
-                        <input type="email" ng-model="model.profile.email" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 form-control-label custom-formlabel">Gender:</label>
-                    <div class="col-sm-6">
-                        <label>
-                            <input type="radio" ng-model="model.profile.gender" value="M">
-                            Male
-                        </label>
-                        <label>
-                            <input type="radio" ng-model="model.profile.gender" value="F">
-                            Female
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputdefault5" class="col-sm-2 form-control-label custom-formlabel">About Me:</label>
-                    <div class="col-sm-6">
-                        <textarea type="text" ng-model="model.profile.aboutMe" class="form-control" id="inputdefault5" placeholder="Tell us something about yourself.."></textarea>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputdefault6" class="col-sm-2 form-control-label custom-formlabel">My Location:</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="model.profile.location" class="form-control" id="inputdefault6" placeholder="Boston,MA">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputdefault7" class="col-sm-2 form-control-label custom-formlabel">My Contact:</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="model.profile.contact" class="form-control" id="inputdefault7" placeholder="+1 (857)-999-9999">
-                    </div>
-                </div>
 
-                <div class="form-group row">
-                    <div class="col-sm-offset-4 col-sm-10">
-                        <button type="submit" ng-click="model.update(model.profile)" class="btn btn-success">Update</button>
+                    <div class="form-group row">
+                        <div class="col-sm-offset-4 col-sm-10">
+                            <button type="submit" ng-click="model.deleteProfile()" class="btn btn-danger">Delete Profile</button>
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-sm-offset-4 col-sm-10">
-                        <button type="submit" ng-click="model.deleteProfile()" class="btn btn-danger">Delete Profile</button>
-                    </div>
-                </div>
-            </form>
-
+                </form>
+            </div>
             <br/>
             <br/>
 

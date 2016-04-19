@@ -31,6 +31,7 @@
                     vm.profile = response.data;
                     console.log("Updated "+response.data.username);
                     //console.log(vm.profile);
+                    $location.url("/profile");
                 });
         }
 

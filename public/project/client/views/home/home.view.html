@@ -40,15 +40,23 @@
 <!--data-interval="10000"-->
 <div ng-hide="currentUser" id="myCarousel" class="carousel slide" data-ride="carousel">
     <div id="custom-search-input">
-        <div class="input-group col-md-9 search-margin">
-            <input id="foodTitleTxt" ng-model="searchTxt" type="search" class="form-control input-lg search-box"
+        <div class="input-group col-md-7 col-xs-7 search-margin">
+            <input id="foodTitleTxt" ng-model="searchTxt" type="search" class="form-control"
                    placeholder="Search for food..like 'Pasta'">
-    <span class="input-group-btn">
-    <button id="searchFoodBtn" ng-click="searchRedirect()" class="search-query btn btn-primary" type="button" >
-        <span class="glyphicon glyphicon-search glyphicon-size"></span>
-    </button>
-    </span>
         </div>
+        <div class="input-group col-md-7 col-xs-7 search-margin second-box">
+            <input id="foodLoc" ng-model="searchLoc" type="search" class="form-control" placeholder="Boston,MA">
+        </div>
+        <div class="input-group col-md-7 col-xs-7 search-margin">
+            <span class="input-group-btn">
+                <button ng-click="searchRedirect()" class="form-control btn btn-success btn-block" type="button" >
+                    Search
+                    <!--<span class="glyphicon glyphicon-search glyphicon-size"></span>-->
+                </button>
+            </span>
+        </div>
+
+
     </div>
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -60,7 +68,7 @@
     <!-- Wrapper for slides role="listbox" -->
     <div class="carousel-inner">
         <div class="item active">
-            <!--/project/client/images/pasta-03.jpg-->
+            <!--&lt;!&ndash;&ndash;&gt;/project/client/images/breakfast.jpg-->
             <img class="img-carousel img-responsive center-block" src="http://lorempixel.com/1400/500/food/1/" alt="slide1">
             <div class="carousel-caption">
                 <h3>Looking for new places to eat? we can help you!</h3>
@@ -110,81 +118,86 @@
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<!--<div class="container marketing">-->
+<div ng-hide="currentUser" class="container marketing">
 
-<!--&lt;!&ndash; Three columns of text below the carousel &ndash;&gt;-->
-<!--<div class="row">-->
-<!--<div class="col-lg-4">-->
-<!--<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">-->
-<!--<h2>Heading</h2>-->
-<!--<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>-->
-<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
-<!--</div>&lt;!&ndash; /.col-lg-4 &ndash;&gt;-->
-<!--<div class="col-lg-4">-->
-<!--<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">-->
-<!--<h2>Heading</h2>-->
-<!--<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>-->
-<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
-<!--</div>&lt;!&ndash; /.col-lg-4 &ndash;&gt;-->
-<!--<div class="col-lg-4">-->
-<!--<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">-->
-<!--<h2>Heading</h2>-->
-<!--<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>-->
-<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
-<!--</div>&lt;!&ndash; /.col-lg-4 &ndash;&gt;-->
-<!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
-
-
-<!--&lt;!&ndash; START THE FEATURETTES &ndash;&gt;-->
-
-<!--<hr class="featurette-divider">-->
-
-<!--<div class="row featurette">-->
-<!--<div class="col-md-7">-->
-<!--<h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>-->
-<!--<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>-->
-<!--</div>-->
-<!--<div class="col-md-5">-->
-<!--<img class="featurette-image img-responsive center-block" data-src="images/pasta-03.jpg" alt="Generic placeholder image">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<hr class="featurette-divider">-->
-
-<!--<div class="row featurette">-->
-<!--<div class="col-md-7 col-md-push-5">-->
-<!--<h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>-->
-<!--<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>-->
-<!--</div>-->
-<!--<div class="col-md-5 col-md-pull-7">-->
-<!--<img class="featurette-image img-responsive center-block" data-src="images/pasta-03.jpg" alt="Generic placeholder image">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<hr class="featurette-divider">-->
-
-<!--<div class="row featurette">-->
-<!--<div class="col-md-7">-->
-<!--<h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>-->
-<!--<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>-->
-<!--</div>-->
-<!--<div class="col-md-5">-->
-<!--<img class="featurette-image img-responsive center-block" data-src="images/pasta-03.jpg" alt="Generic placeholder image">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<hr class="featurette-divider">-->
-
-<!--&lt;!&ndash; /END THE FEATURETTES &ndash;&gt;-->
+    <!-- Three columns of text below the carousel -->
+    <h2>Search by cuisines!</h2>
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="img-circle" src="http://atlantablackstar.com/wp-content/uploads/2015/01/Indian-food-specialties.jpg" alt="Indian Food" width="270" height="270" style="padding: 10px;">
+            <h2><strong>Indian </strong></h2>
+            <p>Indian cuisine encompasses a wide variety of regional cuisines native to India.
+                Indian food is also heavily influenced by religious and cultural choices and traditions.</p>
+            <p><a class="btn btn-success" href="#/search/indian/location/Boston,MA" role="button">Search </a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-circle" src="http://i.imgur.com/0PzvezB.jpg" alt="Italian Food" width="270" height="270" style="padding: 10px;">
+            <h2><strong>Italian</strong></h2>
+            <p>Italian cuisine is characterized by its simplicity, with many dishes having only four to eight ingredients.
+                Italian cooks rely chiefly on the quality of the ingredients rather than on elaborate preparation.</p>
+            <p><a class="btn btn-success" href="#/search/italian/location/Boston,MA" role="button">Search</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="img-circle" src="http://www.northjersey.com/polopoly_fs/1.698215!/fileImage/httpImage/chinesefood-050913-sb-tif.jpg" alt="Chinese food" width="270" height="270" style="padding: 10px;">
+            <h2><strong>Chinese</strong></h2>
+            <p>Chinese cuisine includes styles originating from the diverse regions of China,
+                as well as from Chinese people in other parts of the world including most Asia nations.</p>
+            <p><a class="btn btn-success" href="#/search/chinese/location/Boston,MA" role="button">Search</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
 
 
-<!--&lt;!&ndash; FOOTER &ndash;&gt;-->
-<!--<footer>-->
-<!--<p class="pull-right"><a href="#">Back to top</a></p>-->
-<!--<p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>-->
-<!--</footer>-->
+    <!-- START THE FEATURETTES -->
 
-<!--</div>&lt;!&ndash; /.container &ndash;&gt;-->
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Reviews from people you know! <span class="text-muted">Know better, taste better.</span></h2>
+            <p class="lead">Connect with you friends and know their likes.</p>
+        </div>
+        <div class="col-md-5">
+            <img class=" img-responsive center-block" width="360" height="270" src="http://images.wisegeek.com/three-people-taking-bites-of-pizza.jpg" alt="Seekers">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading">Checkin and review places to let others know! <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Be a part of the foodie community.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img class="featurette-image img-responsive center-block" src="http://www.outlooktraveller.com/common/uploads/article/2014/x161214153922-RockyandMayur-Lowres.jpg.pagespeed.ic.y0xivNp5be.jpg" alt="Foodies">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Had something heavenly? <span class="text-muted">Get started! Post a review.</span></h2>
+            <p class="lead">Looks delicious, ain't it?</p>
+        </div>
+        <div class="col-md-5">
+            <!--http://goodgoodlife.org/wp-content/uploads/2014/07/butter-chicken.jpg-->
+            <img class="featurette-image img-responsive center-block" src="http://www.zastavki.com/pictures/1680x1050/2011/Food_Pizza_Delicious_pizza_029580_.jpg" alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+
+    <!-- FOOTER -->
+    <footer>
+        <!--<p class="pull-right"><a href="#/">Back to top</a></p>-->
+        <p>&copy; 2016 Aditya Ramesha &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
 
 
 <div ng-show="currentUser" class="col-sm-3 col-md-2 sidebar well">
@@ -195,11 +208,11 @@
             <a href="#/profile"><i class="glyphicon glyphicon-user"></i> &nbsp; &nbsp; &nbsp; &nbsp; Profile Overview </a></li>
         <li ng-class="{'active' : $location.url() == '/followers'}">
             <!--<button class="btn btn-default" ng-click = "changeDisplay()"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </button></li>-->
-            <a href="" ng-click = "changeDisplay('FOLLOWERS')"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
-        <li ng-class="{'active' : $location.url() == '/reviews'}">
-            <a href="#/"><i class="fa fa-star"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
+            <a href="#/followers"><i class="fa fa-users"></i> &nbsp; &nbsp; &nbsp; &nbsp;Followers </a></li>
+        <li ng-class="{'active' : $location.url() == '/profile'}">
+            <a href="#/profile"><i class="fa fa-star"></i> &nbsp; &nbsp; &nbsp; &nbsp; My Reviews</a></li>
         <li ng-class="{'active' : $location.url() == '/following'}">
-            <a href="#/admin"><i class="glyphicon glyphicon-circle-arrow-right "></i>  &nbsp; &nbsp; &nbsp; &nbsp; Following </a></li>
+            <a href="#/following"><i class="glyphicon glyphicon-circle-arrow-right "></i>  &nbsp; &nbsp; &nbsp; &nbsp; Following </a></li>
     </ul>
 </div>
 
@@ -219,28 +232,31 @@
 
 <div ng-show="currentUser" class="container-fluid">
     <div class="row">
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-            <h2 class="page-header">Welcome! Work in progress, check back shortly!</h2>
-            <p>Food quotient is an app that let's you search food places, review them and share it with our friends!
+            <h2 class="page-header">Welcome, {{currentUser.username}}!</h2>
+            <p>Food quotient lets you search food places, review them and share it with our friends!
                 Check in more frequently to know what's your food quotient, and what your tastebuds crave!
             </p>
+            <p> Visited a place that you loved?, go ahead and review it!</p>
             <hr/>
             <br/>
             <br/>
             <h2 class="page-header"> Recent activity from foodies you follow</h2>
-            <p>{{currentUser.username}}</p>
+            <!--<p>{{currentUser.username}}</p>-->
 
             <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="rev in followingReviews">
-                <!--ng-repeat="rev in foll.reviews"-->
                 <article class="search-result row">
-                    <div class="col-xs-12 col-sm-12 col-md-3">
-                        <!--can put place image-->
-                        <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+                    <div class="col-xs-4 col-sm-4 col-md-3">
+                        <a href="#/othersprofile/{{rev.userID}}" title="{{rev.username}}"><img src="http://lorempixel.com/250/140/people" width="140" height="140" style="padding: 0px" alt="{{follower.username}}" class="img-responsive img-circle" /></a>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                    <div class="col-xs-2 col-sm-2 col-md-3">
+                        <ul class="meta-search">
+                            <li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
+                            <li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
+                            <li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 excerpet">
                         <h3><a href="#/othersprofile/{{rev.userID}}" title="">{{rev.username}}</a> wrote a review for
                             <a href="#/details/{{rev.yelpID}}">{{rev.placeName}}
                             </a> at {{rev.updated}}</h3>
@@ -291,24 +307,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<div ng-if="display == 'FOLLOWERS'">
-    <h2 class="page-header"> My Followers</h2>
-    <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="follower in model.followersProfiles">
-        <article class="search-result row">
-            <!--<div class="col-xs-12 col-sm-12 col-md-5">-->
-            <!--&lt;!&ndash;can put place image&ndash;&gt;-->
-            <!--<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>-->
-            <!--</div>-->
-            <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                <h3><a href="#/othersprofile/{{follower._id}}" title="">{{foll.username}}</a></h3>
-                <h3>Reviews: {{follower.reviews.length}}</h3>
-                <h3>Followers: {{follower.followers.length}}</h3>
-                <h3>Following: {{follower.following.length}}</h3>
-            </div>
-            <span class="clearfix borda"></span>
-            <hr/>
-        </article>
-    </section>
 </div>

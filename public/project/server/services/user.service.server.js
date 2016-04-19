@@ -1,4 +1,8 @@
 module.exports = function(app, foodModel, userModel) {
+
+    var multer  = require('multer');
+    var upload = multer({ dest: __dirname+'/../../uploads' });
+
     app.post("/service/user/login", login);
     app.get("/service/user/loggedin", loggedin);
     app.post("/service/user/logout", logout);
@@ -10,6 +14,8 @@ module.exports = function(app, foodModel, userModel) {
     app.get("/service/user/self/:selfId/unfollow/:toFollowUserId", unfollowUser);
     app.get("/service/user/following/:userId", getFollowing);
     app.get("/service/user/followers/:userId", getFollowers);
+    app.post("/service/user/upload", upload.single('myFile'), uploadImage);
+
 
     function profile(req, res) {
         var userId = req.params.userId;
@@ -29,6 +35,48 @@ module.exports = function(app, foodModel, userModel) {
         //console.log("Retrieved reviewPlaces: "+places);
         //user.likesPlaces = places;
         //res.json(user);
+    }
+
+    function uploadImage(req, res) {
+
+        var userId = req.body.userId;
+        var myFile = req.file;
+
+        var destination = myFile.destination;
+        var path = myFile.path;
+        var originalname = myFile.originalname;
+        var size = myFile.size;
+        var mimetype = myFile.mimetype;
+        var filename = myFile.filename;
+
+        userModel.findUserById(userId)
+            .then(
+                function (user) {
+                    user.profile_img = "/project/uploads/"+filename;
+                    return userModel.updateUser(user);
+                        //.then(
+                        //    function (user) {
+                        //        console.log("Updated image server proj");
+                        //        req.session.currentUser = user;
+                        //        res.json(user);
+                        //    },
+                        //    function ( err ) {
+                        //        res.status(400).send(err);
+                        //    }
+                        //);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(){
+                    res.redirect("/project/client/index.html#/updateprofile");
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function updateProfile(req, res) {

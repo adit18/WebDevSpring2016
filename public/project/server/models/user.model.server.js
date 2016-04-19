@@ -105,6 +105,7 @@ module.exports = function(db, mongoose) {
                         user.aboutMe = userObj.aboutMe;
                         user.location = userObj.location;
                         user.contact = userObj.contact;
+                        user.profile_img = userObj.profile_img;
                         user.save(function (err, updUser) {
                             if (err) {
                                 deferred.reject(err);

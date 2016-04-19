@@ -12,6 +12,10 @@
 
         function init() {
             vm.$location = $location;
+            $('.nav a').on('click', function(){
+                $('#navbar').collapse('hide');
+            });
+
             UserService
                 .getCurrentUser()
                 .then(function(response) {
@@ -35,9 +39,14 @@
         function searchRedirect() {
             if(vm.searchTxt){
                 var searcholdTerm = vm.searchTxt;
+                var searcholdLoc = vm.searchLoc;
+                if(!searcholdLoc){
+                    searcholdLoc = "Boston,MA";
+                }
                 searchTerm = searcholdTerm.replace(/ /g, "+");
                 console.log("SearchText: "+ searchTerm);
-                $location.url("/search/"+searchTerm);
+                console.log("SearchLoc: "+ searcholdLoc);
+                $location.url("/search/"+searchTerm+"/location/"+searcholdLoc);
             }
             else{
                 alert("Please enter a search term!");

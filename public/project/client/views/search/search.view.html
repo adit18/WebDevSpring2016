@@ -1,15 +1,16 @@
 <div class="container">
     <hgroup class="mb20">
-    <h1>Search</h1>
+        <h1>Search</h1>
 
-    <input ng-model="searchValue" class="form-control"
-           placeholder="Cheese Burger"/>
-
-    <button ng-click="searchFood()"
-            class="btn btn-primary btn-block">
-        Search
-    </button>
-    <br/>
+        <input ng-model="searchValue" class="form-control"
+               placeholder="Cheese Burger"/>
+        <input ng-model="searchLoc" class="form-control"
+               placeholder="Boston,MA"/>
+        <button ng-click="searchFood()"
+                class="btn btn-primary btn-block">
+            Search
+        </button>
+        <br/>
         <h1>Search Results</h1>
         <h2 class="lead"><strong class="text-danger">{{data.total}}</strong> results were found for the search for <strong class="text-danger">"{{searchValue}}"</strong></h2>
     </hgroup>

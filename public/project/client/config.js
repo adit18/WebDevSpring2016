@@ -15,6 +15,22 @@
                             getLoggedIn: getLoggedIn
                         }
                     })
+                .when("/followers",
+                {
+                    templateUrl: "views/followers/followers.view.html",
+                    controller: "FollowersController",
+                    resolve: {
+                        getLoggedIn: getLoggedIn
+                    }
+                })
+                .when("/following",
+                    {
+                        templateUrl: "views/following/following.view.html",
+                        controller: "FollowingController",
+                        resolve: {
+                            getLoggedIn: getLoggedIn
+                        }
+                    })
                 .when("/register",
                     {
                         templateUrl: "views/register/register.view.html",
@@ -54,7 +70,7 @@
                             checkLoggedIn: checkLoggedIn
                         }
                     })
-                .when("/search/:searchTerm",
+                .when("/search/:searchTerm/location/:searchLoc",
                     {
                         templateUrl: "views/search/search.view.html",
                         controller: "SearchController",

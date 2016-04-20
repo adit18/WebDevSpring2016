@@ -31,7 +31,7 @@
                         UserService.setCurrentUser(response.data);
                         //console.log(UserService.getCurrentUser().username+" in login cntrl ");
                         $('#pro').html(user.username);
-                        $location.url("/profile");
+                        $location.url("/");
                     }
                     else{
                         console.log("Invalid username or password incorrect!");

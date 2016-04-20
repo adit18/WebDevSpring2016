@@ -2,6 +2,7 @@
 
 // load q promise library
 var q = require("q");
+//var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(db, mongoose) {
 
@@ -61,7 +62,7 @@ module.exports = function(db, mongoose) {
 
     function createUser(user) {
         var deferred = q.defer();
-
+        //userObj.password = bcrypt.hashSync(userObj.password);
         UserModel.findOne( { username: user.username },
             function(err, doc) {
                 if (doc) {
@@ -98,6 +99,7 @@ module.exports = function(db, mongoose) {
                         console.log("Inside Update User: ");
                         console.log(JSON.stringify(user));
                         user.username = userObj.username;
+                        user.password = userObj.password;
                         user.firstName = userObj.firstName;
                         user.lastName = userObj.lastName;
                         user.email = userObj.email;
@@ -140,7 +142,7 @@ module.exports = function(db, mongoose) {
     function findUserByCredentials(credentials) {
         console.log("Cred called");
         var deferred = q.defer();
-
+        //var res = bcrypt.compareSync(credentials.password, doc.password);
         UserModel.findOne( { username: credentials.username, password: credentials.password },
             function(err, doc) {
                 if (err) {

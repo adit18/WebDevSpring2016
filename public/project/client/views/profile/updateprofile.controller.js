@@ -16,6 +16,7 @@
                 .getProfile()
                 .then(function (response) {
                     vm.profile = response.data;
+                    vm.profile.password = "";
                     //console.log(vm.profile);
                 });
         }

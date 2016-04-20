@@ -17,6 +17,9 @@
 
         function init() {
             $scope.$location = $location;
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+            });
             UserService
                 .getOthersProfile(reqUserId)
                 .then(function (response) {

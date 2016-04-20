@@ -178,7 +178,15 @@ hr{
     background-image: url(../images/mini-cupcakes-right2.jpg);
 }
 
-.star-color {}
+.star-color {
+    color:#ff4500;
+    font-size: 1.6em;
+}
+
+.star-color-small {
+    color:#ff4500;
+    font-size: 1.2em;
+}
 
 /*home search styling*/
 
@@ -187,7 +195,7 @@ hr{
     margin-top: 10px;
     padding: 0;
     position: absolute;
-    top: 150px;
+    top: 120px;
     left: 30px;
     border-radius: 3px;
 }
@@ -239,9 +247,7 @@ hr{
             /*#D9230F;*/
 }
 
-#searchFoodBtn {
-    /*z-index: 3;*/
-}
+
 
 /*home search styling------------------*/
 
@@ -253,9 +259,31 @@ hr{
     margin: auto;
     border-radius: 3px;
 }
-.second-box {
+#foodTitleTxtNav {
     padding-bottom: 5px;
-    border-radius: 3px;
+    border-radius: 5px;
+    margin: 0 5px 0px 0px;
+
+}
+
+#foodTitleTxt {
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin: 0 5px 5px 0px;
+
+}
+
+#foodLoc {
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin: 0 5px 0px 0px;
+}
+
+#searchBtn{
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin :25px 5px 5px 0px ;
+
 }
 
 .li-nowrap {

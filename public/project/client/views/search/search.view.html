@@ -17,11 +17,11 @@
 
     <section class="col-xs-12 col-sm-12 col-md-12" ng-repeat="business in data.businesses">
         <article class="search-result row">
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <a href="#/details/{{business.id}}" title="{{business.name}}" class="thumbnail">
+            <div class="col-xs-5 col-sm-3 col-md-3">
+                <a href="#/details/{{business.id}}" title="{{business.name}}">
                     <img ng-src="{{business.image_url}}" ng-alt="{{business.name}}" class="img-responsive" /></a>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2">
+            <div class="col-xs-7 col-sm-2 col-md-2">
                 <ul class="meta-search">
                     <li>
                         <img src="{{business.rating_img_url_large}}"  class="img-responsive"/>
@@ -39,7 +39,7 @@
                     <!--<li><i class="glyphicon glyphicon-thumbs-up glyphicon-size"></i> <span class="glyphicon-size">People</span></li>-->
                 </ul>
             </div>
-            <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="col-xs-12 col-sm-7 col-md-7">
                 <h3><a href="#/details/{{business.id}}" title="{{business.name}}">{{business.name}}</a></h3>
                 <p>Top Review: {{business.snippet_text}}</p>
                 <!--<span class="plus"><a href="#/details/{{business.id}}" title="{{business.name}}"><i class="glyphicon glyphicon-plus"></i></a></span>-->

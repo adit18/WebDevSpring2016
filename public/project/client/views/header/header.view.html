@@ -17,9 +17,9 @@
                 <li class="li-nowrap">
                     <div ng-show="currentUser" class="input-group col-xs-11 col-sm-11 col-md-12" style="padding-right: 15px">
                         <form ng-hide="$location.url().indexOf('search') != -1" class="navbar-form navbar-right">
-                            <input id="foodTitleTxt" ng-model="model.searchTxt" type="search" class="form-control" placeholder="Cheese burger..." autofocus style="margin-right: 5px; border-radius: 3px;">
+                            <input id="foodTitleTxtNav" ng-model="model.searchTxt" type="search" class="form-control" placeholder="Cheese burger..." autofocus style="margin-right: 5px; border-radius: 3px;">
                             <input id="foodLoc" ng-model="model.searchLoc" type="search" class="form-control" placeholder="Boston,MA" style="margin-right: 5px; border-radius: 3px;">
-                            <button id="searchFoodBtn" ng-click="model.searchRedirect()" class="btn btn-success"><span class="glyphicon glyphicon-search glyphicon-size-small"></span></button>
+                            <button id="searchFood  Btn" ng-click="model.searchRedirect()" class="btn btn-success"><span class="glyphicon glyphicon-search glyphicon-size-small"></span></button>
                         </form>
                     </div>
                 </li>
@@ -39,7 +39,7 @@
                 <li ng-show="currentUser.roles.indexOf('admin') >= 0"
                     ng-class="{'active' : model.$location.url() === '/admin'}" ><a href="#/admin">Admin</a></li>
                 <li ng-show="currentUser"
-                    ng-class="{'active' : model.$location.url() == '/profile'}"> <a href="#/" ng-click="model.logout()">Logout <i class="glyphicon glyphicon-log-out"></i></a></li>
+                    ng-class="{'active' : model.$location.url() == '/profile'}"> <a href="#myCarousel" ng-click="model.logout()">Logout <i class="glyphicon glyphicon-log-out"></i></a></li>
             </ul>
         </div>
         <!--<a class="navbar-brand padding-taste" href="#/" ><h4 class="h2-custom"> Taste the Best!</h4></a>-->

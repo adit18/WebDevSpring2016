@@ -14,27 +14,48 @@
                         <h2>{{profile.firstName}} {{profile.lastName}}</h2>
                         <p><strong>Email: </strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{profile.email}}</p>
                         <p><strong>Username: </strong>  &nbsp; {{profile.username}} </p>
+                        <p><strong>Location: </strong>  &nbsp; &nbsp; &nbsp;{{profile.location}} </p>
+                        <p><strong>About Me: </strong>  &nbsp; &nbsp;{{profile.aboutMe}} </p>
                         <!--<p><strong>Password: </strong>  &nbsp; &nbsp;{{model.profile.password}} </p>-->
-                        <p><strong>Cuisines: </strong>
-                            <span class="tags">indian</span>
-                            <span class="tags">chinese</span>
-                            <span class="tags">italian</span>
+                        <p><strong>Cuisines: &nbsp; &nbsp; &nbsp; </strong>
+                            <span ng-repeat="cu in reviews[0].categories">
+                                <span class="tags">{{cu}}</span>
+                            </span>
                         </p>
                         <div ng-if="reviews">
-                            <h3>Food Places {{profile.username}} likes</h3>
+                            <h3>Food Places {{profile.username}} reviewed: </h3>
+
+                            <!--<div class="panel panel-default"-->
+                                 <!--ng-repeat="review in reviews">-->
+                                <!--<div class="panel-heading">-->
+                                    <!--<a href="#/details/{{review.yelpID}}">-->
+                                        <!--{{review.placeName}}-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                                <!--<div class="panel-body">-->
+                                    <!--<a href="#/details/{{review.yelpID}}">-->
+                                        <!--<img ng-src="{{review.placePoster}}" width="100px"/>-->
+                                    <!--</a>-->
+                                    <!--{{review.comment}}-->
+                                <!--</div>-->
+                            <!--</div>-->
 
                             <div class="panel panel-default"
                                  ng-repeat="review in reviews">
                                 <div class="panel-heading">
                                     <a href="#/details/{{review.yelpID}}">
-                                        {{review.placeName}}
+                                        <h4>{{review.placeName}}</h4>
                                     </a>
+                                    <h5>Rating: </h5>
+                                    <uib-rating ng-model="review.ratval" class="star-color-small" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" aria-labelledby="default-rating"></uib-rating>
                                 </div>
-                                <div class="panel-body">
-                                    <a href="#/details/{{review.yelpID}}">
+                                <div class="panel-body row">
+                                    <div class="col-md-2 col-sm-4 col-xs-4"><a href="#/details/{{review.yelpID}}">
                                         <img ng-src="{{review.placePoster}}" width="100px"/>
-                                    </a>
-                                    {{review.comment}}
+                                    </a></div>
+                                    <div class="col-md-10 col-sm-8 col-xs-10"><h5>Review: </h5>
+                                        <p >{{review.comment}}</p>
+                                    </div>
                                 </div>
                             </div>
                             <br/>
@@ -49,11 +70,11 @@
                         <h2><strong> {{profile.followers.length}} </strong></h2>
                         <p><small>Followers</small></p>
                         <button ng-if="!follFlag" class="btn btn-success"
-                                ng-click="startFollow()">
+                                ng-click="startFollow()" data-toggle="tooltip" title="Start Following!">
                             Follow
                         </button>
                         <button ng-if="follFlag" class="btn btn-danger"
-                                ng-click="stopFollow()">
+                                ng-click="stopFollow()" data-toggle="tooltip" title="Stop Following!">
                             Unfollow
                         </button>
                     </div>

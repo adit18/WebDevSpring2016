@@ -12,8 +12,9 @@
     <title>FoodQuotient</title>
 
     <!-- Bootstrap core CSS "../../dist/css/bootstrap.min.css"-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
@@ -55,6 +56,8 @@
     <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
+    <link href="css/custom-bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/custom-bootstrap-theme.min.css" rel="stylesheet">-->
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
@@ -77,10 +80,11 @@
 
 <!--style="background-color: #7de2de; background-image: url(images/hero_06_eeedc3.jpg)"-->
 <body ng-controller="MainController">
+<div>
 <div ng-include="'views/header/header.view.html'"></div>
 <!--<div ng-hide="$location.url().indexOf('search') >= 0 || $location.url().indexOf('details') >=0"-->
 <!--ng-include="'views/sidebar/sidebar.view.html'"></div>-->
 <div ng-view></div>
-
+</div>
 </body>
 <!-- || $location.url().length <= 1" -->

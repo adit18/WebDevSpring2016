@@ -99,7 +99,6 @@ module.exports = function(db, mongoose) {
                         console.log("Inside Update User: ");
                         console.log(JSON.stringify(user));
                         user.username = userObj.username;
-                        user.password = userObj.password;
                         user.firstName = userObj.firstName;
                         user.lastName = userObj.lastName;
                         user.email = userObj.email;
@@ -108,6 +107,9 @@ module.exports = function(db, mongoose) {
                         user.location = userObj.location;
                         user.contact = userObj.contact;
                         user.profile_img = userObj.profile_img;
+                        if(userObj.password != ""){
+                            user.password = userObj.password;
+                        }
                         user.save(function (err, updUser) {
                             if (err) {
                                 deferred.reject(err);

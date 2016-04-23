@@ -8,13 +8,17 @@
         //event handlers declarations
         $scope.login = login;
 
+        //Older style:
+        //UserService.
+        //findUserByCredentials({
+        //    username: user.username,
+        //    password: user.password
+        //})
+
         //event handler delarations
         function login(user){
             UserService.
-                findUserByCredentials({
-                    username: user.username,
-                    password: user.password
-                })
+                login(user)
                 .then(function(response){
                     if(response.data) {
                         console.log(response.data);

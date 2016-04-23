@@ -10,66 +10,80 @@
 
             <h1 class="page-header">Admin</h1>
             <h2>Users</h2>
-            <table class="table table-bordered table-80">
+            <table class="table table-bordered table-80 table-responsive">
                 <thead>
                 <tr>
-                    <th><span class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>
+                    <th><span ng-click="order('username')" ng-class="{'glyphicon glyphicon-triangle-top':!usernameRevFlag, 'glyphicon glyphicon-triangle-bottom':usernameRevFlag }"></span>
+                        <!--<span ng-click="order('username')" class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>-->
                         Username</th>
-                    <th><span class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>
-                       Password</th>
-                    <th><span class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>
-                        Role</th>
-                    <th><span class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>
-                        Action</th>
+                    <th><span class="glyphicon glyphicon-size-small"></span>
+                        Password</th>
+                    <th><span ng-click="order('firstName')" ng-class="{'glyphicon glyphicon-triangle-top':firstnameRevFlag, 'glyphicon glyphicon-triangle-bottom':!firstnameRevFlag }"></span>
+                        <!--<span ng-click="order('firstName')" class="sortorder" ng-class="{reverse:reverse}"></span>-->
+                        <!--<span ng-click="order('firstName')" class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>-->
+                        First Name</th>
+                    <th><span ng-click="order('lastName')" ng-class="{'glyphicon glyphicon-triangle-top':lastnameRevFlag, 'glyphicon glyphicon-triangle-bottom':!lastnameRevFlag }"></span>
+                        <!--<span ng-click="order('lastName')" class="sortorder" ng-class="{reverse:reverse}"></span>-->
+                        <!--<span class="glyphicon glyphicon-triangle-bottom glyphicon-size-small"></span>-->
+                        Last Name</th>
+                    <th><span class="glyphicon glyphicon-size-small"></span>
+                        Roles</th>
+                    <th><span class="glyphicon glyphicon-size-small"></span>
+                        Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <div class="form-group row table-form">
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputdefault" placeholder="Username">
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group row table-form">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="inputdefault" placeholder="Password">
+                                <input type="text" ng-model="targetUser.username" class="form-control" id="inputdefault" placeholder="Username">
                             </div>
                         </div>
                     </td>
                     <td>
                         <div class="form-group row table-form">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="inputdefault" placeholder="Role1,Role2">
+                                <input type="password" ng-model="targetUser.password" class="form-control" id="inputdefault" placeholder="Password">
                             </div>
                         </div>
                     </td>
-                    <td><span class="glyphicon glyphicon-ok glyphicon-size glyphicon-colorgreen"></span>
-                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen"></span></td>
+                    <td>
+                        <div class="form-group row table-form">
+                            <div class="col-sm-12">
+                                <input type="text" ng-model="targetUser.firstName" class="form-control" id="inputdefault" placeholder="First Name">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group row table-form">
+                            <div class="col-sm-12">
+                                <input type="text" ng-model="targetUser.lastName" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group row table-form">
+                            <div class="col-sm-12">
+                                <input type="text" ng-model="targetUser.roles" class="form-control" placeholder="Role1,Role2">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="glyph-td"><span class="glyphicon glyphicon-ok glyphicon-size glyphicon-colorgreen" ng-click="updateUser(targetUser)"></span>
+                        <span class="glyphicon glyphicon-plus glyphicon-size glyphicon-colorgreen" ng-click="addUser(targetUser)"></span></td>
                 </tr>
-                <tr>
-                    <td><p class="data-font-size"> John </p></td>
-                    <td></td>
-                    <td><div class="table-form" id="inputdefault"><p class="data-font-size">student</p></div></td>
-                    <td><span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                    <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span></td>
-
-                </tr>
-                <tr>
-                    <td><p class="data-font-size"> Bob </p></td>
-                    <td></td>
-                    <td><p class="data-font-size"> faculty | admin </p></td>
-                    <td><span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                    <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span></td>
-                </tr>
-                <tr>
-                    <td><p class="data-font-size"> July</p></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"></span>
-                    <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"></span></td>
+                <tr ng-repeat="userTemp in users | orderBy:predicate:reverse">
+                    <td> {{userTemp.username}}</td>
+                    <td> &nbsp; </td>
+                    <td> {{userTemp.firstName}}</td>
+                    <td> {{userTemp.lastName}}</td>
+                    <td> {{userTemp.roles}}</td>
+                    <td class="glyph-td">
+                        <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"
+                              ng-click="deleteUser($index)"></span>
+                        <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"
+                              ng-click="selectUser($index)"></span>
+                    </td>
                 </tr>
                 </tbody>
             </table>

@@ -18,6 +18,7 @@ module.exports = function(db, mongoose) {
         findUserByUsername : findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUserByID : updateUserByID,
+        updateUserByIDAdmin: updateUserByIDAdmin,
         deleteUserById : deleteUserById,
         setCurrentUser : setCurrentUser,
         getCurrentUser : getCurrentUser
@@ -112,8 +113,8 @@ module.exports = function(db, mongoose) {
                         user.username = userObj.username;
                         user.firstName = userObj.firstName;
                         user.lastName = userObj.lastName;
-                        user.emails = [userObj.email];
-                        //user.phones = [];
+                        user.emails = [userObj.emails];
+                        user.phones = [userObj.phones];
                         user.save(function (err, updUser) {
                             if (err) {
                                 deferred.reject(err);
@@ -123,6 +124,38 @@ module.exports = function(db, mongoose) {
                             }
                         });
                         console.log("Resolved!");
+                    }
+                }
+            );
+        return deferred.promise;
+    }
+
+    function updateUserByIDAdmin(userId,userObj) {
+        var deferred = q.defer();
+        console.log("Inside berfore : "+userId);
+
+        UserModel
+            .findById(userId,
+                function (err, user) {
+                    if (err) {
+                        deferred.reject(err);
+                    }
+                    else {
+                        console.log("Inside Update User: ");
+                        console.log(JSON.stringify(user));
+                        user.username = userObj.username;
+                        user.firstName = userObj.firstName;
+                        user.lastName = userObj.lastName;
+                        user.roles = [userObj.roles];
+                        user.save(function (err, updUser) {
+                            if (err) {
+                                deferred.reject(err);
+                            }
+                            else {
+                                deferred.resolve(updUser);
+                            }
+                        });
+                        console.log("Resolved Admin update!");
                     }
                 }
             );

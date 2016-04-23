@@ -10,6 +10,7 @@
         UserService
             .getCurrentUser()
             .then(function(response) {
+                console.log("Current User: "+response.data);
                 var currentUser = response.data;
                 if(currentUser) {
                     $('#pro').html(currentUser.username);

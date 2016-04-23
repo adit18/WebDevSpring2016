@@ -34,8 +34,11 @@
                     })
                 .when("/admin",
                     {
-                        templateUrl: "views/admin/admin.view.html"
-                        //controller: "courseOverview.controller"
+                        templateUrl: "views/admin/admin.view.html",
+                        controller: "AdminController",
+                        resolve: {
+                            checkLoggedIn: checkLoggedIn
+                        }
                     })
                 .when("/forms",
                     {

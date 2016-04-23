@@ -14,12 +14,11 @@
             UserService
                 .createUser(user)
                 .then(function(response){
-                    //$rootScope.currentUser = response.data;
-                    //UserService.setCurrentUser(response.data);
-                    var currentUser = response.data;
-                    if(currentUser != null) {
-                        UserService.setCurrentUser(currentUser);
-                        $('#pro').html(UserService.getCurrentUser().username);
+                    var locUser = response.data;
+                    //console.log("HERE: "+ locUser);
+                    if(locUser != null) {
+                        UserService.setCurrentUser(response.data);
+                        $('#pro').html($rootScope.currentUser.username);
                         $location.url("/profile");
                     }
                 });

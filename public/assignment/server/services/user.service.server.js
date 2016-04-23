@@ -81,14 +81,16 @@ module.exports = function(app, userModel) {
                 }
             )
             .then(
-                function (user) {
-                    if (user) {
-                        req.login(user, function (err) {
+                function (nuser) {
+                    if (nuser) {
+                        req.login(nuser, function (err) {
                             if (err) {
                                 res.status(400).send(err);
                             }
                             else {
-                                res.json(user);
+                                console.log("Logged regd user");
+                                console.log(nuser);
+                                res.json(nuser);
                             }
                         });
                     }
@@ -348,7 +350,7 @@ module.exports = function(app, userModel) {
     }
 
     function loggedin(req, res) {
-        res.send(req.isAuthenticated() ? req.user : null);
+        res.send(req.isAuthenticated() ? req.user : '0');
         //res.json(req.session.currentUser);
     }
 

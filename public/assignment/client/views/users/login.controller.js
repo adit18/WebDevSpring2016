@@ -23,7 +23,7 @@
                     if(response.data) {
                         console.log(response.data);
                         UserService.setCurrentUser(response.data);
-                        $('#pro').html(user.username);
+                        $('#pro').html($rootScope.currentUser.username);
                         $location.url('/profile');
                     }
                     else{

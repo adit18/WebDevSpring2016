@@ -33,6 +33,16 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
                     res.status(400).send(err);
                 }
             );
+        userModel.addReviewCount(userId,yelpID)
+            .then(
+                function ( user ) {
+                    console.log("Added rev count to user server");
+                    //res.json(user);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function findUserReviewsByYelpId (req, res) {
@@ -120,7 +130,6 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
         ////res.send(updReview);
 
     function deleteReview (req, res) {
-        var allRevs = [];
         var reviewId = req.params.reviewId;
         reviewModel.deleteReviewById(reviewId)
             .then(
@@ -132,5 +141,16 @@ module.exports = function(app, foodModel, userModel, reviewModel) {
                     res.status(400).send(err);
                 }
             );
+        userModel.removeReviewCount(req.session.currentUser._id)
+            .then(
+                function ( user ) {
+                    console.log("Removed rev count to user server");
+                    //res.json(user);
+                },
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            );
+
     }
 }

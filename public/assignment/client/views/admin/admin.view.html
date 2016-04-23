@@ -80,9 +80,9 @@
                     <td> {{userTemp.roles}}</td>
                     <td class="glyph-td">
                         <span class="glyphicon glyphicon-remove glyphicon-size glyphicon-colorred"
-                              ng-click="deleteUser($index)"></span>
+                              ng-click="deleteUser(userTemp._id)"></span>
                         <span class="glyphicon glyphicon-pencil glyphicon-size glyphicon-colorbro"
-                              ng-click="selectUser($index)"></span>
+                              ng-click="selectUser(userTemp,$index)"></span>
                     </td>
                 </tr>
                 </tbody>

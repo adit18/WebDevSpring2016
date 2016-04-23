@@ -20,6 +20,8 @@ module.exports = function(db, mongoose) {
         findUserById: findUserById,
         findUsersByIds: findUsersByIds,
         addReviewToUser: addReviewToUser,
+        addReviewCount: addReviewCount,
+        removeReviewCount: removeReviewCount,
         updateUserReviewByID: updateUserReviewByID,
         deleteUserReviewById: deleteUserReviewById,
         addFollowing: addFollowing,
@@ -176,6 +178,52 @@ module.exports = function(db, mongoose) {
                     revObj.comment = review.comment;
                     revObj.ratval = review.ratval;
                     user.reviews.push(revObj);
+                    user.save(function (err, updUser) {
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else {
+                            deferred.resolve(updUser);
+                        }
+                    });
+                }
+            });
+        return deferred.promise;
+    }
+
+    function addReviewCount(userId,yelp) {
+        var deferred = q.defer();
+
+        UserModel.findById(userId,
+            function(err, user) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    user.reviews.push(yelp);
+                    user.save(function (err, updUser) {
+                        if (err) {
+                            deferred.reject(err);
+                        }
+                        else {
+                            deferred.resolve(updUser);
+                        }
+                    });
+                }
+            });
+        return deferred.promise;
+    }
+
+    function removeReviewCount(userId) {
+        var deferred = q.defer();
+
+        UserModel.findById(userId,
+            function(err, user) {
+                if (err) {
+                    deferred.reject(err);
+                }
+                else {
+                    user.reviews.pop();
                     user.save(function (err, updUser) {
                         if (err) {
                             deferred.reject(err);

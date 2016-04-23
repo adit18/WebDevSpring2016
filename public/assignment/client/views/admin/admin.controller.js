@@ -59,8 +59,9 @@
                 });
         }
 
-        function selectUser(index){
-            $scope.targetUser = $scope.users[index];
+        function selectUser(userObj,index){
+            $scope.targetUser = userObj;
+            //$scope.targetUser = $scope.users[index];
             //$rootScope.currentForm = $scope.users[index];
             //$scope.form = $rootScope.currentForm;
             console.log("Editing "+ $scope.targetUser.username);
@@ -81,13 +82,13 @@
                 });
         }
 
-        function deleteUser(index){
+        function deleteUser(userID){
             //$rootScope.currentForm = $scope.forms[index];
-            var delUser = $scope.users[index];
+            //var delUser = $scope.users[index];
             UserService
-                .deleteUserByIdAdmin(delUser._id)
+                .deleteUserByIdAdmin(userID)
                 .then(function(response){
-                    console.log("Deleted "+ delUser.username);
+                    //console.log("Deleted "+ delUser.username);
                     UserService
                         .findAllUsersByAdmin()
                         .then(function (response){

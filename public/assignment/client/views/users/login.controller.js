@@ -37,14 +37,3 @@
         }
     }
 })();
-
-
-
-//console.log(retUser);
-//if(typeof retUser === "undefined"){
-//    console.log("UNDEF found")
-//}
-//$rootScope.currentUser = retUser;
-
-//$window.location.href("#/profile");
-//$location.url("#/profile");

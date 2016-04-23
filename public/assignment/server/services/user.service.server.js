@@ -71,6 +71,7 @@ module.exports = function(app, userModel) {
             .then(
                 function (user) {
                     if (user) {
+                        console.log("User already exists!");
                         res.json(null);
                     } else {
                         return userModel.createUser(newUser);
@@ -83,16 +84,7 @@ module.exports = function(app, userModel) {
             .then(
                 function (nuser) {
                     if (nuser) {
-                        req.login(nuser, function (err) {
-                            if (err) {
-                                res.status(400).send(err);
-                            }
-                            else {
-                                console.log("Logged regd user");
-                                console.log(nuser);
-                                res.json(nuser);
-                            }
-                        });
+                        res.json(nuser);
                     }
                 },
                 function (err) {
@@ -100,34 +92,6 @@ module.exports = function(app, userModel) {
                 }
             );
     }
-
-    //var userR = userModel.createUser(user)
-    //    .then(
-    //        // login user if promise resolved
-    //        function ( doc ) {
-    //            req.session.currentUser = doc;
-    //            //res.json(user);
-    //        },
-    //        // send error if promise rejected
-    //        function ( err ) {
-    //            res.status(400).send(err);
-    //        }
-    //    );
-    //
-    ////var allUsers =
-    //userModel.findAllUsers()
-    //    .then(
-    //        // login user if promise resolved
-    //        function ( doc ) {
-    //            res.json(doc);
-    //        },
-    //        // send error if promise rejected
-    //        function ( err ) {
-    //            res.status(400).send(err);
-    //        }
-    //    );
-
-    //res.send(allUsers);
 
     function createUserByAdmin(req,res){
         var newUser = req.body;

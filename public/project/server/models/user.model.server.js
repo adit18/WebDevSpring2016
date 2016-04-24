@@ -1,3 +1,4 @@
+//var mock = require("./projuser.mock.json");
 
 // load q promise library
 var q = require("q");
@@ -145,17 +146,18 @@ module.exports = function(db, mongoose) {
     function findUserByCredentials(credentials) {
         console.log("Cred called");
         var deferred = q.defer();
+        //var res = bcrypt.compareSync(credentials.password, doc.password);
         UserModel.findOne( { username: credentials.username },
             function(err, doc) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    if(doc && bcrypt.compareSync(credentials.password, doc.password)){
-                        console.log("Crypt compared proj!");
+                    if(bcrypt.compareSync(credentials.password, doc.password)){
+                        console.log("Crypt compared!");
                         deferred.resolve(doc);
                     }
                     else{
-                        deferred.reject(null);
+                        deferred.reject(err);
                     }
                 }
 

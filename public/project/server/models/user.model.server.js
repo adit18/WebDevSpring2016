@@ -1,8 +1,7 @@
-//var mock = require("./projuser.mock.json");
 
 // load q promise library
 var q = require("q");
-var bcrypt = require("bcrypt-nodejs");
+//var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(db, mongoose) {
 
@@ -64,7 +63,7 @@ module.exports = function(db, mongoose) {
 
     function createUser(user) {
         var deferred = q.defer();
-        user.password = bcrypt.hashSync(user.password);
+        //userObj.password = bcrypt.hashSync(userObj.password);
         UserModel.findOne( { username: user.username },
             function(err, doc) {
                 if (doc) {
@@ -73,12 +72,12 @@ module.exports = function(db, mongoose) {
                     deferred.resolve(null);
                 } else {
                     UserModel.create(user, function (err, doc) {
-                                if (err) {
-                                    deferred.reject(err);
-                                } else {
-                                    deferred.resolve(doc);
-                                }
-                            });
+                        if (err) {
+                            deferred.reject(err);
+                        } else {
+                            deferred.resolve(doc);
+                        }
+                    });
                 }
 
             });
@@ -110,7 +109,7 @@ module.exports = function(db, mongoose) {
                         user.contact = userObj.contact;
                         user.profile_img = userObj.profile_img;
                         if(userObj.password != ""){
-                            user.password = bcrypt.hashSync(userObj.password);
+                            user.password = userObj.password;
                         }
                         user.save(function (err, updUser) {
                             if (err) {
@@ -147,18 +146,12 @@ module.exports = function(db, mongoose) {
         console.log("Cred called");
         var deferred = q.defer();
         //var res = bcrypt.compareSync(credentials.password, doc.password);
-        UserModel.findOne( { username: credentials.username },
+        UserModel.findOne( { username: credentials.username, password: credentials.password },
             function(err, doc) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    if(bcrypt.compareSync(credentials.password, doc.password)){
-                        console.log("Crypt compared!");
-                        deferred.resolve(doc);
-                    }
-                    else{
-                        deferred.reject(err);
-                    }
+                    deferred.resolve(doc);
                 }
 
             });

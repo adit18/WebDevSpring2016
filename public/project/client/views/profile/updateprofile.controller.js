@@ -30,6 +30,7 @@
                 .updateProfile(user)
                 .then(function (response) {
                     vm.profile = response.data;
+                    vm.profile.password = "";
                     console.log("Updated "+response.data.username);
                     //console.log(vm.profile);
                     $location.url("/profile");

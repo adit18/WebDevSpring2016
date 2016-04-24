@@ -150,12 +150,12 @@ module.exports = function(db, mongoose) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    if(bcrypt.compareSync(credentials.password, doc.password)){
+                    if(doc && bcrypt.compareSync(credentials.password, doc.password)){
                         console.log("Crypt compared proj!");
                         deferred.resolve(doc);
                     }
                     else{
-                        deferred.reject(err);
+                        deferred.reject(null);
                     }
                 }
 

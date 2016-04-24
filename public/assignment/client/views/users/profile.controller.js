@@ -10,6 +10,7 @@
             .getCurrentUser()
             .then(function (response) {
                 $scope.currentUser = response.data;
+                $scope.currentUser.password = "";
                 console.log("Profile Refresh: ");
                 console.log(response.data);
             });
@@ -26,6 +27,7 @@
                 updateUser(user_id,user)
                 .then(function(response){
                     $scope.currentUser = response.data;
+                    $scope.currentUser.password = "";
                     console.log("Updated "+user.username);
                     console.log(response.data);
                 });

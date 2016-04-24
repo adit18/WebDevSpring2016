@@ -95,7 +95,9 @@ module.exports = function(app, userModel) {
 
     function createUserByAdmin(req,res){
         var newUser = req.body;
-        newUser.roles = ['student'];
+        if(newUser.roles == null){
+            newUser.roles = ['student'];
+        }
 
         userModel
             .findUserByUsername(newUser.username)
@@ -128,8 +130,6 @@ module.exports = function(app, userModel) {
             profileByUsername(req,res);
         }
         else {
-            var allUsers = [];
-            //allUsers = userModel.findAllUsers();
             userModel.findAllUsers()
                 .then(
                     function ( doc ) {

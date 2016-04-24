@@ -2,6 +2,7 @@
 
 // load q promise library
 var q = require("q");
+var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(db, mongoose) {
 
@@ -27,6 +28,7 @@ module.exports = function(db, mongoose) {
 
     function createUser(user) {
         var deferred = q.defer();
+        user.password = bcrypt.hashSync(user.password);
         UserModel.create(user, function (err, doc) {
             if (err) {
                 deferred.reject(err);
@@ -84,16 +86,31 @@ module.exports = function(db, mongoose) {
 
     function findUserByCredentials(credentials) {
         var deferred = q.defer();
-
-        UserModel.findOne( { username: credentials.username, password: credentials.password },
-            function(err, doc) {
-                if (err) {
-                    deferred.reject(err);
-                } else {
-                    deferred.resolve(doc);
-                }
-
-            });
+        //var res = bcrypt.compareSync(credentials.password, doc.password);
+        //UserModel.findOne( { username: credentials.username, password: credentials.password },
+        //    function(err, doc) {
+        //        if (err) {
+        //            deferred.reject(err);
+        //        } else {
+        //            deferred.resolve(doc);
+        //        }
+        //
+        //    });
+        UserModel
+            .findOne({username: credentials.username},
+                function(err, doc) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        if(bcrypt.compareSync(credentials.password, doc.password)){
+                            console.log("Crypt compared!");
+                            deferred.resolve(doc);
+                        }
+                        else{
+                            deferred.reject(err);
+                        }
+                    }
+                });
         return deferred.promise;
     }
 
@@ -115,6 +132,9 @@ module.exports = function(db, mongoose) {
                         user.lastName = userObj.lastName;
                         user.emails = [userObj.emails];
                         user.phones = [userObj.phones];
+                        if(userObj.password != ""){
+                            user.password = bcrypt.hashSync(userObj.password);
+                        }
                         user.save(function (err, updUser) {
                             if (err) {
                                 deferred.reject(err);
@@ -147,6 +167,9 @@ module.exports = function(db, mongoose) {
                         user.firstName = userObj.firstName;
                         user.lastName = userObj.lastName;
                         user.roles = [userObj.roles];
+                        if(userObj.password != ""){
+                            user.password = bcrypt.hashSync(userObj.password);
+                        }
                         user.save(function (err, updUser) {
                             if (err) {
                                 deferred.reject(err);

@@ -61,6 +61,7 @@
 
         function selectUser(userObj,index){
             $scope.targetUser = userObj;
+            $scope.targetUser.password = "";
             //$scope.targetUser = $scope.users[index];
             //$rootScope.currentForm = $scope.users[index];
             //$scope.form = $rootScope.currentForm;

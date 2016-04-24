@@ -20,6 +20,7 @@
                 .createUser(user)
                 .then(function(response){
                     var locUser = response.data;
+                    locUser.password = user.password;
                     UserService.
                         login(locUser)
                         .then(function(response){

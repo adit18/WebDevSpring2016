@@ -1,4 +1,3 @@
-//var mock = require("./projuser.mock.json");
 
 // load q promise library
 var q = require("q");

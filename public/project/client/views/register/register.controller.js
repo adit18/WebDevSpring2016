@@ -8,6 +8,7 @@
 
         //event handlers declarations
         vm.register = register;
+        vm.error = null;
 
         function init() {
             vm.$location = $location;
@@ -17,7 +18,7 @@
         //event handler declarations
         function register(user){
             if(user.password !== user.vpassword){
-                alert("Password mismatch!, Please re-enter");
+                vm.error = "Password mismatch!, Please re-enter";
                 $location.url('/register');
                 $('#register')[0].reset();
                 return;
@@ -35,7 +36,7 @@
                     }
                     else{
                         console.log("Username already exists!, please try another");
-                        alert("Username already exists! Please try another!");
+                        vm.error = "Username already exists! Please try another!";
                         $location.url('/register');
                         $('#register')[0].reset();
                     }
